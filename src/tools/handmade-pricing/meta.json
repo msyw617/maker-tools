@@ -3,6 +3,8 @@
   "category": "selling",
   "en": {
     "title": "Handmade Pricing Calculator – Wholesale and Retail Prices for Crafts",
+    "short": "Handmade pricing",
+    "tagline": "Wholesale and retail from your costs",
     "description": "Price your handmade products with the classic materials + labour + overhead formula. Get wholesale and retail prices, marketplace fees and your profit per item.",
     "h1": "Handmade Pricing Calculator",
     "intro": "Enter what one item costs you in materials, time and overhead. The calculator applies the standard wholesale and retail markups, subtracts marketplace fees, and shows what you actually keep.",
@@ -14,13 +16,24 @@
     ],
     "formula": "Labour = minutes ÷ 60 × hourly rate. Cost = materials + labour + overhead. Wholesale = cost × wholesale multiplier. Retail = wholesale × retail multiplier. Fees = retail × fee % + fixed fee per order. Profit = retail − fees − cost. Example: 5 of materials, 30 minutes at 20 an hour and 1 of overhead cost 16; wholesale is 32 and retail 64. With 9.5% + 0.45 in fees, you keep 41.47 profit on top of your wage.",
     "faq": [
-      { "q": "Why double twice?", "a": "The wholesale price has to cover your costs and leave profit for your business. Shops buying wholesale then double it to cover their own rent, staff and profit. If you sell retail yourself for less than double wholesale, you undercut your own stockists." },
-      { "q": "What fees should I enter for Etsy or another marketplace?", "a": "Marketplaces combine listing, transaction and payment processing fees, and they differ by country and change over time. Check your marketplace's current fee schedule and enter the percentage part and the fixed per-order part separately." },
-      { "q": "Is my labour counted in the profit?", "a": "No. Your hourly rate is already part of the cost, so the profit figure is what the business earns after paying you. If the retail price is too high for your market, try a smaller retail multiplier for direct sales before cutting your hourly rate." }
+      {
+        "q": "Why double twice?",
+        "a": "The wholesale price has to cover your costs and leave profit for your business. Shops buying wholesale then double it to cover their own rent, staff and profit. If you sell retail yourself for less than double wholesale, you undercut your own stockists."
+      },
+      {
+        "q": "What fees should I enter for Etsy or another marketplace?",
+        "a": "Marketplaces combine listing, transaction and payment processing fees, and they differ by country and change over time. Check your marketplace's current fee schedule and enter the percentage part and the fixed per-order part separately."
+      },
+      {
+        "q": "Is my labour counted in the profit?",
+        "a": "No. Your hourly rate is already part of the cost, so the profit figure is what the business earns after paying you. If the retail price is too high for your market, try a smaller retail multiplier for direct sales before cutting your hourly rate."
+      }
     ]
   },
   "ko": {
     "title": "핸드메이드 판매가 계산기 – 공방 작품 도매가·소매가 정하기",
+    "short": "핸드메이드 판매가",
+    "tagline": "원가로 도매가·소매가 정하기",
     "description": "재료비, 인건비, 간접비로 핸드메이드 작품의 원가와 도매가·소매가를 계산하고, 판매 수수료를 뺀 실제 이익을 보여줍니다.",
     "h1": "핸드메이드 판매가 계산기",
     "intro": "작품 한 개에 드는 재료비, 작업 시간, 간접비를 입력하면 일반적인 도매·소매 배수를 적용하고 플랫폼 수수료를 뺀 뒤 실제로 남는 금액을 보여줍니다.",
@@ -32,9 +45,18 @@
     ],
     "formula": "인건비 = 분 ÷ 60 × 시급. 원가 = 재료비 + 인건비 + 간접비. 도매가 = 원가 × 도매 배수. 소매가 = 도매가 × 소매 배수. 수수료 = 소매가 × 수수료율 + 건당 고정 수수료. 이익 = 소매가 − 수수료 − 원가. 예: 재료비 5,000원, 시급 12,000원으로 30분, 간접비 1,000원이면 원가 12,000원, 도매가 24,000원, 소매가 48,000원이고, 수수료 10%를 빼면 내 인건비와 별도로 31,200원이 남습니다.",
     "faq": [
-      { "q": "왜 두 번이나 2배를 하나요?", "a": "도매가는 원가를 덮고 사업 이익을 남겨야 합니다. 도매로 사 가는 매장은 다시 2배를 붙여 임대료, 인건비, 이익을 충당합니다. 직접 팔 때 소매가를 도매가의 2배보다 낮게 받으면 입점 매장보다 싸게 파는 셈이 됩니다." },
-      { "q": "아이디어스나 스마트스토어 수수료는 얼마로 넣나요?", "a": "플랫폼마다 판매 수수료, 결제 수수료, 광고 수수료가 다르고 자주 바뀝니다. 각 플랫폼의 판매자 센터에서 현재 수수료를 확인해 % 수수료와 건당 고정 금액으로 나눠 입력하세요." },
-      { "q": "이익에 내 인건비도 포함되나요?", "a": "아니요. 시급은 이미 원가에 들어 있으므로, 이익은 나에게 시급을 준 뒤 사업에 남는 돈입니다. 소매가가 시장에 비해 너무 높다면 시급을 깎기 전에 직접 판매용 소매 배수부터 줄여 보세요." }
+      {
+        "q": "왜 두 번이나 2배를 하나요?",
+        "a": "도매가는 원가를 덮고 사업 이익을 남겨야 합니다. 도매로 사 가는 매장은 다시 2배를 붙여 임대료, 인건비, 이익을 충당합니다. 직접 팔 때 소매가를 도매가의 2배보다 낮게 받으면 입점 매장보다 싸게 파는 셈이 됩니다."
+      },
+      {
+        "q": "아이디어스나 스마트스토어 수수료는 얼마로 넣나요?",
+        "a": "플랫폼마다 판매 수수료, 결제 수수료, 광고 수수료가 다르고 자주 바뀝니다. 각 플랫폼의 판매자 센터에서 현재 수수료를 확인해 % 수수료와 건당 고정 금액으로 나눠 입력하세요."
+      },
+      {
+        "q": "이익에 내 인건비도 포함되나요?",
+        "a": "아니요. 시급은 이미 원가에 들어 있으므로, 이익은 나에게 시급을 준 뒤 사업에 남는 돈입니다. 소매가가 시장에 비해 너무 높다면 시급을 깎기 전에 직접 판매용 소매 배수부터 줄여 보세요."
+      }
     ]
   }
 }

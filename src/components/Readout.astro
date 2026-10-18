@@ -1,0 +1,47 @@
+---
+// Results panel on the mat, plus a compact bar pinned to the bottom on phones.
+// items: [{ label, out, unit?, unitOut?, size?: 'xl' | 'lg', sign?: true }]. Sized items show large; the rest form a list.
+const { lang, items, note } = Astro.props;
+const t = {
+  en: { title: 'Result', print: 'Print', reset: 'Reset', full: 'Full result', bar: 'Result summary' },
+  ko: { title: '결과', print: '인쇄', reset: '초기화', full: '전체 결과', bar: '결과 요약' },
+}[lang];
+const big = items.filter((i) => i.size);
+const rows = items.filter((i) => !i.size);
+---
+<aside class="readout mat" id="results" aria-label={t.title} aria-live="polite">
+  <div class="ruler" aria-hidden="true"></div>
+  <div class="readout-body">
+    <p class="eyebrow">{t.title}</p>
+    {big.map((i) => (
+      <div class={i.size === 'xl' ? 'r-xl' : undefined}>
+        <p class="r-label">{i.label}</p>
+        <p class="r-val"><span data-out={i.out} data-sign={i.sign ? '' : undefined}></span>{i.unit && <span class="u">{i.unit}</span>}{i.unitOut && <span class="u" data-out={i.unitOut}></span>}</p>
+      </div>
+    ))}
+    {rows.length > 0 && (
+      <dl class="r-rows">
+        {rows.map((i) => (
+          <>
+            <dt>{i.label}</dt>
+            <dd><span data-out={i.out} data-sign={i.sign ? '' : undefined}></span>{i.unit && ` ${i.unit}`}{i.unitOut && <> <span data-out={i.unitOut}></span></>}</dd>
+          </>
+        ))}
+      </dl>
+    )}
+    {note && <p class="r-note">{note}</p>}
+    <div class="actions">
+      <button type="button" class="btn btn-marker" onclick="print()">{t.print}</button>
+      <button type="reset" class="btn btn-ghost-light">{t.reset}</button>
+    </div>
+  </div>
+</aside>
+<div class="bar mat" role="group" aria-label={t.bar}>
+  {big.slice(0, 2).map((i) => (
+    <div class="b-item">
+      <p>{i.label}</p>
+      <b><span data-out={i.out} data-sign={i.sign ? '' : undefined}></span>{i.unit && <span class="u">{i.unit}</span>}{i.unitOut && <span class="u" data-out={i.unitOut}></span>}</b>
+    </div>
+  ))}
+  <a class="btn btn-marker" href="#results">{t.full}</a>
+</div>

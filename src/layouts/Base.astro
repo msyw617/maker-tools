@@ -1,10 +1,18 @@
 ---
-const { lang, title, description, path = '' } = Astro.props;
-const other = lang === 'en' ? 'ko' : 'en';
+import '@fontsource-variable/bricolage-grotesque';
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/500.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '@fontsource/ibm-plex-mono/600.css';
+import '../styles/site.css';
+import koFonts from '../styles/ko-fonts.css?url';
+
+const { lang, title, description, path = '', bodyClass } = Astro.props;
 const site = (Astro.site?.toString() ?? '').replace(/\/$/, '');
 const t = {
-  en: { home: 'Craft Numbers', about: 'About', privacy: 'Privacy', contact: 'Contact', switch: '한국어' },
-  ko: { home: 'Craft Numbers', about: '소개', privacy: '개인정보처리방침', contact: '문의', switch: 'English' },
+  en: { tools: 'Calculators', about: 'About', privacy: 'Privacy', contact: 'Contact', skip: 'Skip to content', tagline: 'Free calculators for people who make things by hand.' },
+  ko: { tools: '계산기', about: '소개', privacy: '개인정보처리방침', contact: '문의', skip: '본문으로 건너뛰기', tagline: '손으로 만드는 사람들을 위한 무료 계산기.' },
 }[lang];
 ---
 <!doctype html>
@@ -14,54 +22,45 @@ const t = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#1E4D3F" />
+    {lang === 'ko' && <link rel="stylesheet" href={koFonts} media="print" onload="this.media='all'" />}
     <link rel="canonical" href={`${site}/${lang}/${path}`} />
     <link rel="alternate" hreflang="en" href={`${site}/en/${path}`} />
     <link rel="alternate" hreflang="ko" href={`${site}/ko/${path}`} />
     <link rel="alternate" hreflang="x-default" href={`${site}/en/${path}`} />
-    <style is:global>
-      :root { --bg: #fff; --fg: #1a1a1a; --muted: #666; --line: #ddd; --accent: #b5651d; --card: #faf7f2; }
-      @media (prefers-color-scheme: dark) {
-        :root { --bg: #161616; --fg: #eee; --muted: #aaa; --line: #333; --accent: #e0a060; --card: #222; }
-      }
-      * { box-sizing: border-box; }
-      body { margin: 0; font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--fg); }
-      header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 16px; }
-      header { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
-      header a { color: inherit; text-decoration: none; font-weight: 600; }
-      header nav a { margin-left: 14px; color: var(--muted); font-weight: 400; }
-      a { color: var(--accent); }
-      h1 { font-size: 1.7em; line-height: 1.25; }
-      .tool { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 16px 0; }
-      .tool label { display: block; margin-bottom: 12px; font-weight: 600; }
-      .tool input, .tool select { width: 100%; font: inherit; padding: 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--fg); margin-top: 4px; }
-      .tool .row { display: flex; gap: 8px; }
-      .tool .row select { width: auto; }
-      .result { font-size: 1.05em; margin: 8px 0; }
-      .result strong { font-size: 1.4em; color: var(--accent); }
-      .note { color: var(--muted); font-size: 0.9em; }
-      [hidden] { display: none !important; }
-      .tool fieldset { border: 1px solid var(--line); border-radius: 6px; margin: 0 0 12px; padding: 8px 12px 0; }
-      .tool legend { font-weight: 600; padding: 0 4px; }
-      .tool .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0 12px; }
-      .tool .check { display: flex; gap: 8px; align-items: center; font-weight: 400; }
-      .tool .check input { width: auto; margin: 0; }
-      .warn { border-left: 4px solid var(--accent); padding: 8px 12px; margin: 0 0 12px; background: var(--bg); }
-      .ad { min-height: 0; } /* AdSense 슬롯: 승인 후 <ins class="adsbygoogle"> 삽입 */
-      details { border-bottom: 1px solid var(--line); padding: 8px 0; }
-      summary { cursor: pointer; font-weight: 600; }
-      footer { border-top: 1px solid var(--line); margin-top: 40px; padding-top: 16px; padding-bottom: 32px; color: var(--muted); font-size: 0.9em; }
-      footer a { margin-right: 14px; }
-    </style>
   </head>
-  <body>
-    <header>
-      <a href={`/${lang}/`}>{t.home}</a>
-      <nav><a href={`/${lang}/about/`}>{t.about}</a><a href={`/${other}/${path}`}>{t.switch}</a></nav>
+  <body class={bodyClass}>
+    <a class="skip" href="#main">{t.skip}</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href={`/${lang}/`}>
+          <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect width="30" height="30" rx="7" fill="#1E4D3F"></rect><path d="M10 0v30M20 0v30M0 10h30M0 20h30" stroke="rgba(255,255,255,0.22)"></path><path d="M6 24 24 6" stroke="#F4C542" stroke-width="2.6" stroke-linecap="round"></path></svg>
+          <span class="brand-name">Craft Numbers</span>
+        </a>
+        <nav class="nav" aria-label={t.tools}>
+          <a href={`/${lang}/#tools`}>{t.tools}</a>
+          <a href={`/${lang}/about/`}>{t.about}</a>
+          <div class="lang">
+            <a href={`/en/${path}`} lang="en" hreflang="en" aria-current={lang === 'en' ? 'true' : undefined}>EN</a>
+            <a href={`/ko/${path}`} lang="ko" hreflang="ko" aria-current={lang === 'ko' ? 'true' : undefined}>한국어</a>
+          </div>
+        </nav>
+      </div>
     </header>
-    <main><slot /></main>
-    <footer>
-      <a href={`/${lang}/about/`}>{t.about}</a><a href={`/${lang}/privacy/`}>{t.privacy}</a><a href={`/${lang}/contact/`}>{t.contact}</a>
-      <div>© {new Date().getFullYear()} {t.home}</div>
+    <main id="main"><slot /></main>
+    <footer class="site-footer mat">
+      <div class="wrap">
+        <div>
+          <span class="brand-name">Craft Numbers</span>
+          <p>{t.tagline}</p>
+        </div>
+        <nav aria-label="Footer">
+          <a href={`/${lang}/about/`}>{t.about}</a>
+          <a href={`/${lang}/privacy/`}>{t.privacy}</a>
+          <a href={`/${lang}/contact/`}>{t.contact}</a>
+          <small>© {new Date().getFullYear()} Craft Numbers</small>
+        </nav>
+      </div>
     </footer>
   </body>
 </html>

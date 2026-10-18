@@ -1,41 +1,45 @@
 ---
+import Field from '../../components/Field.astro';
+import Step from '../../components/Step.astro';
+import Readout from '../../components/Readout.astro';
 const { lang } = Astro.props;
 const t = {
-  en: { cur: '', fil: 'Filament', grams: 'Filament used (g)', spoolPrice: 'Spool price', spoolGrams: 'Spool weight (g)', elec: 'Electricity', hours: 'Print time (hours)', watts: 'Average power draw (W)', kwh: 'Electricity price per kWh', wearSet: 'Printer wear and failures (optional)', printerPrice: 'Printer price', lifeHours: 'Expected printer lifetime (hours)', fail: 'Failure rate (%)', filament: 'Filament cost', power: 'Electricity cost', wear: 'Printer wear', total: 'Cost per successful print', note: 'Prices are in your own currency. Leave printer price empty to skip wear.' },
-  ko: { cur: '원', fil: '필라멘트', grams: '필라멘트 사용량 (g)', spoolPrice: '롤 가격 (원)', spoolGrams: '롤 무게 (g)', elec: '전기료', hours: '출력 시간 (시간)', watts: '평균 소비전력 (W)', kwh: 'kWh당 전기 요금 (원)', wearSet: '감가상각·실패율 (선택)', printerPrice: '프린터 가격 (원)', lifeHours: '예상 프린터 수명 (시간)', fail: '실패율 (%)', filament: '필라멘트 비용', power: '전기료', wear: '감가상각', total: '성공 1개당 원가', note: '프린터 가격을 비워 두면 감가상각을 빼고 계산합니다.' },
+  en: { cur: undefined, s1: 'Filament', s2: 'Electricity', s3: 'Wear and failures (optional)', grams: 'Filament used', gramsHint: 'From your slicer’s summary.', spoolPrice: 'Spool price', spoolGrams: 'Spool weight', hours: 'Print time', watts: 'Average power draw', wattsHint: 'Most desktop printers average 100–150 W.', kwh: 'Price per kWh', printerPrice: 'Printer price', printerHint: 'Leave empty to skip wear.', lifeHours: 'Expected lifetime', fail: 'Failure rate', total: 'Cost per successful print', filament: 'Filament', power: 'Electricity', wear: 'Printer wear', note: 'Prices are in your own currency.' },
+  ko: { cur: '원', s1: '필라멘트', s2: '전기료', s3: '감가상각·실패율 (선택)', grams: '필라멘트 사용량', gramsHint: '슬라이서 요약 화면의 값.', spoolPrice: '롤 가격', spoolGrams: '롤 무게', hours: '출력 시간', watts: '평균 소비전력', wattsHint: '데스크톱 프린터는 보통 평균 100~150 W.', kwh: 'kWh당 전기 요금', printerPrice: '프린터 가격', printerHint: '비워 두면 감가상각을 빼고 계산합니다.', lifeHours: '예상 수명', fail: '실패율', total: '성공 1개당 원가', filament: '필라멘트', power: '전기료', wear: '감가상각', note: undefined },
 }[lang];
 const d = lang === 'ko' ? { spoolPrice: 25000, kwh: 150, printerPrice: 500000 } : { spoolPrice: 20, kwh: 0.16, printerPrice: 300 };
+const hr = lang === 'ko' ? '시간' : 'h';
 ---
-<form class="tool" id="3d-print-cost" onsubmit="return false">
-  <fieldset>
-    <legend>{t.fil}</legend>
-    <div class="grid">
-      <label>{t.grams}<input name="grams" type="number" inputmode="decimal" min="0" step="any" value="50" /></label>
-      <label>{t.spoolPrice}<input name="spoolPrice" type="number" inputmode="decimal" min="0" step="any" value={d.spoolPrice} /></label>
-      <label>{t.spoolGrams}<input name="spoolGrams" type="number" inputmode="decimal" min="0" step="any" value="1000" /></label>
-    </div>
-  </fieldset>
-  <fieldset>
-    <legend>{t.elec}</legend>
-    <div class="grid">
-      <label>{t.hours}<input name="hours" type="number" inputmode="decimal" min="0" step="any" value="3" /></label>
-      <label>{t.watts}<input name="watts" type="number" inputmode="decimal" min="0" step="any" value="120" /></label>
-      <label>{t.kwh}<input name="kwh" type="number" inputmode="decimal" min="0" step="any" value={d.kwh} /></label>
-    </div>
-  </fieldset>
-  <fieldset>
-    <legend>{t.wearSet}</legend>
-    <div class="grid">
-      <label>{t.printerPrice}<input name="printerPrice" type="number" inputmode="decimal" min="0" step="any" value={d.printerPrice} /></label>
-      <label>{t.lifeHours}<input name="lifeHours" type="number" inputmode="decimal" min="1" step="any" value="5000" /></label>
-      <label>{t.fail}<input name="fail" type="number" inputmode="decimal" min="0" max="90" step="1" value="5" /></label>
-    </div>
-  </fieldset>
-  <p class="result">{t.filament}: <strong data-out="filament"></strong> {t.cur}</p>
-  <p class="result">{t.power}: <strong data-out="power"></strong> {t.cur}</p>
-  <p class="result">{t.wear}: <strong data-out="wear"></strong> {t.cur}</p>
-  <p class="result">{t.total}: <strong data-out="total"></strong> {t.cur}</p>
-  <p class="note">{t.note}</p>
+<form class="tool wrap" id="3d-print-cost">
+  <div class="inputs">
+    <Step n="1" title={t.s1}>
+      <div class="fields">
+        <Field label={t.grams} name="grams" value="50" unit="g" hint={t.gramsHint} />
+        <Field label={t.spoolPrice} name="spoolPrice" value={d.spoolPrice} unit={t.cur} />
+        <Field label={t.spoolGrams} name="spoolGrams" value="1000" unit="g" />
+      </div>
+    </Step>
+    <Step n="2" title={t.s2}>
+      <div class="fields">
+        <Field label={t.hours} name="hours" value="3" unit={hr} />
+        <Field label={t.watts} name="watts" value="120" unit="W" hint={t.wattsHint} />
+        <Field label={t.kwh} name="kwh" value={d.kwh} unit={t.cur} />
+      </div>
+    </Step>
+    <Step n="3" title={t.s3}>
+      <div class="fields">
+        <Field label={t.printerPrice} name="printerPrice" value={d.printerPrice} unit={t.cur} hint={t.printerHint} />
+        <Field label={t.lifeHours} name="lifeHours" value="5000" min="1" unit={hr} />
+        <Field label={t.fail} name="fail" value="5" unit="%" max="90" step="1" presets={[0, 5, 10]} suffix="%" />
+      </div>
+    </Step>
+  </div>
+  <Readout lang={lang} note={t.note} items={[
+    { label: t.total, out: 'total', unit: t.cur, size: 'xl' },
+    { label: t.filament, out: 'filament', unit: t.cur },
+    { label: t.power, out: 'power', unit: t.cur },
+    { label: t.wear, out: 'wear', unit: t.cur },
+  ]} />
 </form>
 <script>
   import { wire } from '../form.js';

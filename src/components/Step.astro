@@ -1,0 +1,10 @@
+---
+const { n, title } = Astro.props;
+---
+<section class="card">
+  <div class="step-head">
+    <h2><span class="step-n">{n}</span>{title}</h2>
+    <slot name="head" />
+  </div>
+  <slot />
+</section>

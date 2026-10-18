@@ -1,5 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
+import CatTile from '../../components/CatTile.astro';
+import { CATEGORIES } from '../../categories.js';
 
 export function getStaticPaths() {
   const metas = import.meta.glob('../../tools/*/meta.json', { eager: true });
@@ -14,28 +16,83 @@ const comps = import.meta.glob('../../tools/*/Tool.astro', { eager: true });
 const meta = metas.find((m) => m.slug === slug);
 const Tool = Object.entries(comps).find(([p]) => p.includes(`/${slug}/`))[1].default;
 const t = meta[lang];
-const related = metas.filter((m) => m.category === meta.category && m.slug !== slug);
-const labels = {
-  en: { howto: 'How to use', formula: 'Formula', faq: 'FAQ', related: 'Related tools' },
-  ko: { howto: '사용 방법', formula: '계산식', faq: '자주 묻는 질문', related: '관련 도구' },
+const cat = CATEGORIES[meta.category];
+const L = {
+  en: { home: 'Calculators', formula: 'The formula', example: 'Worked example', how: 'How to use it', faq: 'Questions', related: 'More calculators', exampleSplit: 'Example: ', tags: ['Formula and worked example', 'Runs in your browser'] },
+  ko: { home: '계산기', formula: '계산식', example: '계산 예시', how: '사용 방법', faq: '자주 묻는 질문', related: '다른 계산기', exampleSplit: '예: ', tags: ['계산식과 예시 포함', '브라우저에서만 계산'] },
 }[lang];
+
+// meta.formula is "<formula sentences> Example: <worked example>"; show the sentences one per line.
+const [formulaText, exampleText] = t.formula.split(L.exampleSplit);
+const formulaLines = formulaText.trim().split(/(?<=\.)\s+/).map((s) => s.replace(/\.$/, ''));
+
+// Same-category tools first, then the next ones in list order, three in total.
+const i = metas.indexOf(meta);
+const others = [...metas.slice(i + 1), ...metas.slice(0, i)];
+const related = [...others.filter((m) => m.category === meta.category), ...others.filter((m) => m.category !== meta.category)].slice(0, 3);
+
 const faqLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: t.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 };
 ---
-<Base lang={lang} title={t.title} description={t.description} path={`${slug}/`}>
-  <h1>{t.h1}</h1>
-  <p>{t.intro}</p>
+<Base lang={lang} title={t.title} description={t.description} path={`${slug}/`} bodyClass="tool-page">
+  <section class="tool-head">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href={`/${lang}/`}>{L.home}</a><span aria-hidden="true">/</span><a href={`/${lang}/#${meta.category}`}>{cat[lang]}</a>
+      </nav>
+      <div class="tool-title">
+        <CatTile cat={meta.category} size="lg" />
+        <h1 class="display">{t.h1}</h1>
+      </div>
+      <p class="lead">{t.intro}</p>
+      <ul class="tags">
+        <li style={`background:${cat.tint};color:${cat.ink}`}>{cat[lang]}</li>
+        {L.tags.map((x) => <li>{x}</li>)}
+      </ul>
+    </div>
+  </section>
   <div class="ad"></div>
+
   <Tool lang={lang} />
-  <section><h2>{labels.howto}</h2><ol>{t.howto.map((s) => <li>{s}</li>)}</ol></section>
-  <section><h2>{labels.formula}</h2><p>{t.formula}</p></section>
-  <section><h2>{labels.faq}</h2>{t.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}</section>
-  {related.length > 0 && (
-    <section><h2>{labels.related}</h2><ul>{related.map((r) => <li><a href={`/${lang}/${r.slug}/`}>{r[lang].title}</a></li>)}</ul></section>
-  )}
+
+  <section class="wrap info">
+    <div class="card">
+      <h2>{L.formula}</h2>
+      <div class="formula">{formulaLines.map((l) => <div>{l}</div>)}</div>
+      {exampleText && <p><strong>{L.example}.</strong> {exampleText}</p>}
+    </div>
+    <div class="card">
+      <h2>{L.how}</h2>
+      <ol class="steps">{t.howto.map((s) => <li>{s}</li>)}</ol>
+    </div>
+  </section>
+
+  <section class="wrap faq">
+    <h2>{L.faq}</h2>
+    <div class="faq-list">
+      {t.faq.map((f, n) => (
+        <details open={n === 0}>
+          <summary>{f.q}<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4F5C55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section class="wrap related">
+    <h2>{L.related}</h2>
+    <div class="rel-grid">
+      {related.map((r) => (
+        <a class="rel" href={`/${lang}/${r.slug}/`}>
+          <CatTile cat={r.category} />
+          <span><b>{r[lang].short}</b><small>{r[lang].tagline}</small></span>
+        </a>
+      ))}
+    </div>
+  </section>
   <div class="ad"></div>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqLd)} />
 </Base>

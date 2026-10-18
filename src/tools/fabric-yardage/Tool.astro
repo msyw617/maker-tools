@@ -1,28 +1,41 @@
 ---
+import Field from '../../components/Field.astro';
+import Step from '../../components/Step.astro';
+import Seg from '../../components/Seg.astro';
+import Readout from '../../components/Readout.astro';
 const { lang } = Astro.props;
 const t = {
-  en: { unit: 'Units', pw: 'Piece width (across the fabric)', pl: 'Piece length (along the grain)', count: 'Number of pieces', fw: 'Usable fabric width', rotate: 'Allow rotating pieces 90° (grain direction does not matter)', extra: 'Allowance for shrinkage and squaring up (%)', perRow: 'Pieces per row', length: 'Fabric length needed', buy: 'Buy', ma: '', note: 'Enter cut sizes including seam allowance. A dash (—) means a piece is wider than the fabric.' },
-  ko: { unit: '단위', pw: '조각 가로 (원단 폭 방향)', pl: '조각 세로 (식서 방향)', count: '조각 수', fw: '원단 사용 폭', rotate: '조각 90° 회전 허용 (결 방향 무관)', extra: '수축·재단 여유분 (%)', perRow: '한 줄당 조각 수', length: '필요한 원단 길이', buy: '구매 길이', ma: '마 단위 (1마 = 90 cm)', note: '시접을 포함한 재단 크기를 입력하세요. 대시(—)는 조각이 원단 폭보다 넓다는 뜻입니다.' },
+  en: { s1: 'Pieces', s2: 'Fabric', unit: 'Units', pw: 'Piece width', pwHint: 'Across the fabric, including seam allowance.', pl: 'Piece length', plHint: 'Along the grain, parallel to the selvage.', count: 'Number of pieces', fw: 'Usable fabric width', rotate: 'Allow rotating pieces 90° (grain direction does not matter)', extra: 'Shrinkage and squaring-up allowance', buy: 'Buy', ma: '', length: 'Exact length needed', perRow: 'Pieces per row', note: 'Rounded up to the next 1/8 yard or 10 cm. A dash (—) means a piece is wider than the fabric.' },
+  ko: { s1: '조각', s2: '원단', unit: '단위', pw: '조각 가로', pwHint: '원단 폭 방향, 시접 포함.', pl: '조각 세로', plHint: '식서 방향(원단 귀와 나란한 방향).', count: '조각 수', fw: '원단 사용 폭', rotate: '조각 90° 회전 허용 (결 방향 무관)', extra: '수축·재단 여유분', buy: '구매 길이', ma: '마 단위 (1마 = 90 cm)', length: '정확한 필요 길이', perRow: '한 줄당 조각 수', note: '10 cm 단위와 0.5마 단위로 올림합니다. 대시(—)는 조각이 원단 폭보다 넓다는 뜻입니다.' },
 }[lang];
 const d = lang === 'ko' ? { unit: 'cm', pw: 25, pl: 30, count: 8, fw: 110 } : { unit: 'in', pw: 10, pl: 12, count: 9, fw: 44 };
+const units = [{ value: 'in', label: 'in · yd' }, { value: 'cm', label: 'cm · m' }];
+const items = [
+  { label: t.buy, out: 'buy', unitOut: 'lunit', size: 'xl' },
+  ...(lang === 'ko' ? [{ label: t.ma, out: 'ma', unit: '마', size: 'lg' }] : []),
+  { label: t.length, out: 'length', unitOut: 'lunit', ...(lang === 'ko' ? {} : { size: 'lg' }) },
+  { label: t.perRow, out: 'perRow' },
+];
 ---
-<form class="tool" id="fabric-yardage" onsubmit="return false">
-  <label>{t.unit}
-    <select name="unit"><option value="in" selected={d.unit === 'in'}>in / yd</option><option value="cm" selected={d.unit === 'cm'}>cm / m</option></select>
-  </label>
-  <div class="grid">
-    <label>{t.pw} (<span data-out="unit"></span>)<input name="pw" type="number" inputmode="decimal" min="0" step="any" value={d.pw} /></label>
-    <label>{t.pl} (<span data-out="unit"></span>)<input name="pl" type="number" inputmode="decimal" min="0" step="any" value={d.pl} /></label>
-    <label>{t.count}<input name="count" type="number" inputmode="numeric" min="1" step="1" value={d.count} /></label>
-    <label>{t.fw} (<span data-out="unit"></span>)<input name="fw" type="number" inputmode="decimal" min="0" step="any" value={d.fw} /></label>
+<form class="tool wrap" id="fabric-yardage">
+  <div class="inputs">
+    <Step n="1" title={t.s1}>
+      <Seg slot="head" name="unit" label={t.unit} options={units} checked={d.unit} />
+      <div class="fields">
+        <Field label={t.pw} name="pw" value={d.pw} unitOut="unit" hint={t.pwHint} />
+        <Field label={t.pl} name="pl" value={d.pl} unitOut="unit" hint={t.plHint} />
+        <Field label={t.count} name="count" value={d.count} min="1" step="1" inputmode="numeric" />
+      </div>
+    </Step>
+    <Step n="2" title={t.s2}>
+      <div class="fields">
+        <Field label={t.fw} name="fw" value={d.fw} unitOut="unit" />
+        <Field label={t.extra} name="extra" value="10" unit="%" max="50" step="1" presets={[5, 10, 15]} suffix="%" />
+      </div>
+      <label class="check"><input type="checkbox" name="rotate" />{t.rotate}</label>
+    </Step>
   </div>
-  <label class="check"><input name="rotate" type="checkbox" />{t.rotate}</label>
-  <label>{t.extra}<input name="extra" type="number" inputmode="decimal" min="0" max="50" step="1" value="10" /></label>
-  <p class="result">{t.perRow}: <strong data-out="perRow"></strong></p>
-  <p class="result">{t.length}: <strong data-out="length"></strong> <span data-out="lunit"></span></p>
-  <p class="result">{t.buy}: <strong data-out="buy"></strong> <span data-out="lunit"></span></p>
-  {lang === 'ko' && <p class="result">{t.ma}: <strong data-out="ma"></strong>마</p>}
-  <p class="note">{t.note}</p>
+  <Readout lang={lang} note={t.note} items={items} />
 </form>
 <script>
   import { wire } from '../form.js';

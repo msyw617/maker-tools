@@ -3,6 +3,8 @@
   "category": "knitting",
   "en": {
     "title": "Yarn Yardage Calculator – How Much Yarn for Your Project",
+    "short": "Yarn yardage",
+    "tagline": "Yarn and skeins from a weighed swatch",
     "description": "Estimate how much yarn a knitting or crochet project needs from a weighed swatch. Get total yards or metres, grams and the number of skeins to buy.",
     "h1": "Yarn Yardage Calculator (Swatch Method)",
     "intro": "Knit or crochet a swatch in your pattern stitch, weigh it, and enter your project size. The calculator scales the swatch up to tell you how many skeins to buy.",
@@ -14,13 +16,24 @@
     ],
     "formula": "Project area ÷ swatch area = how many swatches the project equals. Yarn weight = that ratio × swatch weight × (1 + extra ÷ 100). Yarn length = yarn weight ÷ skein weight × skein length. Skeins = yarn length ÷ skein length, rounded up. Example: a 10 × 10 cm swatch weighs 5 g; a 50 × 150 cm wrap is 75 swatches, so with 10% extra it needs 412.5 g, or 825 m of a 100 g / 200 m yarn: 5 skeins.",
     "faq": [
-      { "q": "Why weigh a swatch instead of using a yardage chart?", "a": "Charts assume an average gauge and plain stockinette. Textured stitches like cables, bobbles and brioche can use 20–50% more yarn at the same size. A weighed swatch measures your actual stitch, yarn and tension." },
-      { "q": "Does this work for crochet?", "a": "Yes. The method only depends on the area of fabric and the weight of yarn in it, so it works for knitting, crochet, Tunisian crochet and weaving alike." },
-      { "q": "Should I buy all skeins from the same dye lot?", "a": "Yes. Buy everything you need, including the extra, from one dye lot. Skeins from a different lot can differ in colour enough to show as a stripe." }
+      {
+        "q": "Why weigh a swatch instead of using a yardage chart?",
+        "a": "Charts assume an average gauge and plain stockinette. Textured stitches like cables, bobbles and brioche can use 20–50% more yarn at the same size. A weighed swatch measures your actual stitch, yarn and tension."
+      },
+      {
+        "q": "Does this work for crochet?",
+        "a": "Yes. The method only depends on the area of fabric and the weight of yarn in it, so it works for knitting, crochet, Tunisian crochet and weaving alike."
+      },
+      {
+        "q": "Should I buy all skeins from the same dye lot?",
+        "a": "Yes. Buy everything you need, including the extra, from one dye lot. Skeins from a different lot can differ in colour enough to show as a stripe."
+      }
     ]
   },
   "ko": {
     "title": "뜨개 실 분량 계산기 – 작품에 필요한 실 양과 타래 수",
+    "short": "뜨개 실 분량",
+    "tagline": "스와치 무게로 실 길이와 타래 수",
     "description": "스와치 무게로 대바늘·코바늘 작품에 필요한 실 길이(m·yd), 무게(g), 구매할 타래 수를 계산합니다.",
     "h1": "뜨개 실 분량 계산기 (스와치 방식)",
     "intro": "작품과 같은 무늬로 스와치를 떠서 무게를 재고 작품 크기를 입력하면, 스와치를 작품 크기로 환산해 몇 타래가 필요한지 알려줍니다.",
@@ -32,9 +45,18 @@
     ],
     "formula": "작품 면적 ÷ 스와치 면적 = 작품이 스와치 몇 장인지. 실 무게 = 그 비율 × 스와치 무게 × (1 + 여유분 ÷ 100). 실 길이 = 실 무게 ÷ 타래 무게 × 타래 길이. 타래 수 = 실 길이 ÷ 타래 길이를 올림. 예: 10 × 10 cm 스와치가 5 g이고 50 × 150 cm 숄을 뜨면 스와치 75장이므로, 여유분 10%로 412.5 g, 100 g/200 m 실 기준 825 m, 5타래가 필요합니다.",
     "faq": [
-      { "q": "실 분량표 대신 스와치 무게를 쓰는 이유는?", "a": "분량표는 평균적인 게이지와 메리야스뜨기를 가정합니다. 꽈배기, 방울, 브리오슈 같은 입체 무늬는 같은 크기에서 실을 20~50% 더 쓰기도 합니다. 스와치 무게는 내 무늬, 실, 손땀을 그대로 반영합니다." },
-      { "q": "코바늘에도 쓸 수 있나요?", "a": "네. 편물 면적과 그 안의 실 무게만 쓰는 방식이라 대바늘, 코바늘, 아프간뜨기, 위빙 모두에 쓸 수 있습니다." },
-      { "q": "타래를 모두 같은 염색 로트로 사야 하나요?", "a": "네. 여유분까지 한 로트로 한 번에 사세요. 로트가 다르면 색 차이가 줄무늬처럼 드러날 수 있습니다." }
+      {
+        "q": "실 분량표 대신 스와치 무게를 쓰는 이유는?",
+        "a": "분량표는 평균적인 게이지와 메리야스뜨기를 가정합니다. 꽈배기, 방울, 브리오슈 같은 입체 무늬는 같은 크기에서 실을 20~50% 더 쓰기도 합니다. 스와치 무게는 내 무늬, 실, 손땀을 그대로 반영합니다."
+      },
+      {
+        "q": "코바늘에도 쓸 수 있나요?",
+        "a": "네. 편물 면적과 그 안의 실 무게만 쓰는 방식이라 대바늘, 코바늘, 아프간뜨기, 위빙 모두에 쓸 수 있습니다."
+      },
+      {
+        "q": "타래를 모두 같은 염색 로트로 사야 하나요?",
+        "a": "네. 여유분까지 한 로트로 한 번에 사세요. 로트가 다르면 색 차이가 줄무늬처럼 드러날 수 있습니다."
+      }
     ]
   }
 }

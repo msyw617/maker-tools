@@ -1,43 +1,47 @@
 ---
+import Field from '../../components/Field.astro';
+import Step from '../../components/Step.astro';
+import Seg from '../../components/Seg.astro';
+import Readout from '../../components/Readout.astro';
 const { lang } = Astro.props;
 const t = {
-  en: { units: 'Units', swatch: 'Your swatch', sw: 'Swatch width', sh: 'Swatch height', sweight: 'Swatch weight (g)', label: 'Yarn label', kweight: 'Skein weight (g)', klen: 'Skein length', project: 'Project', pw: 'Finished width', pl: 'Finished length', pieces: 'Number of identical pieces', extra: 'Extra allowance (%)', length: 'Yarn needed', grams: 'Weight', skeins: 'Skeins to buy', note: 'For garments, enter each piece as a rectangle and add up the results.' },
-  ko: { units: '단위', swatch: '내 스와치', sw: '스와치 가로', sh: '스와치 세로', sweight: '스와치 무게 (g)', label: '실 라벨', kweight: '한 타래 무게 (g)', klen: '한 타래 길이', project: '작품', pw: '완성 가로', pl: '완성 세로', pieces: '같은 조각 수', extra: '여유분 (%)', length: '필요한 실 길이', grams: '무게', skeins: '구매할 타래 수', note: '옷은 조각마다 사각형으로 입력해서 결과를 더하세요.' },
+  en: { s1: 'Your swatch', s2: 'Yarn label', s3: 'Project', dunit: 'Size unit', lunit: 'Length unit', sw: 'Swatch width', sh: 'Swatch height', sweight: 'Swatch weight', swHint: 'Block the swatch the way you will block the project before measuring and weighing it.', kweight: 'Skein weight', klen: 'Skein length', pw: 'Finished width', pl: 'Finished length', pieces: 'Identical pieces', piecesHint: 'For a garment, enter each piece as a rectangle and add up the results.', extra: 'Extra allowance', skeins: 'Skeins to buy', length: 'Yarn needed', grams: 'Weight' },
+  ko: { s1: '내 스와치', s2: '실 라벨', s3: '작품', dunit: '크기 단위', lunit: '길이 단위', sw: '스와치 가로', sh: '스와치 세로', sweight: '스와치 무게', swHint: '작품과 같은 방식으로 블로킹한 뒤 크기를 재고 무게를 다세요.', kweight: '한 타래 무게', klen: '한 타래 길이', pw: '완성 가로', pl: '완성 세로', pieces: '같은 조각 수', piecesHint: '옷은 조각마다 사각형으로 입력해서 결과를 더하세요.', extra: '여유분', skeins: '구매할 타래 수', length: '필요한 실 길이', grams: '무게' },
 }[lang];
+const dunits = [{ value: 'cm', label: 'cm' }, { value: 'in', label: 'in' }];
+const lunits = [{ value: 'm', label: 'm' }, { value: 'yd', label: 'yd' }];
 ---
-<form class="tool" id="yarn-yardage" onsubmit="return false">
-  <div class="grid">
-    <label>{t.units}<select name="dunit"><option value="cm">cm</option><option value="in">in</option></select></label>
-    <label>&nbsp;<select name="lunit"><option value="m">m</option><option value="yd">yd</option></select></label>
+<form class="tool wrap" id="yarn-yardage">
+  <div class="inputs">
+    <Step n="1" title={t.s1}>
+      <Seg slot="head" name="dunit" label={t.dunit} options={dunits} />
+      <div class="fields">
+        <Field label={t.sw} name="sw" value="10" unitOut="dunit" />
+        <Field label={t.sh} name="sh" value="10" unitOut="dunit" />
+        <Field label={t.sweight} name="sweight" value="5" unit="g" hint={t.swHint} />
+      </div>
+    </Step>
+    <Step n="2" title={t.s2}>
+      <Seg slot="head" name="lunit" label={t.lunit} options={lunits} />
+      <div class="fields">
+        <Field label={t.kweight} name="kweight" value="100" unit="g" />
+        <Field label={t.klen} name="klen" value="200" unitOut="lunit" />
+      </div>
+    </Step>
+    <Step n="3" title={t.s3}>
+      <div class="fields">
+        <Field label={t.pw} name="pw" value="50" unitOut="dunit" />
+        <Field label={t.pl} name="pl" value="150" unitOut="dunit" />
+        <Field label={t.pieces} name="pieces" value="1" min="1" step="1" inputmode="numeric" hint={t.piecesHint} />
+        <Field label={t.extra} name="extra" value="10" unit="%" max="50" step="1" presets={[10, 15, 20]} suffix="%" />
+      </div>
+    </Step>
   </div>
-  <fieldset>
-    <legend>{t.swatch}</legend>
-    <div class="grid">
-      <label>{t.sw} (<span data-out="dunit"></span>)<input name="sw" type="number" inputmode="decimal" min="0" step="any" value="10" /></label>
-      <label>{t.sh} (<span data-out="dunit"></span>)<input name="sh" type="number" inputmode="decimal" min="0" step="any" value="10" /></label>
-      <label>{t.sweight}<input name="sweight" type="number" inputmode="decimal" min="0" step="any" value="5" /></label>
-    </div>
-  </fieldset>
-  <fieldset>
-    <legend>{t.label}</legend>
-    <div class="grid">
-      <label>{t.kweight}<input name="kweight" type="number" inputmode="decimal" min="0" step="any" value="100" /></label>
-      <label>{t.klen} (<span data-out="lunit"></span>)<input name="klen" type="number" inputmode="decimal" min="0" step="any" value="200" /></label>
-    </div>
-  </fieldset>
-  <fieldset>
-    <legend>{t.project}</legend>
-    <div class="grid">
-      <label>{t.pw} (<span data-out="dunit"></span>)<input name="pw" type="number" inputmode="decimal" min="0" step="any" value="50" /></label>
-      <label>{t.pl} (<span data-out="dunit"></span>)<input name="pl" type="number" inputmode="decimal" min="0" step="any" value="150" /></label>
-      <label>{t.pieces}<input name="pieces" type="number" inputmode="numeric" min="1" step="1" value="1" /></label>
-      <label>{t.extra}<input name="extra" type="number" inputmode="decimal" min="0" max="50" step="1" value="10" /></label>
-    </div>
-  </fieldset>
-  <p class="result">{t.length}: <strong data-out="length"></strong> <span data-out="lunit"></span></p>
-  <p class="result">{t.grams}: <strong data-out="grams"></strong> g</p>
-  <p class="result">{t.skeins}: <strong data-out="skeins"></strong></p>
-  <p class="note">{t.note}</p>
+  <Readout lang={lang} items={[
+    { label: t.skeins, out: 'skeins', size: 'xl' },
+    { label: t.length, out: 'length', unitOut: 'lunit', size: 'lg' },
+    { label: t.grams, out: 'grams', unit: 'g' },
+  ]} />
 </form>
 <script>
   import { wire } from '../form.js';

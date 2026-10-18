@@ -9,7 +9,9 @@ const t = {
 }[lang];
 ---
 <Base lang={lang} title={t.title} description={t.description} path="contact/">
+  <article class="wrap prose">
   <h1>{t.title}</h1>
   <p>{t.body}</p>
   <p><a href={`mailto:${email}`}>{email}</a></p>
+  </article>
 </Base>

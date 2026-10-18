@@ -3,6 +3,8 @@
   "category": "soap",
   "en": {
     "title": "Soap Lye Calculator – NaOH and Water for Cold Process Soap",
+    "short": "Soap lye (NaOH)",
+    "tagline": "Lye and water for cold process soap",
     "description": "Calculate sodium hydroxide (lye) and water for cold process soap from your oil recipe. Includes 14 common oils and butters, superfat and lye concentration.",
     "h1": "Soap Lye Calculator (Cold Process, NaOH)",
     "intro": "Enter the weight of each oil in your recipe, choose a superfat and lye concentration, and get the sodium hydroxide and water you need. All calculations run in your browser.",
@@ -14,13 +16,24 @@
     ],
     "formula": "NaOH = Σ (oil weight × NaOH SAP value) × (1 − superfat ÷ 100). Water = NaOH × (100 − lye concentration) ÷ lye concentration. Example: 1000 g of olive oil (SAP 0.135) at 5% superfat needs 128.25 g of NaOH; at 33% concentration that is 260.4 g of water.",
     "faq": [
-      { "q": "Where do the SAP values come from?", "a": "They are averages from published supplier saponification tables, converted to NaOH (KOH SAP value ÷ 1402.5). Only oils where two independent tables agree are listed. Natural oils vary by a few percent between batches; the superfat absorbs that. If your supplier gives a different NaOH value, enter the oil in the Other row with their number." },
-      { "q": "Can I use this for liquid soap?", "a": "No. Liquid soap uses potassium hydroxide (KOH), which needs different SAP values. This calculator is for bar soap made with sodium hydroxide (NaOH)." },
-      { "q": "Should I double-check the result?", "a": "Yes. Run every new recipe through a second lye calculator before you make it, and check that your scale reads correctly. Too much lye makes a bar that can burn skin; too little makes a soft, greasy bar." }
+      {
+        "q": "Where do the SAP values come from?",
+        "a": "They are averages from published supplier saponification tables, converted to NaOH (KOH SAP value ÷ 1402.5). Only oils where two independent tables agree are listed. Natural oils vary by a few percent between batches; the superfat absorbs that. If your supplier gives a different NaOH value, enter the oil in the Other row with their number."
+      },
+      {
+        "q": "Can I use this for liquid soap?",
+        "a": "No. Liquid soap uses potassium hydroxide (KOH), which needs different SAP values. This calculator is for bar soap made with sodium hydroxide (NaOH)."
+      },
+      {
+        "q": "Should I double-check the result?",
+        "a": "Yes. Run every new recipe through a second lye calculator before you make it, and check that your scale reads correctly. Too much lye makes a bar that can burn skin; too little makes a soft, greasy bar."
+      }
     ]
   },
   "ko": {
     "title": "비누 가성소다 계산기 – CP비누 수산화나트륨·정제수 양",
+    "short": "비누 가성소다",
+    "tagline": "CP비누 가성소다와 정제수 양",
     "description": "오일 레시피로 CP(콜드프로세스) 비누에 필요한 가성소다(수산화나트륨)와 정제수 양을 계산합니다. 오일·버터 14종, 슈퍼팻, 가성소다 농도를 지원합니다.",
     "h1": "비누 가성소다 계산기 (CP비누, NaOH)",
     "intro": "레시피의 오일별 무게를 입력하고 슈퍼팻과 가성소다 농도를 정하면 필요한 수산화나트륨과 정제수 양이 나옵니다. 계산은 브라우저 안에서만 이루어집니다.",
@@ -32,9 +45,18 @@
     ],
     "formula": "가성소다 = Σ(오일 무게 × NaOH 비누화값) × (1 − 슈퍼팻 ÷ 100). 정제수 = 가성소다 × (100 − 농도) ÷ 농도. 예: 올리브 오일(비누화값 0.135) 1000 g에 슈퍼팻 5%면 가성소다 128.25 g, 농도 33%면 정제수 260.4 g입니다.",
     "faq": [
-      { "q": "비누화값은 어디서 가져왔나요?", "a": "공개된 재료 판매처 비누화값 표의 평균값을 NaOH 기준으로 환산했습니다(KOH 비누화값 ÷ 1402.5). 서로 다른 두 표의 값이 일치하는 오일만 실었습니다. 천연 오일은 로트마다 몇 % 차이가 나며 슈퍼팻이 그 차이를 흡수합니다. 판매처가 다른 NaOH 값을 제시하면 기타 칸에 그 값을 넣어 계산하세요." },
-      { "q": "물비누(액체비누)에도 쓸 수 있나요?", "a": "아니요. 물비누는 수산화칼륨(KOH)을 쓰고 비누화값이 다릅니다. 이 계산기는 수산화나트륨(NaOH)으로 만드는 고체 비누용입니다." },
-      { "q": "계산 결과를 다시 확인해야 하나요?", "a": "네. 새 레시피는 만들기 전에 다른 가성소다 계산기로 한 번 더 확인하고, 저울이 정확한지도 점검하세요. 가성소다가 많으면 피부에 화상을 입힐 수 있는 비누가 되고, 적으면 무르고 기름진 비누가 됩니다." }
+      {
+        "q": "비누화값은 어디서 가져왔나요?",
+        "a": "공개된 재료 판매처 비누화값 표의 평균값을 NaOH 기준으로 환산했습니다(KOH 비누화값 ÷ 1402.5). 서로 다른 두 표의 값이 일치하는 오일만 실었습니다. 천연 오일은 로트마다 몇 % 차이가 나며 슈퍼팻이 그 차이를 흡수합니다. 판매처가 다른 NaOH 값을 제시하면 기타 칸에 그 값을 넣어 계산하세요."
+      },
+      {
+        "q": "물비누(액체비누)에도 쓸 수 있나요?",
+        "a": "아니요. 물비누는 수산화칼륨(KOH)을 쓰고 비누화값이 다릅니다. 이 계산기는 수산화나트륨(NaOH)으로 만드는 고체 비누용입니다."
+      },
+      {
+        "q": "계산 결과를 다시 확인해야 하나요?",
+        "a": "네. 새 레시피는 만들기 전에 다른 가성소다 계산기로 한 번 더 확인하고, 저울이 정확한지도 점검하세요. 가성소다가 많으면 피부에 화상을 입힐 수 있는 비누가 되고, 적으면 무르고 기름진 비누가 됩니다."
+      }
     ]
   }
 }

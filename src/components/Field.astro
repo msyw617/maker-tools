@@ -1,0 +1,29 @@
+---
+// One labelled input (or select, when `options` is given) with an optional unit suffix, preset chips and hint.
+// unitOut: name of a compute() output to show as the unit (e.g. "unit"). show: passes through as data-show.
+const {
+  label, name, value, unit, unitOut, sap, hint, presets, suffix = '', options, show,
+  hl = false, min = '0', max, step = 'any', inputmode = 'decimal', placeholder,
+} = Astro.props;
+const id = `f-${name}`;
+---
+<div class="field" data-show={show}>
+  <div class="field-top"><label for={id}>{label}</label>{sap && <small>{sap}</small>}</div>
+  <div class={hl ? 'box hl' : 'box'}>
+    {options ? (
+      <select id={id} name={name}>
+        {options.map((o) => <option value={o.value} selected={String(o.value) === String(value)}>{o.label}</option>)}
+      </select>
+    ) : (
+      <input id={id} name={name} type="number" inputmode={inputmode} min={min} max={max} step={step} value={value} placeholder={placeholder} />
+    )}
+    {unit && <span class="unit">{unit}</span>}
+    {unitOut && <span class="unit" data-out={unitOut}></span>}
+  </div>
+  {presets && (
+    <div class="presets" role="group" aria-label={label}>
+      {presets.map((p) => <button type="button" class="preset" data-set={`${name}=${p}`} aria-pressed="false">{p}{suffix}</button>)}
+    </div>
+  )}
+  {hint && <p class="hint">{hint}</p>}
+</div>

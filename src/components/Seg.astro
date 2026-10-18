@@ -1,0 +1,10 @@
+---
+// Segmented control built from native radio buttons. options: [{ value, label }]; first one is checked unless `checked` says otherwise.
+const { name, label, options, checked = options[0].value } = Astro.props;
+---
+<fieldset class="seg">
+  <legend class="sr">{label}</legend>
+  {options.map((o) => (
+    <label><input type="radio" name={name} value={o.value} checked={o.value === checked} /><span>{o.label}</span></label>
+  ))}
+</fieldset>

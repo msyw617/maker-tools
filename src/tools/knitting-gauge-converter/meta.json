@@ -3,6 +3,8 @@
   "category": "knitting",
   "en": {
     "title": "Knitting Gauge Converter – Adjust Stitch and Row Counts to Your Gauge",
+    "short": "Gauge converter",
+    "tagline": "Stitch and row counts at your gauge",
     "description": "Your gauge doesn't match the pattern? Convert the pattern's stitch and row counts to your gauge, and see how much bigger or smaller the piece will be if you knit it as written.",
     "h1": "Knitting Gauge Converter",
     "intro": "Enter the pattern gauge, your own gauge from a swatch, and the stitch or row count from the pattern. The converter tells you how many stitches and rows to work instead, and how far off the size would be if you changed nothing.",
@@ -14,13 +16,24 @@
     ],
     "formula": "Your stitches = pattern stitches × your stitch gauge ÷ pattern stitch gauge, rounded. Rows work the same way. Size change if you follow the pattern as written = (pattern gauge ÷ your gauge − 1) × 100%; a negative number means your piece comes out smaller. Example: a pattern at 20 stitches per 10 cm casts on 100; at your 22 stitches per 10 cm you need 110, and knitting 100 would make the piece 9.1% narrower.",
     "faq": [
-      { "q": "Should I change needle size or recalculate?", "a": "If you are only one stitch off, try a half or full needle size first so the fabric keeps the drape the designer intended. Recalculate when you are using a different yarn or prefer the fabric you get at your own gauge." },
-      { "q": "Does this work for crochet?", "a": "Yes. Crochet gauge is also stitches and rows over a set width, so the same proportions apply." },
-      { "q": "Does row gauge matter?", "a": "Many patterns say knit to a length, so rows adjust themselves. Row gauge matters when the pattern counts rows for shaping, such as raglan decreases or sleeve increases spaced every few rows." }
+      {
+        "q": "Should I change needle size or recalculate?",
+        "a": "If you are only one stitch off, try a half or full needle size first so the fabric keeps the drape the designer intended. Recalculate when you are using a different yarn or prefer the fabric you get at your own gauge."
+      },
+      {
+        "q": "Does this work for crochet?",
+        "a": "Yes. Crochet gauge is also stitches and rows over a set width, so the same proportions apply."
+      },
+      {
+        "q": "Does row gauge matter?",
+        "a": "Many patterns say knit to a length, so rows adjust themselves. Row gauge matters when the pattern counts rows for shaping, such as raglan decreases or sleeve increases spaced every few rows."
+      }
     ]
   },
   "ko": {
     "title": "뜨개 게이지 변환 계산기 – 내 게이지로 코 수·단 수 바꾸기",
+    "short": "게이지 변환",
+    "tagline": "내 게이지로 코 수·단 수 바꾸기",
     "description": "도안 게이지와 내 게이지가 다를 때 도안의 코 수와 단 수를 내 게이지로 바꾸고, 도안대로 뜨면 크기가 얼마나 달라지는지 계산합니다.",
     "h1": "뜨개 게이지 변환 계산기",
     "intro": "도안 게이지, 스와치로 잰 내 게이지, 도안의 코 수나 단 수를 입력하면 대신 떠야 할 코 수와 단 수, 그리고 그대로 떴을 때의 크기 차이를 알려줍니다.",
@@ -32,9 +45,18 @@
     ],
     "formula": "내 코 수 = 도안 코 수 × 내 코 게이지 ÷ 도안 코 게이지(반올림). 단 수도 같은 방식입니다. 도안대로 뜰 때 크기 변화 = (도안 게이지 ÷ 내 게이지 − 1) × 100%이며, 음수면 작아집니다. 예: 10 cm에 20코인 도안이 100코를 잡을 때, 내 게이지가 22코면 110코를 잡아야 하고, 100코로 뜨면 폭이 9.1% 좁아집니다.",
     "faq": [
-      { "q": "바늘 호수를 바꿀까요, 다시 계산할까요?", "a": "한 코 정도 차이라면 바늘을 반 호수나 한 호수 바꿔 보세요. 디자이너가 의도한 편물 느낌을 유지할 수 있습니다. 다른 실을 쓰거나 내 게이지의 편물이 마음에 들 때는 다시 계산하세요." },
-      { "q": "코바늘에도 쓸 수 있나요?", "a": "네. 코바늘 게이지도 일정 폭 안의 코 수와 단 수이므로 같은 비례식이 적용됩니다." },
-      { "q": "단 게이지도 중요한가요?", "a": "길이를 cm로 지정하는 도안은 단 수가 저절로 맞춰집니다. 래글런 줄임이나 소매 늘림처럼 몇 단마다 코를 줄이고 늘리는 도안에서는 단 게이지가 중요합니다." }
+      {
+        "q": "바늘 호수를 바꿀까요, 다시 계산할까요?",
+        "a": "한 코 정도 차이라면 바늘을 반 호수나 한 호수 바꿔 보세요. 디자이너가 의도한 편물 느낌을 유지할 수 있습니다. 다른 실을 쓰거나 내 게이지의 편물이 마음에 들 때는 다시 계산하세요."
+      },
+      {
+        "q": "코바늘에도 쓸 수 있나요?",
+        "a": "네. 코바늘 게이지도 일정 폭 안의 코 수와 단 수이므로 같은 비례식이 적용됩니다."
+      },
+      {
+        "q": "단 게이지도 중요한가요?",
+        "a": "길이를 cm로 지정하는 도안은 단 수가 저절로 맞춰집니다. 래글런 줄임이나 소매 늘림처럼 몇 단마다 코를 줄이고 늘리는 도안에서는 단 게이지가 중요합니다."
+      }
     ]
   }
 }

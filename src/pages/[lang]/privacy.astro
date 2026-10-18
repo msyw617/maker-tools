@@ -21,7 +21,9 @@ const t = {
 }[lang];
 ---
 <Base lang={lang} title={t.title} description={t.description} path="privacy/">
+  <article class="wrap prose">
   <h1>{t.title}</h1>
   <p class="note">{lang === 'en' ? 'Last updated' : '최종 수정'}: {updated}</p>
   {t.sections.map(([h, p]) => <section><h2>{h}</h2><p>{p}</p></section>)}
+  </article>
 </Base>

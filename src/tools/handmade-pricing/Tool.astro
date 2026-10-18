@@ -1,44 +1,47 @@
 ---
+import Field from '../../components/Field.astro';
+import Step from '../../components/Step.astro';
+import Readout from '../../components/Readout.astro';
 const { lang } = Astro.props;
 const t = {
-  en: { cur: '', costSet: 'Cost of one item', materials: 'Materials and packaging', minutes: 'Hands-on time (minutes)', rate: 'Your hourly rate', overhead: 'Overhead share per item', markSet: 'Markups', wholesaleX: 'Wholesale = cost ×', retailX: 'Retail = wholesale ×', feeSet: 'Marketplace fees at retail', feePct: 'Percentage fees (%)', feeFixed: 'Fixed fee per order', labor: 'Labour', cost: 'Total cost', wholesale: 'Wholesale price', retail: 'Retail price', fees: 'Marketplace fees', profit: 'Profit after fees (on top of your wage)', note: 'Amounts are in your own currency. Fee defaults are an example; check your marketplace’s current fee schedule.' },
-  ko: { cur: '원', costSet: '작품 1개 원가', materials: '재료비·포장비 (원)', minutes: '작업 시간 (분)', rate: '내 시급 (원)', overhead: '작품당 간접비 (원)', markSet: '배수', wholesaleX: '도매가 = 원가 ×', retailX: '소매가 = 도매가 ×', feeSet: '소매 판매 시 플랫폼 수수료', feePct: '% 수수료 (%)', feeFixed: '건당 고정 수수료 (원)', labor: '인건비', cost: '총 원가', wholesale: '도매가', retail: '소매가', fees: '플랫폼 수수료', profit: '수수료 뺀 이익 (인건비 별도)', note: '수수료 기본값은 예시입니다. 판매 플랫폼의 현재 수수료를 확인해 입력하세요.' },
+  en: { cur: undefined, s1: 'Cost of one item', s2: 'Markups', s3: 'Marketplace fees at retail', materials: 'Materials and packaging', minutes: 'Hands-on time', min: 'min', rate: 'Your hourly rate', overhead: 'Overhead share per item', overheadHint: 'Tools, studio, photography and shipping supplies, spread per item.', wholesaleX: 'Wholesale = cost ×', retailX: 'Retail = wholesale ×', feePct: 'Percentage fees', feeFixed: 'Fixed fee per order', feeHint: 'Example values. Check your marketplace’s current fee schedule.', retail: 'Retail price', profit: 'Profit after fees', labor: 'Labour', cost: 'Total cost', wholesale: 'Wholesale price', fees: 'Marketplace fees', note: 'Profit is on top of your hourly rate, which is already in the cost.' },
+  ko: { cur: '원', s1: '작품 1개 원가', s2: '배수', s3: '소매 판매 시 플랫폼 수수료', materials: '재료비·포장비', minutes: '작업 시간', min: '분', rate: '내 시급', overhead: '작품당 간접비', overheadHint: '도구, 작업실, 사진 촬영, 배송 포장재를 작품 수로 나눈 몫.', wholesaleX: '도매가 = 원가 ×', retailX: '소매가 = 도매가 ×', feePct: '% 수수료', feeFixed: '건당 고정 수수료', feeHint: '예시 값입니다. 판매 플랫폼의 현재 수수료를 확인하세요.', retail: '소매가', profit: '수수료 뺀 이익', labor: '인건비', cost: '총 원가', wholesale: '도매가', fees: '플랫폼 수수료', note: '이익은 원가에 이미 들어 있는 내 시급과 별도입니다.' },
 }[lang];
 const d = lang === 'ko'
   ? { materials: 5000, rate: 12000, overhead: 1000, feePct: 10, feeFixed: 0 }
   : { materials: 5, rate: 20, overhead: 1, feePct: 9.5, feeFixed: 0.45 };
 ---
-<form class="tool" id="handmade-pricing" onsubmit="return false">
-  <fieldset>
-    <legend>{t.costSet}</legend>
-    <div class="grid">
-      <label>{t.materials}<input name="materials" type="number" inputmode="decimal" min="0" step="any" value={d.materials} /></label>
-      <label>{t.minutes}<input name="minutes" type="number" inputmode="decimal" min="0" step="any" value="30" /></label>
-      <label>{t.rate}<input name="rate" type="number" inputmode="decimal" min="0" step="any" value={d.rate} /></label>
-      <label>{t.overhead}<input name="overhead" type="number" inputmode="decimal" min="0" step="any" value={d.overhead} /></label>
-    </div>
-  </fieldset>
-  <fieldset>
-    <legend>{t.markSet}</legend>
-    <div class="grid">
-      <label>{t.wholesaleX}<input name="wholesaleX" type="number" inputmode="decimal" min="1" step="0.1" value="2" /></label>
-      <label>{t.retailX}<input name="retailX" type="number" inputmode="decimal" min="1" step="0.1" value="2" /></label>
-    </div>
-  </fieldset>
-  <fieldset>
-    <legend>{t.feeSet}</legend>
-    <div class="grid">
-      <label>{t.feePct}<input name="feePct" type="number" inputmode="decimal" min="0" max="50" step="0.1" value={d.feePct} /></label>
-      <label>{t.feeFixed}<input name="feeFixed" type="number" inputmode="decimal" min="0" step="any" value={d.feeFixed} /></label>
-    </div>
-  </fieldset>
-  <p class="result">{t.labor}: <strong data-out="labor"></strong> {t.cur}</p>
-  <p class="result">{t.cost}: <strong data-out="cost"></strong> {t.cur}</p>
-  <p class="result">{t.wholesale}: <strong data-out="wholesale"></strong> {t.cur}</p>
-  <p class="result">{t.retail}: <strong data-out="retail"></strong> {t.cur}</p>
-  <p class="result">{t.fees}: <strong data-out="fees"></strong> {t.cur}</p>
-  <p class="result">{t.profit}: <strong data-out="profit"></strong> {t.cur}</p>
-  <p class="note">{t.note}</p>
+<form class="tool wrap" id="handmade-pricing">
+  <div class="inputs">
+    <Step n="1" title={t.s1}>
+      <div class="fields">
+        <Field label={t.materials} name="materials" value={d.materials} unit={t.cur} />
+        <Field label={t.minutes} name="minutes" value="30" unit={t.min} />
+        <Field label={t.rate} name="rate" value={d.rate} unit={t.cur} />
+        <Field label={t.overhead} name="overhead" value={d.overhead} unit={t.cur} hint={t.overheadHint} />
+      </div>
+    </Step>
+    <Step n="2" title={t.s2}>
+      <div class="fields">
+        <Field label={t.wholesaleX} name="wholesaleX" value="2" min="1" step="0.1" presets={[2, 2.5, 3]} />
+        <Field label={t.retailX} name="retailX" value="2" min="1" step="0.1" presets={[2, 2.5, 3]} />
+      </div>
+    </Step>
+    <Step n="3" title={t.s3}>
+      <div class="fields">
+        <Field label={t.feePct} name="feePct" value={d.feePct} unit="%" max="50" step="0.1" />
+        <Field label={t.feeFixed} name="feeFixed" value={d.feeFixed} unit={t.cur} hint={t.feeHint} />
+      </div>
+    </Step>
+  </div>
+  <Readout lang={lang} note={t.note} items={[
+    { label: t.retail, out: 'retail', unit: t.cur, size: 'xl' },
+    { label: t.profit, out: 'profit', unit: t.cur, size: 'lg' },
+    { label: t.labor, out: 'labor', unit: t.cur },
+    { label: t.cost, out: 'cost', unit: t.cur },
+    { label: t.wholesale, out: 'wholesale', unit: t.cur },
+    { label: t.fees, out: 'fees', unit: t.cur },
+  ]} />
 </form>
 <script>
   import { wire } from '../form.js';

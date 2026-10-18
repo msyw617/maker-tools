@@ -1,31 +1,44 @@
 ---
+import Field from '../../components/Field.astro';
+import Step from '../../components/Step.astro';
+import Seg from '../../components/Seg.astro';
+import Readout from '../../components/Readout.astro';
 const { lang } = Astro.props;
 const t = {
-  en: { shape: 'Mold shape', rect: 'Rectangle (coaster, tray, block)', cyl: 'Cylinder (round coaster, puck)', waterM: 'Any shape: water method', unit: 'Units', l: 'Length', w: 'Width', d: 'Diameter', h: 'Depth', water: 'Water weight the mold holds', count: 'Number of molds', waste: 'Extra for waste (%)', density: 'Resin density (g/ml)', per: 'Volume per mold', total: 'Total resin to mix', grams: 'Approximate weight', note: 'Split the total into part A and part B using the ratio on your resin kit.' },
-  ko: { shape: '몰드 모양', rect: '사각형 (코스터, 트레이, 블록)', cyl: '원기둥 (원형 코스터)', waterM: '모든 모양: 물 측정법', unit: '단위', l: '가로', w: '세로', d: '지름', h: '깊이', water: '몰드에 들어가는 물 무게', count: '몰드 수', waste: '손실 여유분 (%)', density: '레진 밀도 (g/ml)', per: '몰드 1개 부피', total: '섞을 레진 총량', grams: '대략적인 무게', note: '총량을 레진 제품에 적힌 비율대로 주제(A)와 경화제(B)로 나누세요.' },
+  en: { s1: 'Your mold', s2: 'Batch', units: 'Units', shape: 'Mold shape', rect: 'Rectangle (coaster, tray, block)', cyl: 'Cylinder (round coaster, puck)', water: 'Any shape: water method', l: 'Length', w: 'Width', d: 'Diameter', h: 'Depth', waterW: 'Water weight the mold holds', waterHint: 'Zero the scale with the empty mold on it, fill with water, and read the weight.', count: 'Number of molds', waste: 'Extra for waste', density: 'Resin density (g/ml)', per: 'Volume per mold', perOz: 'Per mold (US fl oz)', total: 'Total resin to mix', totalOz: 'Total (US fl oz)', grams: 'Approximate weight', note: 'Split the total into part A and part B using the ratio on your resin kit.' },
+  ko: { s1: '몰드', s2: '배치', units: '단위', shape: '몰드 모양', rect: '사각형 (코스터, 트레이, 블록)', cyl: '원기둥 (원형 코스터)', water: '모든 모양: 물 측정법', l: '가로', w: '세로', d: '지름', h: '깊이', waterW: '몰드에 들어가는 물 무게', waterHint: '빈 몰드를 저울에 올려 영점을 맞추고 물을 채워 무게를 잽니다.', count: '몰드 수', waste: '손실 여유분', density: '레진 밀도 (g/ml)', per: '몰드 1개 부피', perOz: '몰드 1개 (US fl oz)', total: '섞을 레진 총량', totalOz: '총량 (US fl oz)', grams: '대략적인 무게', note: '총량을 레진 제품에 적힌 비율대로 주제(A)와 경화제(B)로 나누세요.' },
 }[lang];
+const units = [{ value: 'cm', label: 'cm · g' }, { value: 'in', label: 'in · oz' }];
+const shapes = [{ value: 'rect', label: t.rect }, { value: 'cyl', label: t.cyl }, { value: 'water', label: t.water }];
 ---
-<form class="tool" id="resin-mold-volume" onsubmit="return false">
-  <label>{t.shape}
-    <select name="shape"><option value="rect">{t.rect}</option><option value="cyl">{t.cyl}</option><option value="water">{t.waterM}</option></select>
-  </label>
-  <label>{t.unit}<select name="unit"><option value="cm">cm / g</option><option value="in">in / oz</option></select></label>
-  <div class="grid">
-    <label data-show="shape=rect">{t.l} (<span data-out="dunit"></span>)<input name="l" type="number" inputmode="decimal" min="0" step="any" value="10" /></label>
-    <label data-show="shape=rect">{t.w} (<span data-out="dunit"></span>)<input name="w" type="number" inputmode="decimal" min="0" step="any" value="5" /></label>
-    <label data-show="shape=cyl">{t.d} (<span data-out="dunit"></span>)<input name="d" type="number" inputmode="decimal" min="0" step="any" value="10" /></label>
-    <label data-show="shape=rect,cyl">{t.h} (<span data-out="dunit"></span>)<input name="h" type="number" inputmode="decimal" min="0" step="any" value="2" /></label>
-    <label data-show="shape=water">{t.water} (<span data-out="wunit"></span>)<input name="water" type="number" inputmode="decimal" min="0" step="any" value="100" /></label>
+<form class="tool wrap" id="resin-mold-volume">
+  <div class="inputs">
+    <Step n="1" title={t.s1}>
+      <Seg slot="head" name="unit" label={t.units} options={units} />
+      <div class="fields">
+        <Field label={t.shape} name="shape" value="rect" options={shapes} />
+        <Field label={t.l} name="l" value="10" unitOut="dunit" show="shape=rect" />
+        <Field label={t.w} name="w" value="5" unitOut="dunit" show="shape=rect" />
+        <Field label={t.d} name="d" value="10" unitOut="dunit" show="shape=cyl" />
+        <Field label={t.h} name="h" value="2" unitOut="dunit" show="shape=rect,cyl" />
+        <Field label={t.waterW} name="water" value="100" unitOut="wunit" show="shape=water" hint={t.waterHint} />
+      </div>
+    </Step>
+    <Step n="2" title={t.s2}>
+      <div class="fields">
+        <Field label={t.count} name="count" value="1" min="1" step="1" inputmode="numeric" />
+        <Field label={t.waste} name="waste" value="10" unit="%" max="50" step="1" presets={[5, 10, 15]} suffix="%" />
+        <Field label={t.density} name="density" value="1.1" min="0.8" max="2" step="0.01" />
+      </div>
+    </Step>
   </div>
-  <div class="grid">
-    <label>{t.count}<input name="count" type="number" inputmode="numeric" min="1" step="1" value="1" /></label>
-    <label>{t.waste}<input name="waste" type="number" inputmode="decimal" min="0" max="50" step="1" value="10" /></label>
-    <label>{t.density}<input name="density" type="number" inputmode="decimal" min="0.8" max="2" step="0.01" value="1.1" /></label>
-  </div>
-  <p class="result">{t.per}: <strong data-out="ml"></strong> ml (<span data-out="floz"></span> fl oz)</p>
-  <p class="result">{t.total}: <strong data-out="total"></strong> ml (<span data-out="totalFloz"></span> fl oz)</p>
-  <p class="result">{t.grams}: <strong data-out="grams"></strong> g</p>
-  <p class="note">{t.note}</p>
+  <Readout lang={lang} note={t.note} items={[
+    { label: t.total, out: 'total', unit: 'ml', size: 'xl' },
+    { label: t.grams, out: 'grams', unit: 'g', size: 'lg' },
+    { label: t.per, out: 'ml', unit: 'ml' },
+    { label: t.perOz, out: 'floz', unit: 'fl oz' },
+    { label: t.totalOz, out: 'totalFloz', unit: 'fl oz' },
+  ]} />
 </form>
 <script>
   import { wire } from '../form.js';

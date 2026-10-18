@@ -3,6 +3,8 @@
   "category": "printing",
   "en": {
     "title": "3D Print Cost Calculator – Filament, Electricity and Machine Wear",
+    "short": "FDM print cost",
+    "tagline": "Filament, power, wear and failures",
     "description": "Work out what a 3D print really costs: filament, electricity, printer wear and failed prints. A free FDM print cost calculator that runs in your browser.",
     "h1": "3D Print Cost Calculator (FDM)",
     "intro": "Enter the filament weight and print time from your slicer, plus your spool price and electricity rate. The calculator adds machine wear and a failure allowance to give the real cost of one successful print.",
@@ -14,13 +16,24 @@
     ],
     "formula": "Filament = grams used × spool price ÷ spool grams. Electricity = hours × watts ÷ 1000 × price per kWh. Wear = hours × printer price ÷ lifetime hours. Cost per successful print = (filament + electricity + wear) ÷ (1 − failure rate ÷ 100). Example: 50 g from a spool that costs 20 per kg, 3 hours at 120 W and 0.16 per kWh, and a 300 printer over 5000 hours comes to 1.24, or 1.30 with a 5% failure rate.",
     "faq": [
-      { "q": "Why divide by the success rate instead of adding the failure percentage?", "a": "If 5% of prints fail, you need on average 1 ÷ 0.95 = 1.053 attempts per good print. Dividing by the success rate spreads the cost of failed attempts over the prints that succeed." },
-      { "q": "How do I find my printer's power draw?", "a": "The most accurate way is a plug-in power meter over a full print. The bed heater draws the most while heating up, then cycles on and off, so the average over a print is usually well below the power supply's rated wattage." },
-      { "q": "What should I charge for a print?", "a": "This calculator gives your cost. To set a selling price, add your time for design, support removal and post-processing, plus a profit margin. The handmade pricing calculator does that step." }
+      {
+        "q": "Why divide by the success rate instead of adding the failure percentage?",
+        "a": "If 5% of prints fail, you need on average 1 ÷ 0.95 = 1.053 attempts per good print. Dividing by the success rate spreads the cost of failed attempts over the prints that succeed."
+      },
+      {
+        "q": "How do I find my printer's power draw?",
+        "a": "The most accurate way is a plug-in power meter over a full print. The bed heater draws the most while heating up, then cycles on and off, so the average over a print is usually well below the power supply's rated wattage."
+      },
+      {
+        "q": "What should I charge for a print?",
+        "a": "This calculator gives your cost. To set a selling price, add your time for design, support removal and post-processing, plus a profit margin. The handmade pricing calculator does that step."
+      }
     ]
   },
   "ko": {
     "title": "3D 프린팅 원가 계산기 – 필라멘트·전기료·감가상각",
+    "short": "FDM 출력 원가",
+    "tagline": "필라멘트·전기료·감가상각·실패율",
     "description": "3D 프린트 한 개의 실제 원가를 계산합니다. 필라멘트, 전기료, 프린터 감가상각, 실패율까지 반영하는 무료 FDM 원가 계산기입니다.",
     "h1": "3D 프린팅 원가 계산기 (FDM)",
     "intro": "슬라이서에 나온 필라멘트 무게와 출력 시간, 필라멘트 가격과 전기 요금을 입력하면 감가상각과 실패율까지 더해 성공한 출력물 한 개의 실제 원가를 알려줍니다.",
@@ -32,9 +45,18 @@
     ],
     "formula": "필라멘트 = 사용량(g) × 롤 가격 ÷ 롤 무게. 전기료 = 시간 × 와트 ÷ 1000 × kWh당 요금. 감가상각 = 시간 × 프린터 가격 ÷ 수명 시간. 성공 1개당 원가 = (필라멘트 + 전기료 + 감가상각) ÷ (1 − 실패율 ÷ 100). 예: 2만5천 원짜리 1 kg 롤에서 50 g, 120 W로 3시간, kWh당 150원, 50만 원 프린터를 5000시간 쓰면 1,604원이고, 실패율 5%면 1,688원입니다.",
     "faq": [
-      { "q": "실패율을 더하지 않고 성공률로 나누는 이유는?", "a": "출력의 5%가 실패하면 성공 1개를 얻는 데 평균 1 ÷ 0.95 = 1.053번 출력해야 합니다. 성공률로 나누면 실패한 출력의 비용이 성공한 출력물에 나뉘어 반영됩니다." },
-      { "q": "프린터 소비전력은 어떻게 알 수 있나요?", "a": "출력 한 번 동안 콘센트형 전력 측정기로 재는 것이 가장 정확합니다. 베드 히터는 예열할 때 가장 많이 쓰고 이후에는 켜졌다 꺼졌다 하므로, 출력 전체 평균은 파워서플라이 정격보다 훨씬 낮습니다." },
-      { "q": "판매가는 어떻게 정하나요?", "a": "이 계산기는 원가를 알려줍니다. 판매가는 모델링, 서포트 제거, 후가공에 드는 시간과 이윤을 더해야 합니다. 핸드메이드 판매가 계산기로 그 단계를 계산할 수 있습니다." }
+      {
+        "q": "실패율을 더하지 않고 성공률로 나누는 이유는?",
+        "a": "출력의 5%가 실패하면 성공 1개를 얻는 데 평균 1 ÷ 0.95 = 1.053번 출력해야 합니다. 성공률로 나누면 실패한 출력의 비용이 성공한 출력물에 나뉘어 반영됩니다."
+      },
+      {
+        "q": "프린터 소비전력은 어떻게 알 수 있나요?",
+        "a": "출력 한 번 동안 콘센트형 전력 측정기로 재는 것이 가장 정확합니다. 베드 히터는 예열할 때 가장 많이 쓰고 이후에는 켜졌다 꺼졌다 하므로, 출력 전체 평균은 파워서플라이 정격보다 훨씬 낮습니다."
+      },
+      {
+        "q": "판매가는 어떻게 정하나요?",
+        "a": "이 계산기는 원가를 알려줍니다. 판매가는 모델링, 서포트 제거, 후가공에 드는 시간과 이윤을 더해야 합니다. 핸드메이드 판매가 계산기로 그 단계를 계산할 수 있습니다."
+      }
     ]
   }
 }

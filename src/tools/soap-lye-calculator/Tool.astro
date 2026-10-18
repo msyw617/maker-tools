@@ -1,32 +1,52 @@
 ---
 import { OILS } from './calc.js';
+import Field from '../../components/Field.astro';
+import Step from '../../components/Step.astro';
+import Seg from '../../components/Seg.astro';
+import Readout from '../../components/Readout.astro';
 const { lang } = Astro.props;
 const t = {
-  en: { warn: 'Lye (sodium hydroxide) is caustic. Wear goggles and gloves, always add lye to water, and check every new recipe with a second lye calculator.', unit: 'Weight unit', oils: 'Oils and butters', other: 'Other oil: weight', otherSap: 'Other oil: NaOH SAP (e.g. 0.135)', superfat: 'Superfat (%)', conc: 'Lye concentration (%)', oilsOut: 'Total oils', lye: 'Sodium hydroxide (NaOH)', water: 'Water', batch: 'Total batch weight', note: 'A dash (—) means an input is missing or the Other oil SAP is outside 0.03–0.3. Enter the NaOH value, not the KOH value.' },
-  ko: { warn: '가성소다(수산화나트륨)는 강알칼리입니다. 보안경과 장갑을 착용하고, 반드시 물에 가성소다를 넣으며, 새 레시피는 다른 계산기로 한 번 더 확인하세요.', unit: '무게 단위', oils: '오일·버터', other: '기타 오일: 무게', otherSap: '기타 오일: NaOH 비누화값 (예: 0.135)', superfat: '슈퍼팻 (%)', conc: '가성소다 농도 (%)', oilsOut: '오일 총량', lye: '가성소다 (NaOH)', water: '정제수', batch: '전체 배치 무게', note: '대시(—)는 입력값이 비었거나 기타 오일의 비누화값이 0.03~0.3 범위를 벗어났다는 뜻입니다. KOH 값이 아니라 NaOH 값을 넣으세요.' },
+  en: { warn: 'Lye (sodium hydroxide) is caustic.', warnRest: 'Wear goggles and gloves, add lye to water (never water to lye), and check every new recipe with a second calculator.', s1: 'Your oils', s2: 'Settings', unit: 'Weight unit', more: 'More oils, or one that isn’t listed', other: 'Other oil: weight', otherSap: 'Other oil: NaOH SAP', sapHint: 'Small numbers are each oil’s NaOH SAP value. Use your supplier’s value if it differs.', superfat: 'Superfat', sfHint: 'Oil left unsaponified for a milder bar. 5% is the usual starting point.', conc: 'Lye concentration', concHint: '33% is about 2 parts water to 1 part lye. Higher traces faster.', oilsOut: 'Total oils', lye: 'Sodium hydroxide (NaOH)', water: 'Water', batch: 'Batch weight', note: 'A dash (—) means an input is missing or the other oil’s SAP is outside 0.03–0.3. Enter the NaOH value, not the KOH value.' },
+  ko: { warn: '가성소다(수산화나트륨)는 강알칼리입니다.', warnRest: '보안경과 장갑을 착용하고, 반드시 물에 가성소다를 넣으며, 새 레시피는 다른 계산기로 한 번 더 확인하세요.', s1: '오일', s2: '설정', unit: '무게 단위', more: '오일 더 보기·목록에 없는 오일', other: '기타 오일: 무게', otherSap: '기타 오일: NaOH 비누화값', sapHint: '작은 숫자는 오일별 NaOH 비누화값입니다. 판매처 값이 다르면 그 값을 쓰세요.', superfat: '슈퍼팻', sfHint: '오일 일부를 비누화되지 않게 남겨 순한 비누를 만듭니다. 보통 5%로 시작합니다.', conc: '가성소다 농도', concHint: '33%는 물 2 : 가성소다 1 정도입니다. 높을수록 트레이스가 빨리 옵니다.', oilsOut: '오일 총량', lye: '가성소다 (NaOH)', water: '정제수', batch: '전체 배치 무게', note: '대시(—)는 입력값이 비었거나 기타 오일의 비누화값이 0.03~0.3 범위를 벗어났다는 뜻입니다. KOH 값이 아니라 NaOH 값을 넣으세요.' },
 }[lang];
+const units = [{ value: 'g', label: 'g' }, { value: 'oz', label: 'oz' }];
 const defaults = { olive: 500, coconut: 300, shea: 200 };
+const oil = (o) => ({ label: o[lang], name: `oil_${o.id}`, value: defaults[o.id] ?? '', sap: o.sap.toFixed(3), placeholder: '0', hl: true, unitOut: 'unit' });
 ---
-<form class="tool" id="soap-lye-calculator" onsubmit="return false">
-  <p class="warn">{t.warn}</p>
-  <label>{t.unit}<select name="unit"><option value="g">g</option><option value="oz">oz</option></select></label>
-  <fieldset>
-    <legend>{t.oils}</legend>
-    <div class="grid">
-      {OILS.map((o) => (
-        <label>{o[lang]}<input name={`oil_${o.id}`} type="number" inputmode="decimal" min="0" step="any" value={defaults[o.id] ?? ''} /></label>
-      ))}
-      <label>{t.other}<input name="other_w" type="number" inputmode="decimal" min="0" step="any" value="" /></label>
-      <label>{t.otherSap}<input name="other_sap" type="number" inputmode="decimal" min="0.03" max="0.3" step="0.001" value="" /></label>
+<form class="tool wrap" id="soap-lye-calculator">
+  <div class="inputs">
+    <div class="notice" role="note">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7A4E00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20L12 3z"></path><path d="M12 10v4"></path><path d="M12 17.2v.1"></path></svg>
+      <p><strong>{t.warn}</strong> {t.warnRest}</p>
     </div>
-  </fieldset>
-  <label>{t.superfat}<input name="superfat" type="number" inputmode="decimal" min="0" max="20" step="1" value="5" /></label>
-  <label>{t.conc}<input name="conc" type="number" inputmode="decimal" min="25" max="45" step="1" value="33" /></label>
-  <p class="result">{t.oilsOut}: <strong data-out="oils"></strong> <span data-out="unit"></span></p>
-  <p class="result">{t.lye}: <strong data-out="lye"></strong> <span data-out="unit"></span></p>
-  <p class="result">{t.water}: <strong data-out="water"></strong> <span data-out="unit"></span></p>
-  <p class="result">{t.batch}: <strong data-out="batch"></strong> <span data-out="unit"></span></p>
-  <p class="note">{t.note}</p>
+    <Step n="1" title={t.s1}>
+      <Seg slot="head" name="unit" label={t.unit} options={units} />
+      <div class="fields">
+        {OILS.slice(0, 6).map((o) => <Field {...oil(o)} />)}
+      </div>
+      <details class="more">
+        <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>{t.more}</summary>
+        <div class="fields">
+          {OILS.slice(6).map((o) => <Field {...oil(o)} />)}
+          <Field label={t.other} name="other_w" value="" placeholder="0" hl unitOut="unit" />
+          <Field label={t.otherSap} name="other_sap" value="" placeholder="0.135" min="0.03" max="0.3" step="0.001" />
+        </div>
+      </details>
+      <p class="hint" style="margin-top: 12px">{t.sapHint}</p>
+    </Step>
+    <Step n="2" title={t.s2}>
+      <div class="fields">
+        <Field label={t.superfat} name="superfat" value="5" unit="%" max="20" step="1" presets={[0, 3, 5, 8, 10]} suffix="%" hint={t.sfHint} />
+        <Field label={t.conc} name="conc" value="33" unit="%" min="25" max="45" step="1" presets={[28, 30, 33, 35, 40]} suffix="%" hint={t.concHint} />
+      </div>
+    </Step>
+  </div>
+  <Readout lang={lang} note={t.note} items={[
+    { label: t.lye, out: 'lye', unitOut: 'unit', size: 'xl' },
+    { label: t.water, out: 'water', unitOut: 'unit', size: 'lg' },
+    { label: t.oilsOut, out: 'oils', unitOut: 'unit' },
+    { label: t.batch, out: 'batch', unitOut: 'unit' },
+  ]} />
 </form>
 <script>
   import { wire } from '../form.js';

@@ -15,11 +15,15 @@ npm test          # check.mjs: 도구별 계산 예제 검증
 
 ```
 backlog.csv                     도구 백로그 54개 (priority 1 = 첫 10개). volume 열은 Keyword Planner로 채움
-src/layouts/Base.astro          공용 레이아웃: head/hreflang/CSS/헤더/푸터/AdSense 자리
+src/layouts/Base.astro          공용 레이아웃: head/hreflang/글꼴/헤더/푸터
+src/styles/site.css             커팅매트 디자인 전체 CSS (색 토큰, 매트·눈금자, 카드, 입력칸, 결과 패널, 모바일 결과 바, 인쇄)
+src/styles/ko-fonts.css         한국어 페이지에서만 불러오는 IBM Plex Sans KR (비차단 로드)
+src/categories.js               카테고리 이름(en/ko)·색·아이콘. 홈 순서도 여기서 정해짐
+src/components/                 CatTile(카테고리 아이콘), Step(번호 카드), Field(입력칸·프리셋·힌트), Seg(단위 토글), Readout(결과 패널+모바일 바)
 src/pages/[lang]/[slug].astro   도구 페이지 템플릿 (meta.json + Tool.astro 를 자동으로 묶음)
 src/pages/[lang]/index.astro    카테고리별 도구 목록
 src/pages/[lang]/{about,privacy,contact}.astro   AdSense 심사 필수 페이지
-src/tools/<slug>/meta.json      도구 메타 + en/ko 본문 (title, description, h1, intro, howto[], formula, faq[])
+src/tools/<slug>/meta.json      도구 메타 + en/ko 본문 (title, short, tagline, description, h1, intro, howto[], formula, faq[])
 src/tools/<slug>/Tool.astro     도구 UI (입력·출력 마크업, en/ko 라벨)
 src/tools/<slug>/calc.js        순수 계산 함수 compute(values) → { 출력키: 값 } (브라우저·Node 공용)
 src/tools/form.js               공용 연결: 입력 읽기 → compute → [data-out] 표시, [data-show] 조건부 표시
@@ -34,8 +38,8 @@ src/pages/robots.txt.js         robots.txt (site 주소로 생성)
 
 1. `backlog.csv`에서 다음 `todo` 행을 고르고 `wip`으로 바꾼다.
 2. `src/tools/candle-fragrance-load/`를 `src/tools/<slug>/`로 복사한다.
-3. `meta.json`: slug/category 수정, en·ko 본문 작성. 분량 기준은 intro + howto + formula + faq 합쳐 영어 300~500 단어. faq 3개, howto 3~5단계.
-4. `calc.js`에 `compute`를 쓰고, `Tool.astro`에서 form id를 slug와 같게 한 뒤 입력 `name`과 출력 `data-out`을 compute의 키에 맞춘다. 텍스트는 전부 `t` 딕셔너리(en/ko)에 둔다. 언어별 기본값(통화 등)은 `d` 객체로 분기한다.
+3. `meta.json`: slug/category 수정, en·ko 본문 작성. short(홈 카드용 짧은 이름)와 tagline(관련 도구 카드 한 줄 설명)도 채운다. formula는 "계산식 문장들. Example: 예시" 형식을 지킨다 (ko는 "예: "). 분량 기준은 intro + howto + formula + faq 합쳐 영어 300~500 단어. faq 3개, howto 3~5단계.
+4. `calc.js`에 `compute`를 쓰고, `Tool.astro`는 `<form class="tool wrap" id="<slug>">` 안에 `.inputs`(Step 카드들 + Field)와 `Readout`을 둔다. Field의 `name`과 Readout 항목의 `out`을 compute의 키에 맞춘다. 결과 항목 중 size가 xl/lg인 앞의 두 개가 모바일 하단 바에 나온다. 텍스트는 전부 `t` 딕셔너리(en/ko)에, 언어별 기본값(통화 등)은 `d` 객체로 분기한다.
    - 셸 heredoc에 백틱이 든 파일 여러 개를 한 번에 쓰면 Git Bash가 파싱에 실패한다. 파일 쓰기 도구로 하나씩 쓴다.
 5. `check.mjs`에 meta.json 계산식 예제와 같은 숫자로 `check(...)` 한 줄 이상 추가하고 `npm test`를 통과시킨다.
 6. `npm run build`가 통과하고 `/en/<slug>/`, `/ko/<slug>/`가 생성되는지 확인한다.

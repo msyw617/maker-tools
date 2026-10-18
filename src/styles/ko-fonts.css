@@ -1,0 +1,4 @@
+/* Loaded only on Korean pages: the Hangul faces are split into ~100 slices per weight. */
+@import '@fontsource/ibm-plex-sans-kr/400.css';
+@import '@fontsource/ibm-plex-sans-kr/500.css';
+@import '@fontsource/ibm-plex-sans-kr/700.css';

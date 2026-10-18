@@ -1,23 +1,29 @@
 ---
+import Field from '../../components/Field.astro';
+import Step from '../../components/Step.astro';
+import Seg from '../../components/Seg.astro';
+import Readout from '../../components/Readout.astro';
 const { lang } = Astro.props;
 const t = {
-  en: { wax: 'Wax weight', load: 'Fragrance load (%)', fo: 'Fragrance oil to add', total: 'Total batch weight', note: 'Most waxes hold 6–10%. Check the maximum load on your wax data sheet.' },
-  ko: { wax: '왁스 무게', load: '향료 비율 (%)', fo: '넣을 향료 양', total: '전체 배치 무게', note: '대부분의 왁스는 6~10%가 적정입니다. 왁스 제품 설명서의 최대 향료 비율을 확인하세요.' },
+  en: { s1: 'Wax and fragrance', unit: 'Weight unit', wax: 'Wax weight', load: 'Fragrance load', loadHint: 'Most waxes hold 6–10%. Check the maximum load on your wax data sheet.', fo: 'Fragrance oil to add', total: 'Total batch weight' },
+  ko: { s1: '왁스와 향료', unit: '무게 단위', wax: '왁스 무게', load: '향료 비율', loadHint: '대부분의 왁스는 6~10%가 적정입니다. 왁스 제품 설명서의 최대 향료 비율을 확인하세요.', fo: '넣을 향료 양', total: '전체 배치 무게' },
 }[lang];
+const units = [{ value: 'g', label: 'g' }, { value: 'oz', label: 'oz' }];
 ---
-<form class="tool" id="candle-fragrance-load" onsubmit="return false">
-  <label>{t.wax}
-    <span class="row">
-      <input name="wax" type="number" inputmode="decimal" min="0" step="any" value="500" />
-      <select name="unit"><option value="g">g</option><option value="oz">oz</option></select>
-    </span>
-  </label>
-  <label>{t.load}
-    <input name="load" type="number" inputmode="decimal" min="0" max="30" step="0.5" value="8" />
-  </label>
-  <p class="result">{t.fo}: <strong data-out="fo"></strong> <span data-out="unit"></span></p>
-  <p class="result">{t.total}: <strong data-out="total"></strong> <span data-out="unit"></span></p>
-  <p class="note">{t.note}</p>
+<form class="tool wrap" id="candle-fragrance-load">
+  <div class="inputs">
+    <Step n="1" title={t.s1}>
+      <Seg slot="head" name="unit" label={t.unit} options={units} />
+      <div class="fields">
+        <Field label={t.wax} name="wax" value="500" unitOut="unit" />
+        <Field label={t.load} name="load" value="8" unit="%" max="30" step="0.5" presets={[6, 8, 10]} suffix="%" hint={t.loadHint} />
+      </div>
+    </Step>
+  </div>
+  <Readout lang={lang} items={[
+    { label: t.fo, out: 'fo', unitOut: 'unit', size: 'xl' },
+    { label: t.total, out: 'total', unitOut: 'unit', size: 'lg' },
+  ]} />
 </form>
 <script>
   import { wire } from '../form.js';

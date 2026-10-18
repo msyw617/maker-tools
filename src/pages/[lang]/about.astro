@@ -18,6 +18,8 @@ const t = {
 }[lang];
 ---
 <Base lang={lang} title={t.title} description={t.description} path="about/">
+  <article class="wrap prose">
   <h1>{t.title}</h1>
   {t.body.map((p) => <p>{p}</p>)}
+  </article>
 </Base>
