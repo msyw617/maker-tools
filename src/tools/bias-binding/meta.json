@@ -1,0 +1,44 @@
+{
+  "slug": "bias-binding",
+  "category": "sewing",
+  "en": {
+    "title": "Continuous Bias Binding Calculator – Square Size for Bias Tape",
+    "short": "Continuous bias binding",
+    "tagline": "Square size for the bias you need",
+    "description": "Work out what size fabric square to cut for continuous bias binding or bias tape, how much bias it yields, and how much fabric to buy.",
+    "h1": "Continuous Bias Binding Calculator",
+    "intro": "Enter how much bias you need and your strip width. The calculator gives the size of square to cut for the continuous bias method, rounded up to an easy ruler measurement, and the fabric to buy.",
+    "howto": [
+      "Measure the edge you are binding. For a quilt or tablecloth this is the perimeter, 2 × (width + length).",
+      "Enter the strip width: 2.5 in (6 cm) for double-fold quilt binding, or about 2 in (5 cm) for 1/2 in double-fold bias tape.",
+      "Keep about 10% extra for joining the tube and finishing the ends.",
+      "Cut the square, slice it on the diagonal, sew it into a tube offset by one strip width, and cut the continuous strip."
+    ],
+    "formula": "Square side = √(length needed × (1 + extra ÷ 100) × strip width), rounded up to the next 1/2 in or 1 cm. Bias yield ≈ square side² ÷ strip width. Example: 290 in of 2.5 in binding with 10% extra needs √(319 × 2.5) ≈ 28.2 in, so cut a 28.5 in square, which yields about 325 in of bias.",
+    "faq": [
+      { "q": "Why use continuous bias instead of cutting strips?", "a": "Cutting single bias strips and joining them means many short seams. The continuous method turns one square into a long strip with only two seams, and wastes less fabric." },
+      { "q": "When do I need bias binding?", "a": "Use bias for curved, scalloped or rounded edges, and for piping, because bias stretches around curves without puckering. Straight edges are fine with straight-grain strips, which the quilt binding calculator covers." },
+      { "q": "Can I use a rectangle instead of a square?", "a": "Yes, the method works with rectangles too, and the yield is roughly width × length ÷ strip width. A square is simplest to mark, which is why the calculator uses one." }
+    ]
+  },
+  "ko": {
+    "title": "연속 바이어스 계산기 – 바이어스 테이프용 정사각형 크기",
+    "short": "연속 바이어스",
+    "tagline": "필요한 바이어스를 낼 정사각형 크기",
+    "description": "연속 바이어스 바인딩이나 바이어스 테이프를 만들 때 잘라야 할 정사각형 크기, 그 정사각형에서 나오는 바이어스 길이, 구매할 원단 양을 계산합니다.",
+    "h1": "연속 바이어스 계산기",
+    "intro": "필요한 바이어스 길이와 스트립 폭을 입력하면 연속 바이어스 방식으로 잘라야 할 정사각형 크기를 자로 재기 쉬운 값으로 올려 알려주고, 구매할 원단 양도 계산합니다.",
+    "howto": [
+      "바이어스로 감쌀 테두리 길이를 잽니다. 퀼트나 식탁보는 둘레, 2 × (가로 + 세로)입니다.",
+      "스트립 폭을 입력합니다. 두 겹 퀼트 바인딩은 6 cm, 1.2 cm 두 겹 바이어스 테이프는 약 5 cm입니다.",
+      "튜브를 잇고 끝을 마감할 여유분으로 10% 정도를 둡니다.",
+      "정사각형을 잘라 대각선으로 나누고, 스트립 폭만큼 어긋나게 튜브로 이은 뒤 이어지는 스트립을 잘라냅니다."
+    ],
+    "formula": "정사각형 한 변 = √(필요한 길이 × (1 + 여유분 ÷ 100) × 스트립 폭)을 1 cm(또는 1/2 in) 단위로 올림. 바이어스 길이 ≈ 한 변² ÷ 스트립 폭. 예: 6 cm 스트립으로 725 cm가 필요하고 여유분 10%면 √(797.5 × 6) ≈ 69.2 cm이므로 70 cm 정사각형을 자르며, 약 817 cm의 바이어스가 나옵니다.",
+    "faq": [
+      { "q": "스트립을 따로 자르지 않고 연속 바이어스를 쓰는 이유는?", "a": "바이어스 스트립을 하나씩 잘라 이으면 짧은 이음선이 많이 생깁니다. 연속 방식은 정사각형 하나를 이음선 두 개만으로 긴 스트립으로 만들고 원단 낭비도 적습니다." },
+      { "q": "바이어스 바인딩은 언제 필요한가요?", "a": "곡선, 물결, 둥근 테두리와 파이핑에 씁니다. 바이어스는 곡선을 따라 늘어나 주름 없이 감쌉니다. 직선 테두리는 식서 방향 스트립으로 충분하며 퀼트 바인딩 계산기로 계산할 수 있습니다." },
+      { "q": "정사각형 대신 직사각형을 써도 되나요?", "a": "네, 직사각형도 같은 방식이 되며 나오는 길이는 대략 가로 × 세로 ÷ 스트립 폭입니다. 정사각형이 표시하기 가장 쉬워서 계산기는 정사각형을 씁니다." }
+    ]
+  }
+}

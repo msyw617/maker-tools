@@ -1,0 +1,44 @@
+{
+  "slug": "quilt-backing",
+  "category": "sewing",
+  "en": {
+    "title": "Quilt Backing Calculator – How Much Fabric for a Quilt Back",
+    "short": "Quilt backing",
+    "tagline": "Backing yardage and panel layout",
+    "description": "Work out how much backing fabric your quilt needs, with extra for longarm quilting. Compares seams running lengthwise and crosswise, and handles wide-back fabric.",
+    "h1": "Quilt Backing Calculator",
+    "intro": "Enter the finished quilt top size, the extra your quilter asks for on each side, and the fabric width. The calculator works out how many panels to sew together and which seam direction uses less fabric.",
+    "howto": [
+      "Measure the finished quilt top, including borders.",
+      "Enter the extra backing needed on each side. Longarm quilters usually ask for 4 in (10 cm); for hand or domestic-machine quilting, 2–3 in is common.",
+      "Enter the usable width of your backing fabric: about 42 in (107 cm) for quilting cotton after trimming selvages, or 108 in (274 cm) for wide-back fabric.",
+      "Buy the amount shown. The seam allowance is the width each panel loses where panels are sewn together."
+    ],
+    "formula": "Backing size = quilt size + 2 × the extra on each side. Panels across a span = (span − 2 × seam allowance) ÷ (fabric width − 2 × seam allowance), rounded up. Fabric with lengthwise seams = panels across the width × backing length; with crosswise seams = panels across the length × backing width. You buy the smaller of the two, rounded up to 1/8 yd or 10 cm. Example: a 60 × 80 in top with 4 in extra needs a 68 × 88 in back; on 42 in fabric that is two lengthwise panels, 176 in, so buy 5 yd.",
+    "faq": [
+      { "q": "Should the backing seam run lengthwise or crosswise?", "a": "Either works structurally. Lengthwise seams are the usual choice for larger quilts; crosswise seams often save fabric on wide, short quilts. The calculator shows both so you can choose." },
+      { "q": "Why do longarm quilters need extra backing?", "a": "The backing is clamped to the frame rollers and side clamps, and the quilt top can shift slightly as it is stitched. 4 in on every side gives room for both." },
+      { "q": "Is wide-back fabric worth it?", "a": "For large quilts, usually. A single 108 in piece avoids piecing and often needs less length than two or three panels of standard cotton." }
+    ]
+  },
+  "ko": {
+    "title": "퀼트 뒷감 계산기 – 퀼트 뒷면 원단 필요량",
+    "short": "퀼트 뒷감",
+    "tagline": "뒷감 원단 양과 이어 붙이는 방향",
+    "description": "퀼트 뒷감에 필요한 원단 길이를 계산합니다. 롱암 퀼팅 여유분, 원단 폭, 이음 방향을 반영하고 광폭 원단도 계산합니다.",
+    "h1": "퀼트 뒷감 계산기",
+    "intro": "완성된 퀼트 탑 크기와 사방 여유분, 원단 폭을 입력하면 몇 폭을 이어야 하는지, 어느 방향으로 이어야 원단이 덜 드는지 계산합니다.",
+    "howto": [
+      "테두리까지 포함한 퀼트 탑의 완성 크기를 잽니다.",
+      "사방에 둘 여유분을 입력합니다. 롱암 퀼팅은 보통 10 cm, 손퀼팅이나 가정용 미싱은 5~8 cm 정도입니다.",
+      "뒷감 원단의 실제 사용 폭을 입력합니다. 면 원단은 귀를 빼면 약 107~110 cm, 광폭 원단은 약 280 cm입니다.",
+      "표시된 길이를 삽니다. 시접은 원단 폭을 이어 붙일 때 이음선마다 줄어드는 폭입니다."
+    ],
+    "formula": "뒷감 크기 = 퀼트 크기 + 사방 여유분 × 2. 필요한 폭 수 = (이을 방향 길이 − 시접 × 2) ÷ (원단 폭 − 시접 × 2)를 올림. 세로 이음 원단 = 가로 방향 폭 수 × 뒷감 세로, 가로 이음 원단 = 세로 방향 폭 수 × 뒷감 가로이며, 둘 중 적은 쪽을 10 cm·0.5마 단위로 올립니다. 예: 150 × 200 cm 퀼트에 여유분 10 cm면 뒷감은 170 × 220 cm이고, 110 cm 원단을 세로로 두 폭 이으면 440 cm이므로 4.4 m 또는 5마를 삽니다.",
+    "faq": [
+      { "q": "이음선은 세로와 가로 중 어느 쪽이 좋나요?", "a": "구조상으로는 둘 다 괜찮습니다. 큰 퀼트는 세로 이음이 일반적이고, 가로로 넓고 짧은 퀼트는 가로 이음이 원단을 아끼는 경우가 많습니다. 계산기가 두 경우를 모두 보여줍니다." },
+      { "q": "롱암 퀼팅은 왜 여유분이 많이 필요한가요?", "a": "뒷감을 프레임 롤러와 옆 클램프에 고정해야 하고, 박는 동안 탑이 조금씩 밀릴 수 있기 때문입니다. 사방 10 cm면 두 가지 모두 감당할 수 있습니다." },
+      { "q": "광폭 원단을 쓰는 게 나은가요?", "a": "큰 퀼트라면 대부분 그렇습니다. 280 cm 폭 한 장이면 이어 붙일 필요가 없고, 일반 면 원단 두세 폭보다 길이도 적게 드는 경우가 많습니다." }
+    ]
+  }
+}

@@ -14,12 +14,12 @@
 2,candle,candle-burn-time,candle burn time calculator,캔들 연소 시간 계산기,,,,todo
 2,candle,candle-dye-ratio,candle dye percentage calculator,캔들 염료 비율 계산기,,,,todo
 2,candle,recipe-batch-scaler,candle recipe batch calculator,캔들 레시피 배치 계산기,,,,todo
-2,soap,liquid-soap-koh,liquid soap koh calculator,액체비누 가성가리 계산기,,,,todo
-2,soap,soap-mold-oil-weight,soap mold oil weight calculator,비누 몰드 오일량 계산기,,,,todo
+2,soap,liquid-soap-koh,liquid soap koh calculator,액체비누 가성가리 계산기,,,,done
+2,soap,soap-mold-oil,soap mold oil weight calculator,비누 몰드 오일량 계산기,,,,done
 2,soap,soap-cost-per-bar,soap cost per bar calculator,비누 원가 계산기,,,,todo
 2,soap,melt-and-pour-amount,melt and pour soap base calculator,MP비누 베이스 필요량 계산기,,,,todo
 2,resin,epoxy-mix-ratio,epoxy resin mixing ratio calculator,에폭시 레진 혼합 비율 계산기,,,,todo
-2,resin,resin-coverage,epoxy resin coverage calculator,레진 코팅 필요량 계산기,,,,todo
+2,resin,epoxy-table,epoxy resin coverage calculator,레진 코팅 필요량 계산기,,,,done
 2,resin,resin-pigment-ratio,resin pigment ratio calculator,레진 안료 비율 계산기,,,,todo
 2,resin,resin-cost,resin cost calculator,레진 원가 계산기,,,,todo
 2,knitting,yarn-substitution,yarn substitution calculator,실 대체 계산기,,,,todo
@@ -27,8 +27,8 @@
 2,knitting,crochet-blanket-stitches,crochet blanket stitch count calculator,코바늘 담요 코 수 계산기,,,,todo
 2,knitting,sweater-stitch-count,sweater stitch count calculator,스웨터 코 수 계산기,,,,todo
 2,knitting,yarn-project-cost,yarn cost per project calculator,뜨개 작품 원가 계산기,,,,todo
-2,sewing,quilt-backing-batting,quilt backing calculator,퀼트 배킹 계산기,,,,todo
-2,sewing,quilt-binding,quilt binding calculator,퀼트 바인딩 계산기,,,,todo
+2,sewing,quilt-backing,quilt backing calculator,퀼트 배킹 계산기,,,,done
+2,sewing,quilt-binding,quilt binding calculator,퀼트 바인딩 계산기,,,,done
 3,sewing,curtain-fabric,curtain fabric calculator,커튼 원단 계산기,,,,todo
 3,sewing,pattern-scaling,sewing pattern scaling calculator,패턴 확대축소 계산기,,,,todo
 3,sewing,elastic-length,elastic length calculator,고무줄 길이 계산기,,,,todo
@@ -53,3 +53,8 @@
 3,candle,diffuser-fragrance-ratio,reed diffuser fragrance ratio calculator,디퓨저 향료 비율 계산기,,,,todo
 3,soap,bath-bomb-recipe,bath bomb recipe calculator,배스밤 레시피 계산기,,,,todo
 3,soap,lotion-percentage,lotion formula percentage calculator,로션 배합 비율 계산기,,,,todo
+2,soap,essential-oil-dilution,essential oil dilution calculator,에센셜 오일 희석 계산기,,,low: spam pages on top (checked 2026-10-18),done
+2,macrame,macrame-cord-length,macrame cord length calculator,마크라메 끈 길이 계산기,,,low: no free tool; paid sheets only (checked 2026-10-18),done
+2,pottery,pottery-shrinkage,pottery clay shrinkage calculator,도자기 수축률 계산기,,,low: two generic calculator sites (checked 2026-10-18),done
+2,sewing,circle-skirt,circle skirt calculator,서큘러 스커트 계산기,,,medium: blogs and small sites (checked 2026-10-18),done
+2,sewing,bias-binding,continuous bias binding calculator,연속 바이어스 계산기,,,medium: So Sew Easy and FaveCrafts (checked 2026-10-18),done

@@ -1,0 +1,44 @@
+{
+  "slug": "pottery-shrinkage",
+  "category": "pottery",
+  "en": {
+    "title": "Pottery Shrinkage Calculator – Wet to Fired Clay Size",
+    "short": "Clay shrinkage",
+    "tagline": "Fired size, or the size to make",
+    "description": "Calculate how much a clay piece shrinks from wet to fired, or how big to make it to hit a target size. Includes a test-tile method to measure your own clay body.",
+    "h1": "Pottery Clay Shrinkage Calculator",
+    "intro": "Enter a size and your clay body's total shrinkage. The calculator shows the fired size, or works backwards to the size to throw or build so the finished piece comes out right.",
+    "howto": [
+      "Choose whether you know the wet size or the fired size you want.",
+      "Enter the total shrinkage from your clay's data sheet. Use the wet-to-final-firing figure, not just drying or bisque shrinkage.",
+      "For lids, sets or anything that must fit a fixed object, measure your own clay with a test tile and use that number instead.",
+      "Apply the scale factor to every dimension; shrinkage is the same in all directions for most bodies, though tall forms can slump slightly."
+    ],
+    "formula": "Fired size = wet size × (1 − shrinkage ÷ 100). Size to make = target fired size ÷ (1 − shrinkage ÷ 100). Measured shrinkage = (wet mark − fired mark) ÷ wet mark × 100. Example: a piece made 10 cm tall in a clay with 12% shrinkage fires to 8.8 cm; to finish at 10 cm, make it about 11.4 cm.",
+    "faq": [
+      { "q": "Why measure my own clay?", "a": "Published figures are averages. Your firing temperature, kiln and how wet you work the clay all shift the result by a percent or two, which matters for lids, tiles and pieces made to fit hardware." },
+      { "q": "Is shrinkage the same in every direction?", "a": "Roughly, for most clay bodies. Thrown forms can shrink slightly more in height than width, and large flat pieces may warp, so test with a form similar to the final piece when accuracy matters." },
+      { "q": "Does glaze change the size?", "a": "Not measurably. Glaze adds a fraction of a millimetre of thickness. Account for it only where a lid or insert must slide into a glazed opening." }
+    ]
+  },
+  "ko": {
+    "title": "도자기 수축률 계산기 – 성형 크기와 소성 후 크기",
+    "short": "점토 수축률",
+    "tagline": "소성 후 크기, 또는 만들 크기",
+    "description": "점토 작품이 성형부터 소성까지 얼마나 줄어드는지, 원하는 크기로 나오려면 얼마나 크게 만들어야 하는지 계산합니다. 테스트 타일로 내 점토의 수축률도 잴 수 있습니다.",
+    "h1": "도자기 점토 수축률 계산기",
+    "intro": "크기와 점토의 전체 수축률을 입력하면 소성 후 크기를 보여주거나, 거꾸로 원하는 완성 크기가 나오도록 물레나 손성형으로 만들 크기를 계산합니다.",
+    "howto": [
+      "성형 크기를 알고 있는지, 원하는 소성 후 크기를 알고 있는지 고릅니다.",
+      "점토 설명서의 전체 수축률을 입력합니다. 건조나 초벌 수축만이 아니라 성형부터 최종 소성까지의 값을 씁니다.",
+      "뚜껑, 세트, 정해진 물건에 맞춰야 하는 작품은 테스트 타일로 내 점토를 직접 재서 그 값을 쓰세요.",
+      "배율을 모든 치수에 적용합니다. 대부분의 점토는 방향마다 비슷하게 줄지만, 높은 형태는 살짝 주저앉을 수 있습니다."
+    ],
+    "formula": "소성 후 크기 = 성형 크기 × (1 − 수축률 ÷ 100). 만들 크기 = 원하는 소성 후 크기 ÷ (1 − 수축률 ÷ 100). 측정 수축률 = (성형 직후 선 길이 − 소성 후 선 길이) ÷ 성형 직후 선 길이 × 100. 예: 수축률 12%인 점토로 10 cm 높이를 만들면 8.8 cm가 되고, 10 cm로 완성하려면 약 11.4 cm로 만들어야 합니다.",
+    "faq": [
+      { "q": "왜 내 점토를 직접 재야 하나요?", "a": "제품에 적힌 값은 평균입니다. 소성 온도, 가마, 점토를 얼마나 질게 다루는지에 따라 1~2%씩 달라지고, 뚜껑이나 타일, 부속에 맞춰야 하는 작품에서는 그 차이가 중요합니다." },
+      { "q": "모든 방향으로 똑같이 줄어드나요?", "a": "대부분의 점토는 비슷합니다. 물레 성형한 형태는 폭보다 높이가 조금 더 줄 수 있고, 넓고 평평한 작품은 휠 수 있으니, 정확해야 한다면 완성품과 비슷한 형태로 시험해 보세요." },
+      { "q": "유약 때문에 크기가 달라지나요?", "a": "거의 달라지지 않습니다. 유약은 1 mm에도 못 미치는 두께를 더할 뿐이니, 뚜껑이나 끼움 부품이 유약 바른 입구에 들어가야 하는 경우에만 고려하면 됩니다." }
+    ]
+  }
+}

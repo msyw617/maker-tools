@@ -1,0 +1,50 @@
+---
+import Field from '../../components/Field.astro';
+import Step from '../../components/Step.astro';
+import Seg from '../../components/Seg.astro';
+import Readout from '../../components/Readout.astro';
+const { lang } = Astro.props;
+const t = {
+  en: { s1: 'Measurements', s2: 'Allowances and fabric', units: 'Units', waist: 'Waist circumference', wHint: 'Where the skirt will sit, measured snugly.', length: 'Finished skirt length', type: 'Skirt type', full: 'Full circle', three: 'Three-quarter circle', half: 'Half circle', quarter: 'Quarter circle', sa: 'Waist seam allowance', hem: 'Hem allowance', fw: 'Fabric width', cutR: 'Waist cutting radius', R: 'Hem cutting radius', r: 'Waist radius (stitching line)', pieceA: 'Fabric piece, short side', pieceB: 'Fabric piece, long side', buy: 'Fabric to buy (one piece)', ma: '', note: 'Both radii are measured from the same centre point. A dash in fabric to buy means the piece is wider than your fabric: cut it in panels and add seam allowances to the side seams.' },
+  ko: { s1: '치수', s2: '시접과 원단', units: '단위', waist: '허리 둘레', wHint: '스커트가 걸칠 위치를 꼭 맞게 잽니다.', length: '완성 스커트 길이', type: '스커트 종류', full: '풀 서큘러 (원)', three: '3/4 서큘러', half: '하프 서큘러 (반원)', quarter: '쿼터 서큘러', sa: '허리 시접', hem: '밑단 시접', fw: '원단 폭', cutR: '허리 재단 반지름', R: '밑단 재단 반지름', r: '허리 반지름 (완성선)', pieceA: '원단 조각 짧은 변', pieceB: '원단 조각 긴 변', buy: '구매할 원단 (한 장 재단)', ma: '마 단위 (1마 = 90 cm)', note: '두 반지름은 같은 중심점에서 잽니다. 구매할 원단이 대시(—)면 조각이 원단 폭보다 넓다는 뜻이니, 여러 폭으로 나눠 재단하고 옆선 시접을 더하세요.' },
+}[lang];
+const d = lang === 'ko'
+  ? { unit: 'cm', waist: 70, length: 60, sa: 1.5, hem: 2.5, fw: 150, widths: [110, 140, 150] }
+  : { unit: 'in', waist: 28, length: 22, sa: 0.625, hem: 1, fw: 60, widths: [44, 54, 60] };
+const units = [{ value: 'in', label: 'in · yd' }, { value: 'cm', label: 'cm · m' }];
+const types = [{ value: 1, label: t.full }, { value: 0.75, label: t.three }, { value: 0.5, label: t.half }, { value: 0.25, label: t.quarter }];
+const items = [
+  { label: t.cutR, out: 'cutR', unitOut: 'unit', size: 'xl' },
+  { label: t.R, out: 'R', unitOut: 'unit', size: 'lg' },
+  { label: t.buy, out: 'buy', unitOut: 'lunit' },
+  ...(lang === 'ko' ? [{ label: t.ma, out: 'ma', unit: '마' }] : []),
+  { label: t.r, out: 'r', unitOut: 'unit' },
+  { label: t.pieceA, out: 'pieceA', unitOut: 'unit' },
+  { label: t.pieceB, out: 'pieceB', unitOut: 'unit' },
+];
+---
+<form class="tool wrap" id="circle-skirt">
+  <div class="inputs">
+    <Step n="1" title={t.s1}>
+      <Seg slot="head" name="unit" label={t.units} options={units} checked={d.unit} />
+      <div class="fields">
+        <Field label={t.waist} name="waist" value={d.waist} unitOut="unit" hint={t.wHint} />
+        <Field label={t.length} name="length" value={d.length} unitOut="unit" />
+        <Field label={t.type} name="type" value="1" options={types} />
+      </div>
+    </Step>
+    <Step n="2" title={t.s2}>
+      <div class="fields">
+        <Field label={t.sa} name="sa" value={d.sa} unitOut="unit" step="0.125" />
+        <Field label={t.hem} name="hem" value={d.hem} unitOut="unit" step="0.125" />
+        <Field label={t.fw} name="fw" value={d.fw} unitOut="unit" presets={d.widths} />
+      </div>
+    </Step>
+  </div>
+  <Readout lang={lang} note={t.note} items={items} />
+</form>
+<script>
+  import { wire } from '../form.js';
+  import { compute } from './calc.js';
+  wire('circle-skirt', compute);
+</script>

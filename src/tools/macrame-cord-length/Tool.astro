@@ -1,0 +1,44 @@
+---
+import Field from '../../components/Field.astro';
+import Step from '../../components/Step.astro';
+import Seg from '../../components/Seg.astro';
+import Readout from '../../components/Readout.astro';
+const { lang } = Astro.props;
+const t = {
+  en: { s1: 'Finished piece', s2: 'Cords', units: 'Units', finished: 'Finished length (without fringe)', fringe: 'Fringe length', density: 'Knotting', open: 'Open or spaced knots (×4)', tight: 'Tight knots (×5)', complex: 'Complex or dense knots (×6)', folded: 'Cords are folded in half over a dowel or ring', count: 'Number of cords to cut', extra: 'Safety margin', roll: 'Cord per roll', cut: 'Cut each cord', total: 'Total cord', rolls: 'Rolls to buy', note: 'A rule-of-thumb estimate. Thicker cord and tighter knots use more; cut one test cord for a new pattern.' },
+  ko: { s1: '완성 작품', s2: '끈', units: '단위', finished: '완성 길이 (술 제외)', fringe: '술 길이', density: '매듭 밀도', open: '듬성듬성한 매듭 (×4)', tight: '촘촘한 매듭 (×5)', complex: '복잡하거나 빽빽한 매듭 (×6)', folded: '끈을 반으로 접어 막대나 링에 건다', count: '자를 끈 개수', extra: '안전 여유분', roll: '한 롤 길이', cut: '끈 하나 자를 길이', total: '전체 끈 길이', rolls: '구매할 롤 수', note: '경험칙에 따른 추정치입니다. 끈이 굵고 매듭이 촘촘할수록 더 쓰므로, 새 도안은 끈 하나를 먼저 시험해 보세요.' },
+}[lang];
+const d = lang === 'ko' ? { unit: 'cm', finished: 60, fringe: 15 } : { unit: 'in', finished: 24, fringe: 6 };
+const units = [{ value: 'cm', label: 'cm · m' }, { value: 'in', label: 'in · yd' }];
+const densities = [{ value: 4, label: t.open }, { value: 5, label: t.tight }, { value: 6, label: t.complex }];
+---
+<form class="tool wrap" id="macrame-cord-length">
+  <div class="inputs">
+    <Step n="1" title={t.s1}>
+      <Seg slot="head" name="unit" label={t.units} options={units} checked={d.unit} />
+      <div class="fields">
+        <Field label={t.finished} name="finished" value={d.finished} unitOut="unit" />
+        <Field label={t.fringe} name="fringe" value={d.fringe} unitOut="unit" />
+        <Field label={t.density} name="density" value="5" options={densities} />
+      </div>
+    </Step>
+    <Step n="2" title={t.s2}>
+      <div class="fields">
+        <Field label={t.count} name="count" value="12" min="1" step="1" inputmode="numeric" />
+        <Field label={t.extra} name="extra" value="10" unit="%" max="50" step="1" presets={[0, 10, 20]} suffix="%" />
+        <Field label={t.roll} name="roll" value="100" unitOut="lunit" />
+      </div>
+      <label class="check"><input type="checkbox" name="folded" checked />{t.folded}</label>
+    </Step>
+  </div>
+  <Readout lang={lang} note={t.note} items={[
+    { label: t.cut, out: 'cut', unitOut: 'unit', size: 'xl' },
+    { label: t.total, out: 'total', unitOut: 'lunit', size: 'lg' },
+    { label: t.rolls, out: 'rolls' },
+  ]} />
+</form>
+<script>
+  import { wire } from '../form.js';
+  import { compute } from './calc.js';
+  wire('macrame-cord-length', compute);
+</script>

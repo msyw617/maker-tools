@@ -1,0 +1,47 @@
+---
+import Field from '../../components/Field.astro';
+import Step from '../../components/Step.astro';
+import Seg from '../../components/Seg.astro';
+import Readout from '../../components/Readout.astro';
+const { lang } = Astro.props;
+const t = {
+  en: { s1: 'Quilt', s2: 'Binding strips', units: 'Units', qw: 'Quilt width', ql: 'Quilt length', extra: 'Extra for corners and joining the ends', strip: 'Strip width', stripHint: '2.5 in is standard for double-fold binding.', fw: 'Usable fabric width', join: 'How strips are joined', diagonal: 'Diagonal seams', straight: 'Straight seams', buy: 'Fabric to buy', ma: '', strips: 'Strips to cut', total: 'Binding length needed', note: 'Rounded up to the next 1/8 yard or 10 cm.' },
+  ko: { s1: '퀼트', s2: '바인딩 스트립', units: '단위', qw: '퀼트 가로', ql: '퀼트 세로', extra: '모서리·양끝 연결 여유분', strip: '스트립 폭', stripHint: '두 겹 바인딩은 6 cm가 표준입니다.', fw: '원단 사용 폭', join: '스트립 잇는 방법', diagonal: '사선 이음', straight: '일자 이음', buy: '구매할 원단', ma: '마 단위 (1마 = 90 cm)', strips: '자를 스트립 수', total: '필요한 바인딩 길이', note: '10 cm와 0.5마 단위로 올립니다.' },
+}[lang];
+const d = lang === 'ko'
+  ? { unit: 'cm', qw: 150, ql: 200, extra: 25, strip: 6, fw: 110, strips: [5.5, 6, 6.5] }
+  : { unit: 'in', qw: 60, ql: 80, extra: 10, strip: 2.5, fw: 42, strips: [2.25, 2.5, 2.75] };
+const units = [{ value: 'in', label: 'in · yd' }, { value: 'cm', label: 'cm · m' }];
+const joins = [{ value: 'diagonal', label: t.diagonal }, { value: 'straight', label: t.straight }];
+const items = [
+  { label: t.buy, out: 'buy', unitOut: 'lunit', size: 'xl' },
+  ...(lang === 'ko' ? [{ label: t.ma, out: 'ma', unit: '마', size: 'lg' }] : []),
+  { label: t.strips, out: 'strips', ...(lang === 'ko' ? {} : { size: 'lg' }) },
+  { label: t.total, out: 'total', unitOut: 'unit' },
+];
+---
+<form class="tool wrap" id="quilt-binding">
+  <div class="inputs">
+    <Step n="1" title={t.s1}>
+      <Seg slot="head" name="unit" label={t.units} options={units} checked={d.unit} />
+      <div class="fields">
+        <Field label={t.qw} name="qw" value={d.qw} unitOut="unit" />
+        <Field label={t.ql} name="ql" value={d.ql} unitOut="unit" />
+        <Field label={t.extra} name="extra" value={d.extra} unitOut="unit" />
+      </div>
+    </Step>
+    <Step n="2" title={t.s2}>
+      <div class="fields">
+        <Field label={t.strip} name="strip" value={d.strip} unitOut="unit" step="0.05" presets={d.strips} hint={t.stripHint} />
+        <Field label={t.fw} name="fw" value={d.fw} unitOut="unit" />
+        <Field label={t.join} name="join" value="diagonal" options={joins} />
+      </div>
+    </Step>
+  </div>
+  <Readout lang={lang} note={t.note} items={items} />
+</form>
+<script>
+  import { wire } from '../form.js';
+  import { compute } from './calc.js';
+  wire('quilt-binding', compute);
+</script>

@@ -1,0 +1,45 @@
+---
+import Field from '../../components/Field.astro';
+import Step from '../../components/Step.astro';
+import Seg from '../../components/Seg.astro';
+import Readout from '../../components/Readout.astro';
+const { lang } = Astro.props;
+const t = {
+  en: { s1: 'Size', s2: 'Your clay', s3: 'Measure your clay (optional)', units: 'Units', mode: 'I know the', toFired: 'Wet size: show the fired size', toWet: 'Fired size I want: show the size to make', size: 'Size', s: 'Total shrinkage', sHint: 'From your clay body’s data sheet, wet to final firing. Stoneware is often 10–13% and porcelain 12–16%.', tileWet: 'Test tile mark, wet', tileFired: 'Same mark after firing', tileHint: 'Scratch a 10 cm or 4 in line into a wet tile, fire it with your usual schedule, and measure again.', result: 'Result size', scale: 'Scale factor', measured: 'Your clay’s measured shrinkage' },
+  ko: { s1: '크기', s2: '내 점토', s3: '내 점토 측정하기 (선택)', units: '단위', mode: '알고 있는 값', toFired: '성형 크기 → 소성 후 크기', toWet: '원하는 소성 후 크기 → 만들 크기', size: '크기', s: '전체 수축률', sHint: '점토 제품 설명서의 성형부터 최종 소성까지 수축률. 석기질은 보통 10~13%, 백자토(포슬린)는 12~16%입니다.', tileWet: '테스트 타일 선 길이 (성형 직후)', tileFired: '같은 선의 소성 후 길이', tileHint: '젖은 타일에 10 cm 선을 긋고 평소 일정으로 소성한 뒤 다시 재세요.', result: '결과 크기', scale: '배율', measured: '측정한 내 점토 수축률' },
+}[lang];
+const units = [{ value: 'cm', label: 'cm' }, { value: 'in', label: 'in' }];
+const modes = [{ value: 'toFired', label: t.toFired }, { value: 'toWet', label: t.toWet }];
+---
+<form class="tool wrap" id="pottery-shrinkage">
+  <div class="inputs">
+    <Step n="1" title={t.s1}>
+      <Seg slot="head" name="unit" label={t.units} options={units} checked={lang === 'ko' ? 'cm' : 'in'} />
+      <div class="fields">
+        <Field label={t.mode} name="mode" value="toFired" options={modes} />
+        <Field label={t.size} name="size" value="10" unitOut="unit" />
+      </div>
+    </Step>
+    <Step n="2" title={t.s2}>
+      <div class="fields">
+        <Field label={t.s} name="s" value="12" unit="%" max="30" step="0.5" presets={[8, 10, 12, 14]} suffix="%" hint={t.sHint} />
+      </div>
+    </Step>
+    <Step n="3" title={t.s3}>
+      <div class="fields">
+        <Field label={t.tileWet} name="tileWet" value="" placeholder="10" unitOut="unit" />
+        <Field label={t.tileFired} name="tileFired" value="" placeholder="8.8" unitOut="unit" hint={t.tileHint} />
+      </div>
+    </Step>
+  </div>
+  <Readout lang={lang} items={[
+    { label: t.result, out: 'result', unitOut: 'unit', size: 'xl' },
+    { label: t.scale, out: 'scale', unit: '%', size: 'lg' },
+    { label: t.measured, out: 'measured', unit: '%' },
+  ]} />
+</form>
+<script>
+  import { wire } from '../form.js';
+  import { compute } from './calc.js';
+  wire('pottery-shrinkage', compute);
+</script>

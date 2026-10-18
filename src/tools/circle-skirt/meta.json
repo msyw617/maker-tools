@@ -1,0 +1,44 @@
+{
+  "slug": "circle-skirt",
+  "category": "sewing",
+  "en": {
+    "title": "Circle Skirt Calculator – Waist Radius, Length and Fabric",
+    "short": "Circle skirt",
+    "tagline": "Cutting radii and fabric for any circle skirt",
+    "description": "Draft a full, three-quarter, half or quarter circle skirt. Get the waist and hem cutting radii with seam and hem allowances, and the fabric to buy.",
+    "h1": "Circle Skirt Calculator",
+    "intro": "Enter your waist, the finished length and the type of circle skirt. The calculator gives the two radii to mark from one centre point, with seam and hem allowances included, and how much fabric a one-piece cut needs.",
+    "howto": [
+      "Measure your waist where the skirt will sit, snugly but not tight, and decide on the finished length.",
+      "Choose the skirt type. A full circle has the most swing; half and quarter circles use far less fabric and hang closer to the body.",
+      "Enter your waist seam allowance and hem allowance. A narrow rolled hem needs as little as 1/4 in (6 mm).",
+      "Mark the waist cutting radius and the hem cutting radius from the same point on folded fabric, then cut along both curves."
+    ],
+    "formula": "Waist radius = waist ÷ (2π × fraction of a circle: 1, 3/4, 1/2 or 1/4). Waist cutting radius = waist radius − seam allowance. Hem cutting radius = waist radius + finished length + hem allowance. A full or three-quarter circle needs a square of side 2 × hem radius, a half circle 2 × hem radius by one hem radius, and a quarter circle one hem radius square. Example: a 70 cm waist full circle skirt 60 cm long has a waist radius of 11.1 cm and a hem cutting radius of 73.6 cm, so it fits on 150 cm fabric in one 1.5 m piece.",
+    "faq": [
+      { "q": "Why is the waist cut smaller than the waist radius?", "a": "The seam allowance sits inside the waist curve, so the cutting line is one seam allowance closer to the centre. When you sew the waistband on at the allowance, the stitching line is exactly your waist measurement." },
+      { "q": "My skirt is wider than my fabric. What now?", "a": "Cut it in panels: two half circles for a full skirt, or quarter-circle panels, each with a side-seam allowance added. The calculator shows a dash for fabric when one piece will not fit." },
+      { "q": "Why does the hem look uneven after a day?", "a": "Parts of a circle skirt hang on the bias and stretch under their own weight. Hang the finished skirt for 24 hours before levelling and hemming." }
+    ]
+  },
+  "ko": {
+    "title": "서큘러 스커트 계산기 – 허리 반지름·길이·원단 양",
+    "short": "서큘러 스커트",
+    "tagline": "서큘러 스커트 재단 반지름과 원단",
+    "description": "풀, 3/4, 하프, 쿼터 서큘러 스커트의 허리·밑단 재단 반지름을 시접 포함으로 계산하고, 필요한 원단 양을 알려줍니다.",
+    "h1": "서큘러 스커트 계산기",
+    "intro": "허리 둘레, 완성 길이, 스커트 종류를 입력하면 한 중심점에서 그릴 두 반지름을 시접과 밑단 시접까지 포함해 계산하고, 한 장으로 재단할 때 필요한 원단 양을 알려줍니다.",
+    "howto": [
+      "스커트가 걸칠 위치의 허리 둘레를 꼭 맞되 조이지 않게 재고, 완성 길이를 정합니다.",
+      "스커트 종류를 고릅니다. 풀 서큘러가 가장 풍성하고, 하프·쿼터는 원단이 훨씬 적게 들며 몸에 가깝게 떨어집니다.",
+      "허리 시접과 밑단 시접을 입력합니다. 말아박기 밑단은 0.6 cm 정도면 됩니다.",
+      "접은 원단의 같은 점에서 허리 재단 반지름과 밑단 재단 반지름을 표시하고 두 곡선을 따라 자릅니다."
+    ],
+    "formula": "허리 반지름 = 허리 둘레 ÷ (2π × 원의 비율: 1, 3/4, 1/2, 1/4). 허리 재단 반지름 = 허리 반지름 − 허리 시접. 밑단 재단 반지름 = 허리 반지름 + 완성 길이 + 밑단 시접. 풀·3/4 서큘러는 한 변이 밑단 반지름 × 2인 정사각형, 하프는 밑단 반지름 × 2 × 밑단 반지름, 쿼터는 한 변이 밑단 반지름인 정사각형 원단이 필요합니다. 예: 허리 70 cm, 길이 60 cm 풀 서큘러는 허리 반지름 11.1 cm, 밑단 재단 반지름 73.6 cm이므로 150 cm 폭 원단 1.5 m 한 장에 들어갑니다.",
+    "faq": [
+      { "q": "허리를 허리 반지름보다 작게 자르는 이유는?", "a": "시접이 허리 곡선 안쪽에 있기 때문에 재단선은 시접만큼 중심에 가깝습니다. 그 시접으로 허리밴드를 달면 완성선이 정확히 허리 둘레가 됩니다." },
+      { "q": "스커트가 원단 폭보다 넓으면요?", "a": "여러 장으로 나눠 재단합니다. 풀 서큘러는 반원 두 장, 또는 쿼터 조각 여러 장으로 자르고 각 옆선에 시접을 더하세요. 한 장에 들어가지 않으면 계산기가 원단을 대시로 표시합니다." },
+      { "q": "하루 지나면 밑단이 고르지 않아요.", "a": "서큘러 스커트는 일부가 바이어스 방향이라 자체 무게로 늘어납니다. 완성한 스커트를 24시간 걸어 둔 뒤 밑단을 다시 맞추고 박으세요." }
+    ]
+  }
+}

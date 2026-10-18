@@ -1,0 +1,42 @@
+---
+import Field from '../../components/Field.astro';
+import Step from '../../components/Step.astro';
+import Seg from '../../components/Seg.astro';
+import Readout from '../../components/Readout.astro';
+const { lang } = Astro.props;
+const t = {
+  en: { s1: 'Bias you need', s2: 'Fabric', units: 'Units', need: 'Length of bias binding needed', needHint: 'For a quilt or tablecloth, use the perimeter: 2 × (width + length).', strip: 'Strip width', stripHint: '2.5 in for double-fold quilt binding, 2 in for 1/2 in double-fold bias tape.', extra: 'Extra for joins and finishing', fw: 'Usable fabric width', side: 'Cut a square of', yieldLen: 'Bias from that square', buy: 'Fabric to buy', ma: '', note: 'Seam losses where the tube is joined are covered by the extra allowance.' },
+  ko: { s1: '필요한 바이어스', s2: '원단', units: '단위', need: '필요한 바이어스 길이', needHint: '퀼트나 식탁보는 둘레(2 × (가로 + 세로))를 넣으세요.', strip: '스트립 폭', stripHint: '두 겹 퀼트 바인딩은 6 cm, 1.2 cm 두 겹 바이어스 테이프는 5 cm 정도입니다.', extra: '이음·마감 여유분', fw: '원단 사용 폭', side: '잘라낼 정사각형 한 변', yieldLen: '그 정사각형에서 나오는 바이어스', buy: '구매할 원단', ma: '마 단위 (1마 = 90 cm)', note: '튜브를 이을 때 생기는 시접 손실은 여유분에 포함됩니다.' },
+}[lang];
+const d = lang === 'ko' ? { unit: 'cm', need: 725, strip: 6, fw: 110 } : { unit: 'in', need: 290, strip: 2.5, fw: 42 };
+const units = [{ value: 'in', label: 'in · yd' }, { value: 'cm', label: 'cm · m' }];
+const items = [
+  { label: t.side, out: 'side', unitOut: 'unit', size: 'xl' },
+  { label: t.yieldLen, out: 'yieldLen', unitOut: 'unit', size: 'lg' },
+  { label: t.buy, out: 'buy', unitOut: 'lunit' },
+  ...(lang === 'ko' ? [{ label: t.ma, out: 'ma', unit: '마' }] : []),
+];
+---
+<form class="tool wrap" id="bias-binding">
+  <div class="inputs">
+    <Step n="1" title={t.s1}>
+      <Seg slot="head" name="unit" label={t.units} options={units} checked={d.unit} />
+      <div class="fields">
+        <Field label={t.need} name="need" value={d.need} unitOut="unit" hint={t.needHint} />
+        <Field label={t.strip} name="strip" value={d.strip} unitOut="unit" step="0.05" hint={t.stripHint} />
+        <Field label={t.extra} name="extra" value="10" unit="%" max="50" step="1" presets={[5, 10, 15]} suffix="%" />
+      </div>
+    </Step>
+    <Step n="2" title={t.s2}>
+      <div class="fields">
+        <Field label={t.fw} name="fw" value={d.fw} unitOut="unit" />
+      </div>
+    </Step>
+  </div>
+  <Readout lang={lang} note={t.note} items={items} />
+</form>
+<script>
+  import { wire } from '../form.js';
+  import { compute } from './calc.js';
+  wire('bias-binding', compute);
+</script>

@@ -16,6 +16,14 @@ export const CATEGORIES = {
     en: 'Knitting & crochet', ko: '뜨개', tint: '#F5DEE4', ink: '#9B3550',
     icon: '<circle cx="12" cy="12" r="8"/><path d="M6.5 6.2c3.2 1.3 7 5.6 8.2 13.4"/><path d="M10 4.2c2.2 2.4 5 7.3 5.6 12.6"/><path d="M4.3 13.2c3.6-1.1 9.5.7 12.2 5"/>',
   },
+  macrame: {
+    en: 'Macramé & cord', ko: '마크라메', tint: '#ECE7DF', ink: '#5B4A36',
+    icon: '<path d="M3 4h18"/><path d="M8 4v6l4 4 4-4V4"/><path d="M12 14v7"/><path d="M8 10v10M16 10v10"/>',
+  },
+  pottery: {
+    en: 'Pottery & ceramics', ko: '도예', tint: '#F2D9CF', ink: '#93402A',
+    icon: '<path d="M8 3h8"/><path d="M9 3v3c-3 1.5-4 4-4 7 0 4 3 8 7 8s7-4 7-8c0-3-1-5.5-4-7V3"/>',
+  },
   sewing: {
     en: 'Sewing & quilting', ko: '재봉·퀼트', tint: '#E6E2F3', ink: '#4B3F8F',
     icon: '<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9"/><path d="M14.5 14.5 20 20"/><path d="M8.1 8.1 12 12"/>',

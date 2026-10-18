@@ -14,7 +14,7 @@ npm test          # check.mjs: 도구별 계산 예제 검증
 ## 구조
 
 ```
-backlog.csv                     도구 백로그 54개 (priority 1 = 첫 10개). volume 열은 Keyword Planner로 채움
+backlog.csv                     도구 백로그 (status: todo/wip/done). volume 열은 Keyword Planner로 채움
 src/layouts/Base.astro          공용 레이아웃: head/hreflang/글꼴/헤더/푸터
 src/styles/site.css             커팅매트 디자인 전체 CSS (색 토큰, 매트·눈금자, 카드, 입력칸, 결과 패널, 모바일 결과 바, 인쇄)
 src/styles/ko-fonts.css         한국어 페이지에서만 불러오는 IBM Plex Sans KR (비차단 로드)

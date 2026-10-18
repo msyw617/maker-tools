@@ -1,0 +1,47 @@
+---
+import Field from '../../components/Field.astro';
+import Step from '../../components/Step.astro';
+import Seg from '../../components/Seg.astro';
+import Readout from '../../components/Readout.astro';
+const { lang } = Astro.props;
+const t = {
+  en: { s1: 'Quilt top', s2: 'Backing fabric', units: 'Units', qw: 'Quilt width', ql: 'Quilt length', extra: 'Extra on each side', extraHint: 'Longarm quilters usually ask for 4 in.', fw: 'Usable fabric width', fwHint: 'About 42 in for quilting cotton, 108 in for wide-back.', seam: 'Seam allowance for joining panels', buy: 'Buy', ma: '', W: 'Backing width', L: 'Backing length', lengthwise: 'If seams run lengthwise', crosswise: 'If seams run crosswise', note: 'Rounded up to the next 1/8 yard or 10 cm, using whichever seam direction needs less fabric.' },
+  ko: { s1: '퀼트 탑', s2: '뒷감 원단', units: '단위', qw: '퀼트 가로', ql: '퀼트 세로', extra: '사방 여유분', extraHint: '롱암 퀼팅은 보통 10 cm를 요청합니다.', fw: '원단 사용 폭', fwHint: '면 원단 약 110 cm, 광폭 원단 약 280 cm.', seam: '폭을 이을 때 시접', buy: '구매 길이', ma: '마 단위 (1마 = 90 cm)', W: '뒷감 가로', L: '뒷감 세로', lengthwise: '세로로 이을 때', crosswise: '가로로 이을 때', note: '원단이 덜 드는 이음 방향으로 계산해 10 cm와 0.5마 단위로 올립니다.' },
+}[lang];
+const d = lang === 'ko'
+  ? { unit: 'cm', qw: 150, ql: 200, extra: 10, fw: 110, seam: 1.5, extras: [5, 8, 10], widths: [110, 150, 280] }
+  : { unit: 'in', qw: 60, ql: 80, extra: 4, fw: 42, seam: 0.5, extras: [2, 3, 4], widths: [42, 60, 108] };
+const units = [{ value: 'in', label: 'in · yd' }, { value: 'cm', label: 'cm · m' }];
+const items = [
+  { label: t.buy, out: 'buy', unitOut: 'lunit', size: 'xl' },
+  ...(lang === 'ko' ? [{ label: t.ma, out: 'ma', unit: '마', size: 'lg' }] : []),
+  { label: t.W, out: 'W', unitOut: 'unit' },
+  { label: t.L, out: 'L', unitOut: 'unit' },
+  { label: t.lengthwise, out: 'lengthwise', unitOut: 'lunit' },
+  { label: t.crosswise, out: 'crosswise', unitOut: 'lunit' },
+];
+---
+<form class="tool wrap" id="quilt-backing">
+  <div class="inputs">
+    <Step n="1" title={t.s1}>
+      <Seg slot="head" name="unit" label={t.units} options={units} checked={d.unit} />
+      <div class="fields">
+        <Field label={t.qw} name="qw" value={d.qw} unitOut="unit" />
+        <Field label={t.ql} name="ql" value={d.ql} unitOut="unit" />
+        <Field label={t.extra} name="extra" value={d.extra} unitOut="unit" presets={d.extras} hint={t.extraHint} />
+      </div>
+    </Step>
+    <Step n="2" title={t.s2}>
+      <div class="fields">
+        <Field label={t.fw} name="fw" value={d.fw} unitOut="unit" presets={d.widths} hint={t.fwHint} />
+        <Field label={t.seam} name="seam" value={d.seam} unitOut="unit" step="0.1" />
+      </div>
+    </Step>
+  </div>
+  <Readout lang={lang} note={t.note} items={items} />
+</form>
+<script>
+  import { wire } from '../form.js';
+  import { compute } from './calc.js';
+  wire('quilt-backing', compute);
+</script>

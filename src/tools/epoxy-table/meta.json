@@ -1,0 +1,44 @@
+{
+  "slug": "epoxy-table",
+  "category": "resin",
+  "en": {
+    "title": "Epoxy Table Calculator – How Much Resin for a Tabletop or River Table",
+    "short": "Epoxy table",
+    "tagline": "Resin for tabletops and river pours",
+    "description": "Calculate how much epoxy resin you need for a bar top, tabletop or river table. Get gallons or litres, part A and part B, and how many pours your depth needs.",
+    "h1": "Epoxy Table Calculator (Tabletop and River Table)",
+    "intro": "Enter the area you are filling or coating and how deep it is. The calculator gives the total resin to mix, splits it into part A and part B by your kit's ratio, and tells you how many layers to pour.",
+    "howto": [
+      "For a flood coat, measure the whole tabletop. For a river table or void fill, measure the river's length, its average width and its depth.",
+      "Enter the thickness. A flood coat is usually 1/8 in (3 mm); a river pour is as deep as the gap.",
+      "Enter your kit's mixing ratio by volume, such as 1:1 or 2:1, and the maximum pour depth from its data sheet.",
+      "Add 5–10% for resin left in buckets and on tools, then mix in batches no larger than the label allows."
+    ],
+    "formula": "Volume = length × width × depth (or π × (diameter ÷ 2)² × depth for a round top) × (1 + waste ÷ 100). Cubic inches are converted at 16.387 ml, and 1 US gallon = 3,785 ml. Part A = total × A ÷ (A + B), part B = total × B ÷ (A + B). Pours = depth ÷ maximum pour depth, rounded up. Example: a 36 × 60 in top coated 1/8 in thick needs 270 cubic inches, about 1.17 gallons before waste.",
+    "faq": [
+      { "q": "Why does pour depth matter?", "a": "Epoxy gives off heat as it cures. Pouring deeper than the resin is made for traps that heat, which can crack, yellow or bubble the piece. Coating resins are typically limited to about 1/8 in per layer; deep-pour resins can go 1–2 in or more." },
+      { "q": "Does wood soak up extra resin?", "a": "Yes. Bare wood absorbs resin and releases air. Seal-coat the wood with a thin layer first, and add a little more to the waste allowance for porous or live-edge slabs." },
+      { "q": "Can I mix the whole amount at once?", "a": "Only if it is within the batch size your resin allows. Large batches cure faster and hotter in the bucket, so mixing several smaller batches is safer for deep pours." }
+    ]
+  },
+  "ko": {
+    "title": "에폭시 테이블 계산기 – 테이블 코팅·리버 테이블 레진 양",
+    "short": "에폭시 테이블",
+    "tagline": "테이블 코팅과 리버 테이블 레진 양",
+    "description": "바 테이블, 테이블 상판 코팅, 리버 테이블에 필요한 에폭시 레진 양을 계산합니다. 리터·갤런, 주제와 경화제 양, 나눠 부을 횟수를 알려줍니다.",
+    "h1": "에폭시 테이블 계산기 (코팅·리버 테이블)",
+    "intro": "채우거나 코팅할 면적과 두께를 입력하면 섞어야 할 레진 총량을 계산하고, 제품 비율대로 주제(A)와 경화제(B)로 나눈 뒤 몇 번에 나눠 부어야 하는지 알려줍니다.",
+    "howto": [
+      "상판 코팅은 테이블 전체를, 리버 테이블이나 빈 틈 채우기는 리버의 길이와 평균 폭, 깊이를 잽니다.",
+      "두께를 입력합니다. 상판 코팅은 보통 0.3 cm, 리버는 틈의 깊이만큼입니다.",
+      "제품의 부피 기준 혼합 비율(1:1, 2:1 등)과 설명서에 적힌 1회 최대 타설 두께를 입력합니다.",
+      "통과 도구에 남는 양으로 5~10%를 더하고, 제품이 허용하는 양 이하로 나눠 섞습니다."
+    ],
+    "formula": "부피 = 길이 × 폭 × 두께(원형은 π × (지름 ÷ 2)² × 두께) × (1 + 손실분 ÷ 100). 1세제곱인치 = 16.387 ml, 1 US 갤런 = 3,785 ml로 환산합니다. 주제 = 총량 × A ÷ (A + B), 경화제 = 총량 × B ÷ (A + B). 타설 횟수 = 두께 ÷ 1회 최대 두께를 올림. 예: 150 × 90 cm 상판을 0.3 cm로 코팅하면 4,050 ml, 약 4.05 L가 필요합니다.",
+    "faq": [
+      { "q": "1회 타설 두께가 왜 중요한가요?", "a": "에폭시는 굳으면서 열을 냅니다. 제품이 허용하는 두께보다 두껍게 부으면 열이 갇혀 갈라지거나 누렇게 변하거나 기포가 생길 수 있습니다. 코팅용 레진은 보통 한 층에 0.3 cm 정도, 딥 포어용은 2.5~5 cm 이상까지 가능합니다." },
+      { "q": "나무가 레진을 더 먹나요?", "a": "네. 마른 나무는 레진을 흡수하고 공기를 내뱉습니다. 먼저 얇게 실코팅을 하고, 다공성이거나 원목 테두리가 살아 있는 상판은 손실분을 조금 더 잡으세요." },
+      { "q": "전체 양을 한 번에 섞어도 되나요?", "a": "제품이 허용하는 배치 크기 안일 때만 그렇습니다. 많은 양을 한 번에 섞으면 통 안에서 더 빨리, 더 뜨겁게 굳으므로 깊게 부을 때는 여러 번 나눠 섞는 편이 안전합니다." }
+    ]
+  }
+}

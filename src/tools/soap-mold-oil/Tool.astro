@@ -1,0 +1,44 @@
+---
+import Field from '../../components/Field.astro';
+import Step from '../../components/Step.astro';
+import Seg from '../../components/Seg.astro';
+import Readout from '../../components/Readout.astro';
+const { lang } = Astro.props;
+const t = {
+  en: { s1: 'Your mold', s2: 'Batch', units: 'Units', shape: 'Mold shape', rect: 'Loaf, slab or box', cyl: 'Round tube', l: 'Inside length', w: 'Inside width', d: 'Inside diameter', h: 'Pour depth', count: 'Number of molds', adjust: 'Adjustment', adjustHint: '100% is the standard 0.40 oz per cubic inch. Use 95% or 105% if your molds usually overfill or come out short.', total: 'Total oils for the batch', per: 'Oils per mold', vol: 'Mold volume', note: 'Split the total by your recipe percentages and enter each oil in the soap lye calculator.' },
+  ko: { s1: '몰드', s2: '배치', units: '단위', shape: '몰드 모양', rect: '식빵·사각·슬랩 몰드', cyl: '원통 몰드', l: '안쪽 가로', w: '안쪽 세로', d: '안쪽 지름', h: '부을 높이', count: '몰드 수', adjust: '보정값', adjustHint: '100%는 표준 계수(0.40 oz/in³)입니다. 평소 몰드가 넘치거나 모자라면 95%나 105%를 쓰세요.', total: '배치 전체 오일 양', per: '몰드 1개당 오일', vol: '몰드 부피', note: '오일 총량을 레시피 비율대로 나눠 비누 가성소다 계산기에 입력하세요.' },
+}[lang];
+const units = [{ value: 'cm', label: 'cm · g' }, { value: 'in', label: 'in · oz' }];
+const shapes = [{ value: 'rect', label: t.rect }, { value: 'cyl', label: t.cyl }];
+const d = lang === 'ko' ? { unit: 'cm', l: 30, w: 9, d: 8, h: 6 } : { unit: 'in', l: 12, w: 3.5, d: 3, h: 2.5 };
+---
+<form class="tool wrap" id="soap-mold-oil">
+  <div class="inputs">
+    <Step n="1" title={t.s1}>
+      <Seg slot="head" name="unit" label={t.units} options={units} checked={d.unit} />
+      <div class="fields">
+        <Field label={t.shape} name="shape" value="rect" options={shapes} />
+        <Field label={t.l} name="l" value={d.l} unitOut="dunit" show="shape=rect" />
+        <Field label={t.w} name="w" value={d.w} unitOut="dunit" show="shape=rect" />
+        <Field label={t.d} name="d" value={d.d} unitOut="dunit" show="shape=cyl" />
+        <Field label={t.h} name="h" value={d.h} unitOut="dunit" />
+      </div>
+    </Step>
+    <Step n="2" title={t.s2}>
+      <div class="fields">
+        <Field label={t.count} name="count" value="1" min="1" step="1" inputmode="numeric" />
+        <Field label={t.adjust} name="adjust" value="100" unit="%" min="80" max="120" step="1" presets={[95, 100, 105]} suffix="%" hint={t.adjustHint} />
+      </div>
+    </Step>
+  </div>
+  <Readout lang={lang} note={t.note} items={[
+    { label: t.total, out: 'total', unitOut: 'wunit', size: 'xl' },
+    { label: t.per, out: 'perMold', unitOut: 'wunit', size: 'lg' },
+    { label: t.vol, out: 'vol', unitOut: 'vunit' },
+  ]} />
+</form>
+<script>
+  import { wire } from '../form.js';
+  import { compute } from './calc.js';
+  wire('soap-mold-oil', compute);
+</script>

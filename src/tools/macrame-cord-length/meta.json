@@ -1,0 +1,44 @@
+{
+  "slug": "macrame-cord-length",
+  "category": "macrame",
+  "en": {
+    "title": "Macramé Cord Length Calculator – How Long to Cut Your Cords",
+    "short": "Macramé cord length",
+    "tagline": "Cut length per cord and rolls to buy",
+    "description": "Estimate how long to cut each macramé cord and how much cord to buy for a wall hanging, plant hanger or keychain, from the finished length, knotting and fringe.",
+    "h1": "Macramé Cord Length Calculator",
+    "intro": "Enter the finished length of your piece, how dense the knotting is and how long the fringe will be. The calculator applies the usual per-strand multiplier, doubles it for folded cords, and totals the cord you need.",
+    "howto": [
+      "Measure or decide the finished length of the knotted part, not counting the fringe.",
+      "Choose the knotting density. Open work with spaced knots uses about 4× the finished length per strand, tight square knots about 5×, and complex or dense knotting about 6×.",
+      "Tick the folded option if each cord is folded in half over a dowel or ring with a lark's head knot, which is how most wall hangings start.",
+      "Enter how many cords you will cut and a safety margin, then check the result against one test cord on a new pattern."
+    ],
+    "formula": "Strand length = finished length × knotting multiplier + fringe. Cut length = strand length × 2 for folded cords × (1 + margin ÷ 100). Total cord = cut length × number of cords, in metres or yards. Example: a 60 cm piece with tight knots and a 15 cm fringe needs 315 cm per strand; folded and with a 10% margin that is 693 cm per cord, and 12 cords take about 83 m.",
+    "faq": [
+      { "q": "Why do macramé patterns use different multipliers?", "a": "Each knot wraps cord around other cords, so the more and tighter the knots, the more length disappears into them. Thick cord also uses more per knot. That is why guides range from about 4× to 8× per strand." },
+      { "q": "Do all the cords in a piece need the same length?", "a": "No. Cords that do most of the knotting, such as the outer working cords in a square-knot sinnet, use more than the filler cords they wrap around. For patterns with very uneven work, cut the working cords longer." },
+      { "q": "What if I run short?", "a": "You can add a new cord by hiding the join inside a knot, but it is much easier to cut a little long. The safety margin is there for that; trimming the fringe costs far less than rejoining." }
+    ]
+  },
+  "ko": {
+    "title": "마크라메 끈 길이 계산기 – 끈을 얼마나 길게 자를까",
+    "short": "마크라메 끈 길이",
+    "tagline": "끈 하나 자를 길이와 롤 수",
+    "description": "완성 길이, 매듭 밀도, 술 길이로 마크라메 끈을 얼마나 길게 자르고 얼마나 사야 하는지 계산합니다. 월행잉, 식물 행거, 키링에 쓸 수 있습니다.",
+    "h1": "마크라메 끈 길이 계산기",
+    "intro": "작품의 완성 길이, 매듭 밀도, 술 길이를 입력하면 일반적인 가닥당 배수를 적용하고, 접어 거는 끈은 두 배로 계산해 필요한 끈 총량을 알려줍니다.",
+    "howto": [
+      "술을 뺀 매듭 부분의 완성 길이를 재거나 정합니다.",
+      "매듭 밀도를 고릅니다. 간격을 둔 듬성한 매듭은 가닥당 완성 길이의 약 4배, 촘촘한 평매듭은 약 5배, 복잡하거나 빽빽한 매듭은 약 6배가 듭니다.",
+      "끈을 반으로 접어 막대나 링에 종달새 매듭으로 건다면 접기 옵션을 체크합니다. 대부분의 월행잉이 이렇게 시작합니다.",
+      "자를 끈 개수와 안전 여유분을 입력하고, 새 도안이라면 끈 하나로 먼저 시험해 결과와 비교합니다."
+    ],
+    "formula": "가닥 길이 = 완성 길이 × 매듭 배수 + 술 길이. 자를 길이 = 가닥 길이 × 2(접어 거는 경우) × (1 + 여유분 ÷ 100). 전체 끈 = 자를 길이 × 끈 개수(m 또는 yd). 예: 촘촘한 매듭으로 60 cm 작품에 술 15 cm면 가닥당 315 cm이고, 접어 걸고 여유분 10%를 더하면 끈 하나에 693 cm, 12개면 약 83 m가 필요합니다.",
+    "faq": [
+      { "q": "도안마다 배수가 다른 이유는?", "a": "매듭은 끈이 다른 끈을 감싸는 구조라 매듭이 많고 촘촘할수록 길이가 많이 들어갑니다. 끈이 굵어도 매듭마다 더 씁니다. 그래서 안내서마다 가닥당 약 4배에서 8배까지 다르게 말합니다." },
+      { "q": "작품의 모든 끈을 같은 길이로 잘라야 하나요?", "a": "아닙니다. 평매듭에서 바깥쪽 작업 끈처럼 매듭을 주로 만드는 끈은 안쪽 심지 끈보다 더 많이 씁니다. 작업량이 고르지 않은 도안은 작업 끈을 더 길게 자르세요." },
+      { "q": "끈이 모자라면 어떻게 하나요?", "a": "매듭 안에 이음새를 숨겨 새 끈을 이을 수 있지만, 처음부터 조금 길게 자르는 편이 훨씬 쉽습니다. 안전 여유분이 그 역할을 하며, 술을 다듬는 쪽이 다시 잇는 것보다 손해가 적습니다." }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+---
+import Field from '../../components/Field.astro';
+import Step from '../../components/Step.astro';
+import Seg from '../../components/Seg.astro';
+import Readout from '../../components/Readout.astro';
+const { lang } = Astro.props;
+const t = {
+  en: { s1: 'Area to fill or coat', s2: 'Your resin', units: 'Units', shape: 'Shape', rect: 'Rectangle (tabletop or river)', round: 'Round tabletop', l: 'Length', w: 'Width', wHint: 'For a river, use its average width.', d: 'Diameter', depth: 'Thickness or depth', depthHint: 'A flood coat is usually 1/8 in. A river is as deep as the gap.', waste: 'Extra for waste', ra: 'Mix ratio: part A', rb: 'Mix ratio: part B', ratioHint: 'By volume, as printed on the kit (1:1, 2:1 …).', maxPour: 'Maximum pour depth per layer', maxHint: 'From your resin’s data sheet. Coating resins are usually 1/8 in; deep-pour resins 1–2 in.', total: 'Total resin to mix', other: 'Same amount in', partA: 'Part A', partB: 'Part B', pours: 'Layers to pour', note: 'Mix in batches no larger than your resin allows; large batches cure hot in the bucket.' },
+  ko: { s1: '채우거나 코팅할 면적', s2: '레진 제품', units: '단위', shape: '모양', rect: '사각형 (상판 또는 리버)', round: '원형 상판', l: '길이', w: '폭', wHint: '리버는 평균 폭을 넣으세요.', d: '지름', depth: '두께 또는 깊이', depthHint: '상판 코팅은 보통 0.3 cm, 리버는 틈의 깊이만큼입니다.', waste: '손실 여유분', ra: '혼합 비율: 주제(A)', rb: '혼합 비율: 경화제(B)', ratioHint: '제품에 적힌 부피 비율(1:1, 2:1 …).', maxPour: '1회 최대 타설 두께', maxHint: '레진 설명서 기준. 코팅용은 보통 0.3 cm, 딥 포어용은 2.5~5 cm.', total: '섞을 레진 총량', other: '같은 양을 다른 단위로', partA: '주제 (A)', partB: '경화제 (B)', pours: '나눠 부을 횟수', note: '제품이 허용하는 양 이하로 나눠 섞으세요. 많은 양을 한 번에 섞으면 통 안에서 뜨겁게 굳습니다.' },
+}[lang];
+const d = lang === 'ko'
+  ? { unit: 'cm', l: 150, w: 90, d: 90, depth: 0.3, maxPour: 0.3, pours: [0.3, 0.6, 2.5, 5] }
+  : { unit: 'in', l: 60, w: 36, d: 36, depth: 0.125, maxPour: 0.125, pours: [0.125, 0.25, 1, 2] };
+const units = [{ value: 'in', label: 'in · gal' }, { value: 'cm', label: 'cm · L' }];
+const shapes = [{ value: 'rect', label: t.rect }, { value: 'round', label: t.round }];
+---
+<form class="tool wrap" id="epoxy-table">
+  <div class="inputs">
+    <Step n="1" title={t.s1}>
+      <Seg slot="head" name="unit" label={t.units} options={units} checked={d.unit} />
+      <div class="fields">
+        <Field label={t.shape} name="shape" value="rect" options={shapes} />
+        <Field label={t.l} name="l" value={d.l} unitOut="dunit" show="shape=rect" />
+        <Field label={t.w} name="w" value={d.w} unitOut="dunit" show="shape=rect" hint={t.wHint} />
+        <Field label={t.d} name="d" value={d.d} unitOut="dunit" show="shape=round" />
+        <Field label={t.depth} name="depth" value={d.depth} unitOut="dunit" hint={t.depthHint} />
+      </div>
+    </Step>
+    <Step n="2" title={t.s2}>
+      <div class="fields">
+        <Field label={t.ra} name="ra" value="1" min="0.1" step="0.1" hint={t.ratioHint} />
+        <Field label={t.rb} name="rb" value="1" min="0.1" step="0.1" />
+        <Field label={t.maxPour} name="maxPour" value={d.maxPour} unitOut="dunit" presets={d.pours} hint={t.maxHint} />
+        <Field label={t.waste} name="waste" value="10" unit="%" max="50" step="1" presets={[5, 10, 15]} suffix="%" />
+      </div>
+    </Step>
+  </div>
+  <Readout lang={lang} note={t.note} items={[
+    { label: t.total, out: 'total', unitOut: 'vunit', size: 'xl' },
+    { label: t.other, out: 'other', unitOut: 'ounit', size: 'lg' },
+    { label: t.partA, out: 'partA', unitOut: 'vunit' },
+    { label: t.partB, out: 'partB', unitOut: 'vunit' },
+    { label: t.pours, out: 'pours' },
+  ]} />
+</form>
+<script>
+  import { wire } from '../form.js';
+  import { compute } from './calc.js';
+  wire('epoxy-table', compute);
+</script>

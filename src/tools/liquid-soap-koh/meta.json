@@ -1,0 +1,44 @@
+{
+  "slug": "liquid-soap-koh",
+  "category": "soap",
+  "en": {
+    "title": "Liquid Soap Lye Calculator – KOH and Water for Soap Paste",
+    "short": "Liquid soap (KOH)",
+    "tagline": "KOH and water for liquid soap paste",
+    "description": "Calculate potassium hydroxide (KOH) and water for liquid soap paste from your oil recipe, with KOH purity, superfat and lye concentration.",
+    "h1": "Liquid Soap Lye Calculator (KOH)",
+    "intro": "Enter the weight of each oil, then set the superfat, your KOH's purity and the lye concentration. The calculator gives the KOH and water for the paste stage of liquid soap.",
+    "howto": [
+      "Enter the weight of each oil. Liquid soap recipes often lean on olive, coconut, castor and sunflower oil.",
+      "Keep the superfat low, 0–3%. Excess oil tends to separate out of liquid soap as a cloudy layer.",
+      "Enter your KOH's purity from the supplier's label; about 90% is typical. The calculator increases the KOH to make up for the impurity.",
+      "Use a 25% lye concentration (3 parts water to 1 part KOH) for a paste that is easy to stir, then cook and dilute the paste separately."
+    ],
+    "formula": "KOH SAP = NaOH SAP × 1.403. KOH to weigh = Σ (oil weight × KOH SAP) × (1 − superfat ÷ 100) ÷ (purity ÷ 100). Water = KOH × (100 − concentration) ÷ concentration. Example: 1,000 g of olive oil (KOH SAP 0.189) at 3% superfat and 90% purity needs 204.1 g of KOH; at 25% concentration that is 612.4 g of water.",
+    "faq": [
+      { "q": "Why does purity matter for KOH but not NaOH?", "a": "Potassium hydroxide absorbs moisture and is commonly sold around 90% pure, so 100 g of it contains only about 90 g of KOH. Sodium hydroxide for soapmaking is usually close enough to 100% that calculators ignore the difference." },
+      { "q": "How do I dilute the paste?", "a": "After the paste has cooked and passes a clarity test, dissolve it in hot distilled water, often one to two times the paste weight to start, and add more until the soap is as thin as you like." },
+      { "q": "Can I use this for bar soap?", "a": "No. Bar soap uses sodium hydroxide (NaOH); use the soap lye calculator for that. Some cream soaps use both, which this calculator does not cover." }
+    ]
+  },
+  "ko": {
+    "title": "물비누 가성가리 계산기 – KOH와 정제수 양",
+    "short": "물비누 가성가리(KOH)",
+    "tagline": "물비누 페이스트용 KOH와 정제수",
+    "description": "오일 레시피로 물비누 페이스트에 필요한 수산화칼륨(KOH, 가성가리)과 정제수 양을 계산합니다. KOH 순도, 슈퍼팻, 농도를 반영합니다.",
+    "h1": "물비누 가성가리 계산기 (KOH)",
+    "intro": "오일별 무게를 입력하고 슈퍼팻, KOH 순도, 가성가리 농도를 정하면 물비누 페이스트 단계에 필요한 KOH와 정제수 양을 알려줍니다.",
+    "howto": [
+      "오일별 무게를 입력합니다. 물비누는 올리브, 코코넛, 피마자, 해바라기씨 오일을 많이 씁니다.",
+      "슈퍼팻은 0~3%로 낮게 둡니다. 남는 기름은 물비누에서 뿌연 층으로 분리되기 쉽습니다.",
+      "판매처 라벨의 KOH 순도를 입력합니다. 보통 약 90%이며, 계산기가 불순물만큼 KOH를 늘려 줍니다.",
+      "저어 주기 쉬운 페이스트를 위해 농도 25%(물 3 : KOH 1)를 쓰고, 익힌 페이스트는 따로 희석합니다."
+    ],
+    "formula": "KOH 비누화값 = NaOH 비누화값 × 1.403. 계량할 KOH = Σ(오일 무게 × KOH 비누화값) × (1 − 슈퍼팻 ÷ 100) ÷ (순도 ÷ 100). 정제수 = KOH × (100 − 농도) ÷ 농도. 예: 올리브 오일(KOH 비누화값 0.189) 1,000 g에 슈퍼팻 3%, 순도 90%면 KOH 204.1 g, 농도 25%면 정제수 612.4 g입니다.",
+    "faq": [
+      { "q": "KOH만 순도를 따지는 이유는?", "a": "수산화칼륨은 습기를 잘 먹고 보통 순도 약 90%로 팔려서, 100 g 안에 실제 KOH는 약 90 g뿐입니다. 비누용 수산화나트륨은 100%에 가까워 계산기들이 차이를 무시합니다." },
+      { "q": "페이스트는 어떻게 희석하나요?", "a": "페이스트를 다 익히고 투명도 테스트를 통과하면 뜨거운 정제수에 녹입니다. 처음에는 페이스트 무게의 1~2배 정도로 시작해 원하는 묽기가 될 때까지 더합니다." },
+      { "q": "고체 비누에도 쓸 수 있나요?", "a": "아니요. 고체 비누는 수산화나트륨(NaOH)을 쓰므로 비누 가성소다 계산기를 쓰세요. 두 가지를 함께 쓰는 크림 비누는 이 계산기가 다루지 않습니다." }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "slug": "soap-mold-oil",
+  "category": "soap",
+  "en": {
+    "title": "Soap Mold Calculator – How Much Oil for Your Soap Mold",
+    "short": "Soap mold oil",
+    "tagline": "Oil weight that fills your mold",
+    "description": "Find out how much oil a soap recipe needs to fill your loaf, slab or round mold. Enter the mold size and get the total oil weight in grams or ounces.",
+    "h1": "Soap Mold Calculator: How Much Oil Do I Need?",
+    "intro": "Measure the inside of your mold and how deep you will pour. The calculator turns that volume into the total weight of oils your recipe should use, so the batch fills the mold without leftovers.",
+    "howto": [
+      "Measure the inside length and width of the mold, or the inside diameter of a round tube mold, and decide how deep you will pour.",
+      "Choose your units. Metric results are in grams, imperial results in ounces.",
+      "Enter how many molds you are filling. Use the adjustment if your molds usually come out a little short or overfilled.",
+      "Enter the total oil weight in the soap lye calculator, divided between your oils by your recipe percentages."
+    ],
+    "formula": "Mold volume = length × width × pour depth, or π × (diameter ÷ 2)² × depth for a round mold. Oil weight = volume × 0.40 oz per cubic inch (about 0.69 g per cm³) × adjustment. Example: a 12 × 3.5 × 2.5 in loaf mold holds 105 cubic inches, so it takes about 42 oz of oils.",
+    "faq": [
+      { "q": "Where does the 0.40 factor come from?", "a": "It is a long-standing rule of thumb among soapmakers: once lye and water are added, 0.40 oz of oils fills about one cubic inch of mold. Some makers prefer 0.38 or 0.42 for their own recipes; the 95% and 105% presets cover that range." },
+      { "q": "Does the water amount change the result?", "a": "Slightly. The factor assumes a typical amount of water. A recipe with a large water discount makes a denser batter, so the same mold needs a little more oil. Fill the mold with water once and compare if you need precision." },
+      { "q": "How do I turn the total into a recipe?", "a": "Write your recipe as percentages, for example 50% olive, 30% coconut and 20% shea. Multiply each percentage by the total oil weight and enter those weights in the soap lye calculator." }
+    ]
+  },
+  "ko": {
+    "title": "비누 몰드 오일량 계산기 – 몰드 크기별 필요한 오일 양",
+    "short": "비누 몰드 오일량",
+    "tagline": "몰드를 채울 오일 무게",
+    "description": "식빵·사각·원통 비누 몰드에 필요한 오일 총량을 계산합니다. 몰드 크기를 입력하면 레시피에 쓸 오일 무게를 g 또는 oz로 알려줍니다.",
+    "h1": "비누 몰드 오일량 계산기",
+    "intro": "몰드 안쪽 크기와 부을 높이를 입력하면, 그 부피를 채우는 데 필요한 오일 총량으로 바꿔 줍니다. 비누 반죽이 남거나 모자라지 않게 레시피 양을 맞출 수 있습니다.",
+    "howto": [
+      "몰드 안쪽 가로·세로(원통 몰드는 안쪽 지름)를 재고, 반죽을 부을 높이를 정합니다.",
+      "단위를 고릅니다. cm를 쓰면 g, inch를 쓰면 oz로 결과가 나옵니다.",
+      "채울 몰드 수를 입력합니다. 평소 몰드가 조금 모자라거나 넘친다면 보정값을 조정하세요.",
+      "오일 총량을 레시피 비율대로 나눠 비누 가성소다 계산기에 입력합니다."
+    ],
+    "formula": "몰드 부피 = 가로 × 세로 × 부을 높이(원통은 π × (지름 ÷ 2)² × 높이). 오일 무게 = 부피 × 0.40 oz/in³(약 0.69 g/cm³) × 보정값. 예: 30 × 9 × 6 cm 몰드는 1,620 cm³이므로 오일 약 1,121 g이 필요합니다.",
+    "faq": [
+      { "q": "0.40이라는 계수는 어디서 나왔나요?", "a": "비누 공방에서 오래 써 온 경험칙입니다. 가성소다와 물이 더해지면 오일 0.40 oz가 몰드 1세제곱인치를 채운다는 뜻입니다. 레시피에 따라 0.38이나 0.42를 쓰는 사람도 있어서 95%와 105% 버튼이 그 범위를 덮습니다." },
+      { "q": "물 양에 따라 결과가 달라지나요?", "a": "조금 달라집니다. 계수는 보통 수준의 물 양을 가정합니다. 물을 많이 줄인 레시피는 반죽이 더 진해서 같은 몰드에 오일이 조금 더 필요합니다. 정확히 하려면 몰드에 물을 한 번 채워 비교해 보세요." },
+      { "q": "오일 총량을 레시피로 바꾸려면?", "a": "레시피를 비율로 적습니다. 예를 들어 올리브 50%, 코코넛 30%, 시어버터 20%라면 각 비율에 오일 총량을 곱한 무게를 비누 가성소다 계산기에 넣으면 됩니다." }
+    ]
+  }
+}

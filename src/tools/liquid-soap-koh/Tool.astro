@@ -1,0 +1,54 @@
+---
+import { OILS } from '../soap-lye-calculator/calc.js';
+import Field from '../../components/Field.astro';
+import Step from '../../components/Step.astro';
+import Seg from '../../components/Seg.astro';
+import Readout from '../../components/Readout.astro';
+const { lang } = Astro.props;
+const t = {
+  en: { warn: 'Potassium hydroxide (KOH) is caustic.', warnRest: 'Wear goggles and gloves, add KOH to water, and check every new recipe with a second calculator.', s1: 'Your oils', s2: 'Settings', unit: 'Weight unit', more: 'More oils', superfat: 'Superfat', sfHint: 'Keep liquid soap at 0–3%. More can separate out of the finished soap.', purity: 'KOH purity', purityHint: 'Most hobby KOH is about 90% pure. Use the figure on your supplier’s label.', conc: 'Lye concentration', concHint: '25% is 3 parts water to 1 part KOH, a common choice for an easy-to-stir paste.', koh: 'Potassium hydroxide (KOH)', water: 'Water for the lye solution', oils: 'Total oils', batch: 'Paste weight', note: 'This makes soap paste. Dilute the cooked paste separately with more water to the thickness you want.' },
+  ko: { warn: '수산화칼륨(KOH, 가성가리)은 강알칼리입니다.', warnRest: '보안경과 장갑을 착용하고, 물에 KOH를 넣으며, 새 레시피는 다른 계산기로 한 번 더 확인하세요.', s1: '오일', s2: '설정', unit: '무게 단위', more: '오일 더 보기', superfat: '슈퍼팻', sfHint: '물비누는 0~3%로 유지하세요. 더 높으면 완성된 비누에서 기름이 분리될 수 있습니다.', purity: 'KOH 순도', purityHint: '취미용 KOH는 대부분 순도 약 90%입니다. 판매처 라벨의 값을 쓰세요.', conc: '가성가리 농도', concHint: '25%는 물 3 : KOH 1로, 저어 주기 쉬운 페이스트가 되어 많이 씁니다.', koh: '수산화칼륨 (KOH)', water: '가성가리 용액용 정제수', oils: '오일 총량', batch: '페이스트 무게', note: '이 계산은 비누 페이스트까지입니다. 익힌 페이스트는 원하는 농도가 될 때까지 따로 물을 더해 희석합니다.' },
+}[lang];
+const units = [{ value: 'g', label: 'g' }, { value: 'oz', label: 'oz' }];
+const defaults = { olive: 400, coconut: 300, castor: 150, sunflower: 150 };
+const first = ['olive', 'coconut', 'castor', 'sunflower', 'palm', 'avocado'];
+const oil = (o) => ({ label: o[lang], name: `oil_${o.id}`, value: defaults[o.id] ?? '', sap: (o.sap * 1.403).toFixed(3), placeholder: '0', hl: true, unitOut: 'unit' });
+---
+<form class="tool wrap" id="liquid-soap-koh">
+  <div class="inputs">
+    <div class="notice" role="note">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7A4E00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20L12 3z"></path><path d="M12 10v4"></path><path d="M12 17.2v.1"></path></svg>
+      <p><strong>{t.warn}</strong> {t.warnRest}</p>
+    </div>
+    <Step n="1" title={t.s1}>
+      <Seg slot="head" name="unit" label={t.unit} options={units} />
+      <div class="fields">
+        {OILS.filter((o) => first.includes(o.id)).map((o) => <Field {...oil(o)} />)}
+      </div>
+      <details class="more">
+        <summary><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>{t.more}</summary>
+        <div class="fields">
+          {OILS.filter((o) => !first.includes(o.id)).map((o) => <Field {...oil(o)} />)}
+        </div>
+      </details>
+    </Step>
+    <Step n="2" title={t.s2}>
+      <div class="fields">
+        <Field label={t.superfat} name="superfat" value="3" unit="%" max="10" step="1" presets={[0, 1, 3]} suffix="%" hint={t.sfHint} />
+        <Field label={t.purity} name="purity" value="90" unit="%" min="50" max="100" step="1" presets={[90, 95, 100]} suffix="%" hint={t.purityHint} />
+        <Field label={t.conc} name="conc" value="25" unit="%" min="15" max="40" step="1" presets={[20, 25, 30]} suffix="%" hint={t.concHint} />
+      </div>
+    </Step>
+  </div>
+  <Readout lang={lang} note={t.note} items={[
+    { label: t.koh, out: 'koh', unitOut: 'unit', size: 'xl' },
+    { label: t.water, out: 'water', unitOut: 'unit', size: 'lg' },
+    { label: t.oils, out: 'oils', unitOut: 'unit' },
+    { label: t.batch, out: 'batch', unitOut: 'unit' },
+  ]} />
+</form>
+<script>
+  import { wire } from '../form.js';
+  import { compute } from './calc.js';
+  wire('liquid-soap-koh', compute);
+</script>
