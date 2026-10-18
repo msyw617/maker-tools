@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+
+export function getStaticPaths() {
+  const metas = import.meta.glob('../../tools/*/meta.json', { eager: true });
+  return Object.values(metas).flatMap((m) =>
+    ['en', 'ko'].map((lang) => ({ params: { lang, slug: m.default.slug } })),
+  );
+}
+
+const { lang, slug } = Astro.params;
+const metas = Object.values(import.meta.glob('../../tools/*/meta.json', { eager: true })).map((m) => m.default);
+const comps = import.meta.glob('../../tools/*/Tool.astro', { eager: true });
+const meta = metas.find((m) => m.slug === slug);
+const Tool = Object.entries(comps).find(([p]) => p.includes(`/${slug}/`))[1].default;
+const t = meta[lang];
+const related = metas.filter((m) => m.category === meta.category && m.slug !== slug);
+const labels = {
+  en: { howto: 'How to use', formula: 'Formula', faq: 'FAQ', related: 'Related tools' },
+  ko: { howto: '사용 방법', formula: '계산식', faq: '자주 묻는 질문', related: '관련 도구' },
+}[lang];
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: t.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+<Base lang={lang} title={t.title} description={t.description} path={`${slug}/`}>
+  <h1>{t.h1}</h1>
+  <p>{t.intro}</p>
+  <div class="ad"></div>
+  <Tool lang={lang} />
+  <section><h2>{labels.howto}</h2><ol>{t.howto.map((s) => <li>{s}</li>)}</ol></section>
+  <section><h2>{labels.formula}</h2><p>{t.formula}</p></section>
+  <section><h2>{labels.faq}</h2>{t.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}</section>
+  {related.length > 0 && (
+    <section><h2>{labels.related}</h2><ul>{related.map((r) => <li><a href={`/${lang}/${r.slug}/`}>{r[lang].title}</a></li>)}</ul></section>
+  )}
+  <div class="ad"></div>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+</Base>

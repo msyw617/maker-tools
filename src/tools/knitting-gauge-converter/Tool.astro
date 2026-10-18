@@ -1,0 +1,31 @@
+---
+const { lang } = Astro.props;
+const t = {
+  en: { stsSet: 'Stitches (width)', pg: 'Pattern gauge: stitches per 10 cm / 4 in', mg: 'Your gauge: stitches per 10 cm / 4 in', ps: 'Stitches in the pattern', rowsSet: 'Rows (length, optional)', pr: 'Pattern gauge: rows per 10 cm / 4 in', mr: 'Your gauge: rows per 10 cm / 4 in', prow: 'Rows in the pattern', sts: 'Stitches to work', width: 'Width if you follow the pattern as written', rows: 'Rows to work', length: 'Length if you follow the pattern as written', note: 'A minus sign means the piece comes out smaller than the pattern; plus means larger.' },
+  ko: { stsSet: '코 (폭)', pg: '도안 게이지: 10 cm(4 in)당 코 수', mg: '내 게이지: 10 cm(4 in)당 코 수', ps: '도안의 코 수', rowsSet: '단 (길이, 선택)', pr: '도안 게이지: 10 cm(4 in)당 단 수', mr: '내 게이지: 10 cm(4 in)당 단 수', prow: '도안의 단 수', sts: '떠야 할 코 수', width: '도안대로 뜰 때 폭 변화', rows: '떠야 할 단 수', length: '도안대로 뜰 때 길이 변화', note: '음수(−)는 도안보다 작아진다는 뜻이고, 양수(+)는 커진다는 뜻입니다.' },
+}[lang];
+---
+<form class="tool" id="knitting-gauge-converter" onsubmit="return false">
+  <fieldset>
+    <legend>{t.stsSet}</legend>
+    <label>{t.pg}<input name="pg" type="number" inputmode="decimal" min="0" step="any" value="20" /></label>
+    <label>{t.mg}<input name="mg" type="number" inputmode="decimal" min="0" step="any" value="22" /></label>
+    <label>{t.ps}<input name="ps" type="number" inputmode="numeric" min="0" step="1" value="100" /></label>
+  </fieldset>
+  <fieldset>
+    <legend>{t.rowsSet}</legend>
+    <label>{t.pr}<input name="pr" type="number" inputmode="decimal" min="0" step="any" value="28" /></label>
+    <label>{t.mr}<input name="mr" type="number" inputmode="decimal" min="0" step="any" value="30" /></label>
+    <label>{t.prow}<input name="prow" type="number" inputmode="numeric" min="0" step="1" value="120" /></label>
+  </fieldset>
+  <p class="result">{t.sts}: <strong data-out="sts"></strong></p>
+  <p class="result">{t.width}: <strong data-out="width" data-sign></strong>%</p>
+  <p class="result">{t.rows}: <strong data-out="rows"></strong></p>
+  <p class="result">{t.length}: <strong data-out="length" data-sign></strong>%</p>
+  <p class="note">{t.note}</p>
+</form>
+<script>
+  import { wire } from '../form.js';
+  import { compute } from './calc.js';
+  wire('knitting-gauge-converter', compute);
+</script>

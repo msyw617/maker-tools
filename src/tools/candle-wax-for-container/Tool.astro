@@ -1,0 +1,30 @@
+---
+const { lang } = Astro.props;
+const t = {
+  en: { water: 'Water weight per container', wax: 'Wax type', soy: 'Soy wax (0.86)', coco: 'Coconut or coconut blend (0.89)', para: 'Paraffin (0.92)', count: 'Number of containers', load: 'Fragrance load (%)', fill: 'Candle weight per container', waxOut: 'Wax to melt', fo: 'Fragrance oil to add', total: 'Total batch weight', note: 'Density factors are averages. Pour one test candle in a new container to confirm the fill line.' },
+  ko: { water: '용기 1개에 들어가는 물 무게', wax: '왁스 종류', soy: '소이 왁스 (0.86)', coco: '코코넛·코코넛 블렌드 (0.89)', para: '파라핀 (0.92)', count: '용기 수', load: '향료 비율 (%)', fill: '용기당 캔들 무게', waxOut: '녹일 왁스 양', fo: '넣을 향료 양', total: '전체 배치 무게', note: '밀도 계수는 평균값입니다. 새 용기는 테스트 캔들을 하나 만들어 채움선을 확인하세요.' },
+}[lang];
+---
+<form class="tool" id="candle-wax-for-container" onsubmit="return false">
+  <label>{t.water}
+    <span class="row">
+      <input name="water" type="number" inputmode="decimal" min="0" step="any" value="200" />
+      <select name="unit"><option value="g">g</option><option value="oz">oz</option></select>
+    </span>
+  </label>
+  <label>{t.wax}
+    <select name="factor"><option value="0.86">{t.soy}</option><option value="0.89">{t.coco}</option><option value="0.92">{t.para}</option></select>
+  </label>
+  <label>{t.count}<input name="count" type="number" inputmode="numeric" min="1" step="1" value="4" /></label>
+  <label>{t.load}<input name="load" type="number" inputmode="decimal" min="0" max="30" step="0.5" value="8" /></label>
+  <p class="result">{t.fill}: <strong data-out="fill"></strong> <span data-out="unit"></span></p>
+  <p class="result">{t.waxOut}: <strong data-out="wax"></strong> <span data-out="unit"></span></p>
+  <p class="result">{t.fo}: <strong data-out="fo"></strong> <span data-out="unit"></span></p>
+  <p class="result">{t.total}: <strong data-out="total"></strong> <span data-out="unit"></span></p>
+  <p class="note">{t.note}</p>
+</form>
+<script>
+  import { wire } from '../form.js';
+  import { compute } from './calc.js';
+  wire('candle-wax-for-container', compute);
+</script>

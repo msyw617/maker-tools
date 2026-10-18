@@ -1,0 +1,40 @@
+{
+  "slug": "fabric-yardage",
+  "category": "sewing",
+  "en": {
+    "title": "Fabric Yardage Calculator – How Much Fabric to Buy",
+    "description": "Calculate how much fabric you need for any number of rectangular pieces. Accounts for fabric width, grainline and shrinkage, and rounds up to what the shop will cut.",
+    "h1": "Fabric Yardage Calculator",
+    "intro": "Enter the cut size and number of pieces, plus your fabric width. The calculator lays the pieces out in rows across the fabric and tells you how much length to buy, rounded up to the next 1/8 yard or 10 cm.",
+    "howto": [
+      "Enter the cut size of one piece including seam allowance. Width is measured across the fabric, length along the grain, parallel to the selvage.",
+      "Enter how many identical pieces you need and the usable width of the fabric. Quilting cotton is usually 42–44 in (about 110 cm) after removing the selvages; apparel and home decor fabric is often 54–60 in (137–150 cm).",
+      "Tick the rotate option only if grain direction does not matter, for example on a solid fabric without nap or a directional print.",
+      "Add an allowance for shrinkage when pre-washing and for straightening the cut edge. 10% is a safe default for cotton."
+    ],
+    "formula": "Pieces per row = fabric width ÷ piece width, rounded down. Rows = number of pieces ÷ pieces per row, rounded up. Length = rows × piece length × (1 + allowance ÷ 100), converted to yards (÷ 36) or metres (÷ 100) and rounded up to 1/8 yd or 10 cm. Example: nine 10 × 12 in pieces on 44 in fabric fit 4 per row in 3 rows, 36 in; with a 10% allowance that is 1.1 yd, so buy 1 1/8 yd.",
+    "faq": [
+      { "q": "Why does rotating pieces change the answer?", "a": "Turning a piece 90° can fit more pieces in each row, but it puts the crosswise grain along the piece's length. Woven fabric stretches differently in each direction, and prints or napped fabrics like velvet and corduroy look different, so only rotate when that does not matter." },
+      { "q": "Does this work for pattern pieces that are not rectangles?", "a": "Use the smallest rectangle that contains each piece. The result will be slightly generous, which is usually what you want when buying fabric. For full garments, follow the yardage on the pattern envelope if one is given." },
+      { "q": "How much does fabric shrink?", "a": "Cotton and linen commonly shrink 3–5% in the first wash, sometimes more in length than width. Rayon and some knits can shrink more. Pre-wash and dry the fabric the way you will wash the finished item before cutting." }
+    ]
+  },
+  "ko": {
+    "title": "원단 필요량 계산기 – 원단 몇 마 사야 할까",
+    "description": "같은 크기 조각 여러 장에 필요한 원단 길이를 계산합니다. 원단 폭, 결 방향, 수축률을 반영하고 10 cm와 0.5마 단위로 올림합니다.",
+    "h1": "원단 필요량 계산기",
+    "intro": "조각 하나의 재단 크기와 장수, 원단 폭을 입력하면 조각을 원단 폭 방향으로 줄지어 배치해서 필요한 길이를 계산하고, 10 cm 단위와 마 단위로 올려 알려줍니다.",
+    "howto": [
+      "시접을 포함한 조각 하나의 재단 크기를 입력합니다. 가로는 원단 폭 방향, 세로는 식서 방향(원단 귀와 나란한 방향)입니다.",
+      "필요한 조각 수와 원단의 실제 사용 폭을 입력합니다. 국내 면 원단은 보통 110 cm, 광폭 원단은 140~150 cm이며, 원단 귀를 빼면 몇 cm 줄어듭니다.",
+      "결 방향이 상관없을 때만 조각 회전 허용을 체크합니다. 방향성 무늬나 털 방향이 없는 무지 원단 같은 경우입니다.",
+      "선세탁 수축과 재단면 정리를 위한 여유분을 더합니다. 면 원단은 10%면 넉넉합니다."
+    ],
+    "formula": "한 줄당 조각 수 = 원단 폭 ÷ 조각 가로(내림). 줄 수 = 조각 수 ÷ 한 줄당 조각 수(올림). 길이 = 줄 수 × 조각 세로 × (1 + 여유분 ÷ 100)을 m로 바꾸고 10 cm 단위로 올립니다. 마 단위는 1마 = 90 cm 기준으로 0.5마 단위로 올립니다. 예: 25 × 30 cm 조각 8장을 110 cm 원단에 배치하면 한 줄에 4장씩 2줄, 60 cm이고, 여유분 10%면 66 cm이므로 0.7 m 또는 1마를 삽니다.",
+    "faq": [
+      { "q": "조각을 회전하면 왜 결과가 달라지나요?", "a": "조각을 90° 돌리면 한 줄에 더 많이 들어갈 수 있지만, 조각의 세로가 푸서 방향이 됩니다. 직물은 방향마다 늘어나는 정도가 다르고, 방향성 프린트나 벨벳·코듀로이 같은 기모 원단은 보이는 색감도 달라지므로 상관없을 때만 회전하세요." },
+      { "q": "사각형이 아닌 패턴 조각에도 쓸 수 있나요?", "a": "각 조각을 감싸는 가장 작은 사각형 크기를 넣으세요. 결과가 약간 넉넉하게 나오는데, 원단을 살 때는 그쪽이 안전합니다. 옷 패턴에 요척이 적혀 있다면 그 값을 우선하세요." },
+      { "q": "원단은 얼마나 줄어드나요?", "a": "면과 린넨은 첫 세탁에서 보통 3~5% 줄고, 폭보다 길이 방향으로 더 줄기도 합니다. 레이온이나 일부 니트는 더 많이 줄 수 있습니다. 재단 전에 완성품을 빨 방식대로 선세탁·건조하세요." }
+    ]
+  }
+}

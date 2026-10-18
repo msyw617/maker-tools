@@ -1,0 +1,40 @@
+{
+  "slug": "resin-mold-volume",
+  "category": "resin",
+  "en": {
+    "title": "Resin Mold Volume Calculator – How Much Epoxy Resin to Mix",
+    "description": "Calculate how much epoxy or UV resin to mix for rectangular, round or irregular molds. Get volume in ml and fl oz plus weight in grams, with extra for waste.",
+    "h1": "Resin Mold Volume Calculator",
+    "intro": "Measure your mold or weigh the water it holds, and get the volume of resin to mix in millilitres and fluid ounces, plus the weight for kits that measure by grams.",
+    "howto": [
+      "Choose the mold shape. Use Rectangle for coasters, trays and blocks, Cylinder for round coasters and pucks, and the water method for any irregular silicone mold.",
+      "Enter the inside dimensions of the mold, or fill the mold with water, weigh the water and enter its weight. Dry the mold completely before pouring resin.",
+      "Enter how many molds you are filling and an allowance for waste. Resin left in the cup and on stir sticks is usually 5–10%.",
+      "Mix the total shown. Split it into part A and part B using the ratio printed on your resin kit, by volume or by weight as the manufacturer specifies."
+    ],
+    "formula": "Rectangle volume = length × width × depth. Cylinder volume = π × (diameter ÷ 2)² × depth. Water method: 1 g of water ≈ 1 ml. Inches are converted at 16.387 ml per cubic inch. Total resin = volume × number of molds × (1 + waste ÷ 100). Weight = total volume × resin density, about 1.1 g/ml for most epoxies. Example: a 10 × 5 × 2 cm mold holds 100 ml; two of them with 10% waste need 220 ml, about 242 g of resin.",
+    "faq": [
+      { "q": "Why does my resin kit list a different ratio by weight and by volume?", "a": "Part A and part B have different densities, so a 1:1 ratio by volume is not 1:1 by weight. Use whichever the kit specifies and do not mix the two methods." },
+      { "q": "Is the water method accurate for silicone molds?", "a": "Yes. It is the most accurate method for molds with curves, cavities or textured bottoms, because the water fills exactly the space the resin will. Put the empty mold on the scale, zero it, then fill it so you weigh only the water." },
+      { "q": "Can I pour a deep mold in one go?", "a": "Check the maximum pour depth for your resin. Coating and doming resins are usually limited to a few millimetres per layer, while deep pour resins can go several centimetres. Pouring too deep at once can overheat, crack or yellow the piece." }
+    ]
+  },
+  "ko": {
+    "title": "레진 몰드 부피 계산기 – 에폭시 레진 필요량",
+    "description": "사각, 원형, 불규칙한 몰드에 필요한 에폭시·UV 레진 양을 계산합니다. ml와 g으로 결과를 보여주고 손실분도 반영합니다.",
+    "h1": "레진 몰드 부피 계산기",
+    "intro": "몰드 크기를 재거나 몰드에 들어가는 물의 무게를 입력하면, 섞어야 할 레진 양을 ml와 fl oz로, 무게로 계량하는 제품을 위해 g으로도 알려줍니다.",
+    "howto": [
+      "몰드 모양을 고릅니다. 코스터·트레이·블록은 사각형, 원형 코스터는 원기둥, 실리콘 몰드처럼 모양이 불규칙하면 물 측정법을 씁니다.",
+      "몰드 안쪽 치수를 입력하거나, 몰드에 물을 채워 물 무게를 재서 입력합니다. 레진을 붓기 전에 몰드를 완전히 말리세요.",
+      "채울 몰드 수와 손실 여유분을 입력합니다. 컵과 젓개에 남는 레진은 보통 5~10%입니다.",
+      "표시된 총량을 섞습니다. 주제(A)와 경화제(B)는 레진 제품에 적힌 비율대로, 부피 기준인지 무게 기준인지 확인해서 나눕니다."
+    ],
+    "formula": "사각형 부피 = 가로 × 세로 × 깊이. 원기둥 부피 = π × (지름 ÷ 2)² × 깊이. 물 측정법: 물 1 g ≈ 1 ml. 인치는 1세제곱인치당 16.387 ml로 환산합니다. 총 레진 양 = 부피 × 몰드 수 × (1 + 손실분 ÷ 100). 무게 = 총 부피 × 레진 밀도(대부분의 에폭시는 약 1.1 g/ml). 예: 10 × 5 × 2 cm 몰드는 100 ml이고, 2개를 손실분 10%로 만들면 220 ml, 약 242 g입니다.",
+    "faq": [
+      { "q": "레진 제품에 부피 비율과 무게 비율이 다르게 적혀 있어요.", "a": "주제와 경화제의 밀도가 달라서 부피 1:1이 무게 1:1이 아닙니다. 제품이 지정한 방식 하나만 쓰고 두 방식을 섞지 마세요." },
+      { "q": "실리콘 몰드에도 물 측정법이 정확한가요?", "a": "네. 곡면, 홈, 무늬가 있는 몰드에는 가장 정확한 방법입니다. 물이 레진이 채울 공간을 그대로 채우기 때문입니다. 빈 몰드를 저울에 올려 영점을 맞춘 뒤 물을 채워 물 무게만 재세요." },
+      { "q": "깊은 몰드도 한 번에 부어도 되나요?", "a": "레진의 최대 타설 두께를 확인하세요. 코팅·도밍용 레진은 한 층에 몇 mm까지, 딥 포어용 레진은 몇 cm까지 가능합니다. 한 번에 너무 두껍게 부으면 과열되어 갈라지거나 누렇게 변할 수 있습니다." }
+    ]
+  }
+}

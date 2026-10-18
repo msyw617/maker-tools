@@ -1,0 +1,55 @@
+﻿priority,category,slug,en_keyword,ko_keyword,volume_en,volume_ko,competition_note,status
+1,candle,candle-fragrance-load,candle fragrance load calculator,캔들 향료 비율 계산기,,,low: top results are spam pages + Craftybase (verified 2026-10-18),done
+1,candle,candle-wax-for-container,how much wax for candle container calculator,캔들 용기 왁스 양 계산기,,,,done
+1,soap,soap-lye-calculator,soap lye calculator,비누 가성소다 계산기,,,,done
+1,resin,resin-mold-volume,resin mold volume calculator,레진 몰드 부피 계산기,,,,done
+1,knitting,yarn-yardage,yarn yardage calculator,뜨개 실 분량 계산기,,,medium: blog-embedded widgets + 1 retailer (verified 2026-10-18),done
+1,knitting,knitting-gauge-converter,knitting gauge converter,뜨개 게이지 변환 계산기,,,,done
+1,sewing,fabric-yardage,fabric yardage calculator,원단 필요량 계산기,,,,done
+1,printing,3d-print-cost,3d print cost calculator,3D 프린팅 원가 계산기,,,medium: 2-3 dedicated tools + spam pages (verified 2026-10-18),done
+1,printing,resin-print-cost,resin 3d print cost calculator,레진 프린트 원가 계산기,,,,done
+1,selling,handmade-pricing,handmade pricing calculator,핸드메이드 판매가 계산기,,,,done
+2,candle,candle-cost,candle cost calculator,캔들 원가 계산기,,,,todo
+2,candle,wax-melt-fragrance,wax melt fragrance calculator,왁스타블렛 향료 계산기,,,,todo
+2,candle,candle-burn-time,candle burn time calculator,캔들 연소 시간 계산기,,,,todo
+2,candle,candle-dye-ratio,candle dye percentage calculator,캔들 염료 비율 계산기,,,,todo
+2,candle,recipe-batch-scaler,candle recipe batch calculator,캔들 레시피 배치 계산기,,,,todo
+2,soap,liquid-soap-koh,liquid soap koh calculator,액체비누 가성가리 계산기,,,,todo
+2,soap,soap-mold-oil-weight,soap mold oil weight calculator,비누 몰드 오일량 계산기,,,,todo
+2,soap,soap-cost-per-bar,soap cost per bar calculator,비누 원가 계산기,,,,todo
+2,soap,melt-and-pour-amount,melt and pour soap base calculator,MP비누 베이스 필요량 계산기,,,,todo
+2,resin,epoxy-mix-ratio,epoxy resin mixing ratio calculator,에폭시 레진 혼합 비율 계산기,,,,todo
+2,resin,resin-coverage,epoxy resin coverage calculator,레진 코팅 필요량 계산기,,,,todo
+2,resin,resin-pigment-ratio,resin pigment ratio calculator,레진 안료 비율 계산기,,,,todo
+2,resin,resin-cost,resin cost calculator,레진 원가 계산기,,,,todo
+2,knitting,yarn-substitution,yarn substitution calculator,실 대체 계산기,,,,todo
+2,knitting,yarn-remaining,how much yarn is left calculator,남은 실 길이 계산기,,,,todo
+2,knitting,crochet-blanket-stitches,crochet blanket stitch count calculator,코바늘 담요 코 수 계산기,,,,todo
+2,knitting,sweater-stitch-count,sweater stitch count calculator,스웨터 코 수 계산기,,,,todo
+2,knitting,yarn-project-cost,yarn cost per project calculator,뜨개 작품 원가 계산기,,,,todo
+2,sewing,quilt-backing-batting,quilt backing calculator,퀼트 배킹 계산기,,,,todo
+2,sewing,quilt-binding,quilt binding calculator,퀼트 바인딩 계산기,,,,todo
+3,sewing,curtain-fabric,curtain fabric calculator,커튼 원단 계산기,,,,todo
+3,sewing,pattern-scaling,sewing pattern scaling calculator,패턴 확대축소 계산기,,,,todo
+3,sewing,elastic-length,elastic length calculator,고무줄 길이 계산기,,,,todo
+3,printing,filament-length-weight,filament length to weight calculator,필라멘트 길이 무게 변환기,,,,todo
+3,printing,filament-remaining,filament remaining calculator,남은 필라멘트 계산기,,,,todo
+3,printing,esteps-calibration,e-steps calibration calculator,E스텝 보정 계산기,,,,todo
+3,printing,flow-rate-calibration,flow rate calibration calculator,유량 보정 계산기,,,,todo
+3,printing,3d-print-pricing,3d print pricing calculator,3D 프린트 판매가 계산기,,,,todo
+3,printing,layer-height-magic,layer height calculator,레이어 높이 계산기,,,,todo
+3,printing,belt-length,gt2 belt length calculator,벨트 길이 계산기,,,,todo
+3,laser,laser-engraving-time,laser engraving time calculator,레이저 각인 시간 계산기,,,,todo
+3,laser,laser-cutting-cost,laser cutting cost calculator,레이저 커팅 원가 계산기,,,,todo
+3,jewelry,bead-count,bead count calculator,비즈 개수 계산기,,,,todo
+3,jewelry,wire-gauge-converter,wire gauge to mm converter,와이어 게이지 변환기,,,,todo
+3,jewelry,ring-size-converter,ring size converter,반지 사이즈 변환표,,,,todo
+3,jewelry,jewelry-pricing,jewelry pricing calculator,주얼리 판매가 계산기,,,,todo
+3,selling,etsy-fee,etsy fee calculator,Etsy 수수료 계산기,,,,todo
+3,selling,idus-fee,idus fee calculator,아이디어스 수수료 계산기,,,ko-first,todo
+3,selling,smartstore-fee,naver smartstore fee calculator,스마트스토어 수수료 계산기,,,ko-first,todo
+3,selling,maker-hourly-rate,hourly rate calculator for makers,핸드메이드 시급 계산기,,,,todo
+3,selling,craft-fair-profit,craft fair profit calculator,플리마켓 수익 계산기,,,,todo
+3,candle,diffuser-fragrance-ratio,reed diffuser fragrance ratio calculator,디퓨저 향료 비율 계산기,,,,todo
+3,soap,bath-bomb-recipe,bath bomb recipe calculator,배스밤 레시피 계산기,,,,todo
+3,soap,lotion-percentage,lotion formula percentage calculator,로션 배합 비율 계산기,,,,todo

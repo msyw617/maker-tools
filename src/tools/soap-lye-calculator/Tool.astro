@@ -1,0 +1,35 @@
+---
+import { OILS } from './calc.js';
+const { lang } = Astro.props;
+const t = {
+  en: { warn: 'Lye (sodium hydroxide) is caustic. Wear goggles and gloves, always add lye to water, and check every new recipe with a second lye calculator.', unit: 'Weight unit', oils: 'Oils and butters', other: 'Other oil: weight', otherSap: 'Other oil: NaOH SAP (e.g. 0.135)', superfat: 'Superfat (%)', conc: 'Lye concentration (%)', oilsOut: 'Total oils', lye: 'Sodium hydroxide (NaOH)', water: 'Water', batch: 'Total batch weight', note: 'A dash (—) means an input is missing or the Other oil SAP is outside 0.03–0.3. Enter the NaOH value, not the KOH value.' },
+  ko: { warn: '가성소다(수산화나트륨)는 강알칼리입니다. 보안경과 장갑을 착용하고, 반드시 물에 가성소다를 넣으며, 새 레시피는 다른 계산기로 한 번 더 확인하세요.', unit: '무게 단위', oils: '오일·버터', other: '기타 오일: 무게', otherSap: '기타 오일: NaOH 비누화값 (예: 0.135)', superfat: '슈퍼팻 (%)', conc: '가성소다 농도 (%)', oilsOut: '오일 총량', lye: '가성소다 (NaOH)', water: '정제수', batch: '전체 배치 무게', note: '대시(—)는 입력값이 비었거나 기타 오일의 비누화값이 0.03~0.3 범위를 벗어났다는 뜻입니다. KOH 값이 아니라 NaOH 값을 넣으세요.' },
+}[lang];
+const defaults = { olive: 500, coconut: 300, shea: 200 };
+---
+<form class="tool" id="soap-lye-calculator" onsubmit="return false">
+  <p class="warn">{t.warn}</p>
+  <label>{t.unit}<select name="unit"><option value="g">g</option><option value="oz">oz</option></select></label>
+  <fieldset>
+    <legend>{t.oils}</legend>
+    <div class="grid">
+      {OILS.map((o) => (
+        <label>{o[lang]}<input name={`oil_${o.id}`} type="number" inputmode="decimal" min="0" step="any" value={defaults[o.id] ?? ''} /></label>
+      ))}
+      <label>{t.other}<input name="other_w" type="number" inputmode="decimal" min="0" step="any" value="" /></label>
+      <label>{t.otherSap}<input name="other_sap" type="number" inputmode="decimal" min="0.03" max="0.3" step="0.001" value="" /></label>
+    </div>
+  </fieldset>
+  <label>{t.superfat}<input name="superfat" type="number" inputmode="decimal" min="0" max="20" step="1" value="5" /></label>
+  <label>{t.conc}<input name="conc" type="number" inputmode="decimal" min="25" max="45" step="1" value="33" /></label>
+  <p class="result">{t.oilsOut}: <strong data-out="oils"></strong> <span data-out="unit"></span></p>
+  <p class="result">{t.lye}: <strong data-out="lye"></strong> <span data-out="unit"></span></p>
+  <p class="result">{t.water}: <strong data-out="water"></strong> <span data-out="unit"></span></p>
+  <p class="result">{t.batch}: <strong data-out="batch"></strong> <span data-out="unit"></span></p>
+  <p class="note">{t.note}</p>
+</form>
+<script>
+  import { wire } from '../form.js';
+  import { compute } from './calc.js';
+  wire('soap-lye-calculator', compute);
+</script>

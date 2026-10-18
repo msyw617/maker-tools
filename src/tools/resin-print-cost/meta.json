@@ -1,0 +1,40 @@
+{
+  "slug": "resin-print-cost",
+  "category": "printing",
+  "en": {
+    "title": "Resin 3D Print Cost Calculator – Cost per Print for SLA, MSLA and DLP",
+    "description": "Calculate the cost of a resin 3D print: resin used, waste, IPA and consumables, electricity and failed prints. A free MSLA, SLA and DLP print cost calculator.",
+    "h1": "Resin 3D Print Cost Calculator",
+    "intro": "Enter the resin volume from your slicer and what you pay for resin. The calculator adds waste, cleaning supplies, consumables and failed prints to give the cost of one finished resin print.",
+    "howto": [
+      "Copy the resin volume in ml from your slicer (Chitubox, Lychee or your printer's own slicer). Make sure supports are included in that number.",
+      "Enter the bottle price and size. Add a waste allowance for resin left on the build plate, in the vat and in supports you cut off; 5–15% is typical.",
+      "Enter the print time, your printer's power draw and your electricity price.",
+      "Enter a per-print cost for cleaning and consumables: isopropyl alcohol or wash fluid, gloves, paper towels, and wear on the FEP film and LCD screen."
+    ],
+    "formula": "Resin = ml used × (1 + waste ÷ 100) × bottle price ÷ bottle ml. Electricity = hours × watts ÷ 1000 × price per kWh. Cost per successful print = (resin + electricity + cleaning and consumables) ÷ (1 − failure rate ÷ 100). Example: 30 ml of a resin that costs 30 per litre, with 10% waste, is 0.99; with 2 hours at 60 W, 0.50 of consumables and a 10% failure rate the print costs 1.68.",
+    "faq": [
+      { "q": "Why is the failure rate so important for resin printing?", "a": "A failed resin print wastes all the resin that was already cured, and resin prints fail more often than FDM when supports, exposure or temperature are off. Tracking your real failure rate for a month gives a much more honest cost." },
+      { "q": "How do I estimate consumables per print?", "a": "Add up what you spend in a month on IPA or wash fluid, gloves, paper towels, FEP film and a share of the LCD screen's replacement cost, then divide by the number of prints you made that month." },
+      { "q": "Does the slicer volume include supports?", "a": "Most slicers report the combined volume of model and supports once supports are generated. Read the number after adding supports, not before; on small miniatures supports can add 10–30%." }
+    ]
+  },
+  "ko": {
+    "title": "레진 3D 프린팅 원가 계산기 – SLA·MSLA·DLP 출력 1개 원가",
+    "description": "레진 사용량, 손실분, IPA·소모품, 전기료, 실패율을 반영해 레진 3D 프린트 한 개의 원가를 계산합니다.",
+    "h1": "레진 3D 프린팅 원가 계산기",
+    "intro": "슬라이서에 나온 레진 사용량과 레진 가격을 입력하면 손실분, 세척용품, 소모품, 실패율을 더해 완성된 레진 출력물 한 개의 원가를 알려줍니다.",
+    "howto": [
+      "슬라이서(Chitubox, Lychee 또는 프린터 전용 슬라이서)에 나온 레진 사용량(ml)을 확인합니다. 서포트를 생성한 뒤의 값을 쓰세요.",
+      "레진 한 병 가격과 용량을 입력합니다. 빌드 플레이트, 레진 통, 잘라낸 서포트에 남는 손실분은 보통 5~15%입니다.",
+      "출력 시간, 프린터 소비전력, 전기 요금을 입력합니다.",
+      "출력 1회당 세척·소모품 비용을 입력합니다. IPA나 세척액, 장갑, 키친타월, FEP 필름과 LCD 액정 소모분이 포함됩니다."
+    ],
+    "formula": "레진 = 사용량(ml) × (1 + 손실분 ÷ 100) × 병 가격 ÷ 병 용량. 전기료 = 시간 × 와트 ÷ 1000 × kWh당 요금. 성공 1개당 원가 = (레진 + 전기료 + 세척·소모품) ÷ (1 − 실패율 ÷ 100). 예: 1 L에 3만5천 원인 레진 30 ml에 손실분 10%면 1,155원이고, 60 W로 2시간, 소모품 500원, 실패율 10%면 1,859원입니다.",
+    "faq": [
+      { "q": "레진 프린팅에서 실패율이 왜 중요한가요?", "a": "실패한 레진 출력은 이미 경화된 레진을 모두 버리게 되고, 서포트·노출·온도가 맞지 않으면 FDM보다 실패가 잦습니다. 한 달 동안 실제 실패율을 기록하면 훨씬 정확한 원가가 나옵니다." },
+      { "q": "출력 1회당 소모품 비용은 어떻게 잡나요?", "a": "한 달 동안 쓴 IPA나 세척액, 장갑, 키친타월, FEP 필름, LCD 액정 교체 비용의 일부를 더한 뒤 그달의 출력 횟수로 나누세요." },
+      { "q": "슬라이서 사용량에 서포트도 포함되나요?", "a": "대부분의 슬라이서는 서포트를 생성한 뒤 모델과 서포트를 합친 부피를 보여줍니다. 서포트를 넣은 뒤의 값을 확인하세요. 작은 미니어처는 서포트가 10~30%를 더하기도 합니다." }
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+---
+const { lang, title, description, path = '' } = Astro.props;
+const other = lang === 'en' ? 'ko' : 'en';
+const site = (Astro.site?.toString() ?? '').replace(/\/$/, '');
+const t = {
+  en: { home: 'Maker Tools', about: 'About', privacy: 'Privacy', contact: 'Contact', switch: '한국어' },
+  ko: { home: '메이커 계산기', about: '소개', privacy: '개인정보처리방침', contact: '문의', switch: 'English' },
+}[lang];
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {Astro.site?.hostname === 'example.com' && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={`${site}/${lang}/${path}`} />
+    <link rel="alternate" hreflang="en" href={`${site}/en/${path}`} />
+    <link rel="alternate" hreflang="ko" href={`${site}/ko/${path}`} />
+    <link rel="alternate" hreflang="x-default" href={`${site}/en/${path}`} />
+    <style is:global>
+      :root { --bg: #fff; --fg: #1a1a1a; --muted: #666; --line: #ddd; --accent: #b5651d; --card: #faf7f2; }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: #161616; --fg: #eee; --muted: #aaa; --line: #333; --accent: #e0a060; --card: #222; }
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--fg); }
+      header, main, footer { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+      header { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+      header a { color: inherit; text-decoration: none; font-weight: 600; }
+      header nav a { margin-left: 14px; color: var(--muted); font-weight: 400; }
+      a { color: var(--accent); }
+      h1 { font-size: 1.7em; line-height: 1.25; }
+      .tool { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 16px 0; }
+      .tool label { display: block; margin-bottom: 12px; font-weight: 600; }
+      .tool input, .tool select { width: 100%; font: inherit; padding: 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--fg); margin-top: 4px; }
+      .tool .row { display: flex; gap: 8px; }
+      .tool .row select { width: auto; }
+      .result { font-size: 1.05em; margin: 8px 0; }
+      .result strong { font-size: 1.4em; color: var(--accent); }
+      .note { color: var(--muted); font-size: 0.9em; }
+      [hidden] { display: none !important; }
+      .tool fieldset { border: 1px solid var(--line); border-radius: 6px; margin: 0 0 12px; padding: 8px 12px 0; }
+      .tool legend { font-weight: 600; padding: 0 4px; }
+      .tool .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0 12px; }
+      .tool .check { display: flex; gap: 8px; align-items: center; font-weight: 400; }
+      .tool .check input { width: auto; margin: 0; }
+      .warn { border-left: 4px solid var(--accent); padding: 8px 12px; margin: 0 0 12px; background: var(--bg); }
+      .ad { min-height: 0; } /* AdSense 슬롯: 승인 후 <ins class="adsbygoogle"> 삽입 */
+      details { border-bottom: 1px solid var(--line); padding: 8px 0; }
+      summary { cursor: pointer; font-weight: 600; }
+      footer { border-top: 1px solid var(--line); margin-top: 40px; padding-top: 16px; padding-bottom: 32px; color: var(--muted); font-size: 0.9em; }
+      footer a { margin-right: 14px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href={`/${lang}/`}>{t.home}</a>
+      <nav><a href={`/${lang}/about/`}>{t.about}</a><a href={`/${other}/${path}`}>{t.switch}</a></nav>
+    </header>
+    <main><slot /></main>
+    <footer>
+      <a href={`/${lang}/about/`}>{t.about}</a><a href={`/${lang}/privacy/`}>{t.privacy}</a><a href={`/${lang}/contact/`}>{t.contact}</a>
+      <div>© {new Date().getFullYear()} {t.home}</div>
+    </footer>
+  </body>
+</html>

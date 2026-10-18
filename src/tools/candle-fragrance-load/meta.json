@@ -1,0 +1,40 @@
+{
+  "slug": "candle-fragrance-load",
+  "category": "candle",
+  "en": {
+    "title": "Candle Fragrance Load Calculator – Fragrance Oil per Wax Weight",
+    "description": "Work out how much fragrance oil to add to your candle wax. Enter wax weight and fragrance load percentage to get the exact oil amount in grams or ounces.",
+    "h1": "Candle Fragrance Load Calculator",
+    "intro": "Enter your wax weight and the fragrance load you want. The calculator returns how much fragrance oil to add and the total batch weight. Everything runs in your browser.",
+    "howto": [
+      "Weigh your wax (not the container) and enter it in grams or ounces.",
+      "Enter the fragrance load as a percentage. Most soy and coconut waxes perform best at 6–10%; many paraffin blends accept up to 12%.",
+      "Read the fragrance oil amount and add it to the melted wax at the temperature your supplier recommends, usually 80–85 °C (175–185 °F).",
+      "Stir gently for about two minutes so the oil binds with the wax before pouring."
+    ],
+    "formula": "Fragrance oil = wax weight × (fragrance load ÷ 100). Total batch = wax weight + fragrance oil. Example: 500 g of wax at 8% needs 40 g of fragrance oil, for a 540 g batch.",
+    "faq": [
+      { "q": "Is fragrance load a percentage of the wax or of the total batch?", "a": "Of the wax. The industry convention, and the one this calculator uses, is grams of oil per 100 g of wax. A few suppliers quote it as a share of the finished batch; if yours does, their 8% is roughly our 8.7%." },
+      { "q": "What happens if I add too much fragrance?", "a": "Oil the wax cannot bind will sweat out of the candle, weaken the structure, and can clog the wick or make it flare. Stay at or below the maximum load printed on the wax's data sheet." },
+      { "q": "Does fragrance load change how much wax I need for a container?", "a": "Slightly. Because the oil adds weight, an 8% load means about 7% less wax fills the same jar. Weigh a jar filled with water to estimate its capacity, then subtract the fragrance share." }
+    ]
+  },
+  "ko": {
+    "title": "캔들 향료 비율 계산기 – 왁스 무게별 향료 양",
+    "description": "캔들 왁스에 넣을 향료(프래그런스 오일) 양을 계산합니다. 왁스 무게와 향료 비율(%)을 입력하면 필요한 향료 g과 전체 배치 무게가 나옵니다.",
+    "h1": "캔들 향료 비율 계산기",
+    "intro": "왁스 무게와 원하는 향료 비율을 입력하면 넣어야 할 향료 양과 전체 배치 무게를 알려줍니다. 계산은 브라우저 안에서만 이루어지고 입력값은 저장되지 않습니다.",
+    "howto": [
+      "용기를 제외한 왁스만 저울에 달아 g 또는 oz로 입력합니다.",
+      "향료 비율을 %로 입력합니다. 소이·코코넛 왁스는 보통 6~10%, 파라핀 계열은 12%까지 허용하는 제품이 많습니다.",
+      "계산된 향료 양을 녹인 왁스에 넣습니다. 투입 온도는 보통 80~85 °C이며 왁스 제조사 안내를 따릅니다.",
+      "향료가 왁스와 충분히 섞이도록 2분 정도 천천히 저은 뒤 붓습니다."
+    ],
+    "formula": "향료 양 = 왁스 무게 × (향료 비율 ÷ 100). 전체 배치 = 왁스 무게 + 향료 양. 예: 왁스 500 g에 8%를 넣으면 향료 40 g, 전체 540 g입니다.",
+    "faq": [
+      { "q": "향료 비율은 왁스 기준인가요, 전체 배치 기준인가요?", "a": "왁스 기준입니다. 왁스 100 g당 향료 g이 업계 관행이고 이 계산기도 같은 방식입니다. 일부 판매처는 완성 배치 기준으로 표기하는데, 그 경우 8%는 이 계산기의 약 8.7%에 해당합니다." },
+      { "q": "향료를 너무 많이 넣으면 어떻게 되나요?", "a": "왁스가 잡아 두지 못한 오일이 표면으로 배어 나오고, 캔들이 물러지며, 심지가 막히거나 불꽃이 커질 수 있습니다. 왁스 제품 설명서의 최대 향료 비율을 넘기지 마세요." },
+      { "q": "향료 비율에 따라 용기에 필요한 왁스 양도 달라지나요?", "a": "조금 달라집니다. 향료가 무게를 더하기 때문에 8%를 넣으면 같은 용기를 채우는 데 왁스가 약 7% 덜 듭니다. 용기에 물을 채워 무게를 재면 용량을 가늠할 수 있고, 거기서 향료 몫을 빼면 됩니다." }
+    ]
+  }
+}

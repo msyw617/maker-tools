@@ -1,0 +1,43 @@
+---
+const { lang } = Astro.props;
+const t = {
+  en: { cur: '', resinSet: 'Resin', ml: 'Resin used incl. supports (ml)', bottlePrice: 'Bottle price', bottleMl: 'Bottle size (ml)', waste: 'Waste allowance (%)', elec: 'Electricity', hours: 'Print time (hours)', watts: 'Average power draw (W)', kwh: 'Electricity price per kWh', other: 'Consumables and failures', extras: 'Cleaning and consumables per print', fail: 'Failure rate (%)', resin: 'Resin cost', power: 'Electricity cost', total: 'Cost per successful print', note: 'Prices are in your own currency.' },
+  ko: { cur: '원', resinSet: '레진', ml: '서포트 포함 레진 사용량 (ml)', bottlePrice: '레진 한 병 가격 (원)', bottleMl: '병 용량 (ml)', waste: '손실 여유분 (%)', elec: '전기료', hours: '출력 시간 (시간)', watts: '평균 소비전력 (W)', kwh: 'kWh당 전기 요금 (원)', other: '소모품·실패율', extras: '출력 1회당 세척·소모품 (원)', fail: '실패율 (%)', resin: '레진 비용', power: '전기료', total: '성공 1개당 원가', note: '' },
+}[lang];
+const d = lang === 'ko' ? { bottlePrice: 35000, kwh: 150, extras: 500 } : { bottlePrice: 30, kwh: 0.16, extras: 0.5 };
+---
+<form class="tool" id="resin-print-cost" onsubmit="return false">
+  <fieldset>
+    <legend>{t.resinSet}</legend>
+    <div class="grid">
+      <label>{t.ml}<input name="ml" type="number" inputmode="decimal" min="0" step="any" value="30" /></label>
+      <label>{t.bottlePrice}<input name="bottlePrice" type="number" inputmode="decimal" min="0" step="any" value={d.bottlePrice} /></label>
+      <label>{t.bottleMl}<input name="bottleMl" type="number" inputmode="decimal" min="0" step="any" value="1000" /></label>
+      <label>{t.waste}<input name="waste" type="number" inputmode="decimal" min="0" max="50" step="1" value="10" /></label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>{t.elec}</legend>
+    <div class="grid">
+      <label>{t.hours}<input name="hours" type="number" inputmode="decimal" min="0" step="any" value="2" /></label>
+      <label>{t.watts}<input name="watts" type="number" inputmode="decimal" min="0" step="any" value="60" /></label>
+      <label>{t.kwh}<input name="kwh" type="number" inputmode="decimal" min="0" step="any" value={d.kwh} /></label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>{t.other}</legend>
+    <div class="grid">
+      <label>{t.extras}<input name="extras" type="number" inputmode="decimal" min="0" step="any" value={d.extras} /></label>
+      <label>{t.fail}<input name="fail" type="number" inputmode="decimal" min="0" max="90" step="1" value="10" /></label>
+    </div>
+  </fieldset>
+  <p class="result">{t.resin}: <strong data-out="resin"></strong> {t.cur}</p>
+  <p class="result">{t.power}: <strong data-out="power"></strong> {t.cur}</p>
+  <p class="result">{t.total}: <strong data-out="total"></strong> {t.cur}</p>
+  {t.note && <p class="note">{t.note}</p>}
+</form>
+<script>
+  import { wire } from '../form.js';
+  import { compute } from './calc.js';
+  wire('resin-print-cost', compute);
+</script>

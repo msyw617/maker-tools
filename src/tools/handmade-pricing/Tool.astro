@@ -1,0 +1,47 @@
+---
+const { lang } = Astro.props;
+const t = {
+  en: { cur: '', costSet: 'Cost of one item', materials: 'Materials and packaging', minutes: 'Hands-on time (minutes)', rate: 'Your hourly rate', overhead: 'Overhead share per item', markSet: 'Markups', wholesaleX: 'Wholesale = cost ×', retailX: 'Retail = wholesale ×', feeSet: 'Marketplace fees at retail', feePct: 'Percentage fees (%)', feeFixed: 'Fixed fee per order', labor: 'Labour', cost: 'Total cost', wholesale: 'Wholesale price', retail: 'Retail price', fees: 'Marketplace fees', profit: 'Profit after fees (on top of your wage)', note: 'Amounts are in your own currency. Fee defaults are an example; check your marketplace’s current fee schedule.' },
+  ko: { cur: '원', costSet: '작품 1개 원가', materials: '재료비·포장비 (원)', minutes: '작업 시간 (분)', rate: '내 시급 (원)', overhead: '작품당 간접비 (원)', markSet: '배수', wholesaleX: '도매가 = 원가 ×', retailX: '소매가 = 도매가 ×', feeSet: '소매 판매 시 플랫폼 수수료', feePct: '% 수수료 (%)', feeFixed: '건당 고정 수수료 (원)', labor: '인건비', cost: '총 원가', wholesale: '도매가', retail: '소매가', fees: '플랫폼 수수료', profit: '수수료 뺀 이익 (인건비 별도)', note: '수수료 기본값은 예시입니다. 판매 플랫폼의 현재 수수료를 확인해 입력하세요.' },
+}[lang];
+const d = lang === 'ko'
+  ? { materials: 5000, rate: 12000, overhead: 1000, feePct: 10, feeFixed: 0 }
+  : { materials: 5, rate: 20, overhead: 1, feePct: 9.5, feeFixed: 0.45 };
+---
+<form class="tool" id="handmade-pricing" onsubmit="return false">
+  <fieldset>
+    <legend>{t.costSet}</legend>
+    <div class="grid">
+      <label>{t.materials}<input name="materials" type="number" inputmode="decimal" min="0" step="any" value={d.materials} /></label>
+      <label>{t.minutes}<input name="minutes" type="number" inputmode="decimal" min="0" step="any" value="30" /></label>
+      <label>{t.rate}<input name="rate" type="number" inputmode="decimal" min="0" step="any" value={d.rate} /></label>
+      <label>{t.overhead}<input name="overhead" type="number" inputmode="decimal" min="0" step="any" value={d.overhead} /></label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>{t.markSet}</legend>
+    <div class="grid">
+      <label>{t.wholesaleX}<input name="wholesaleX" type="number" inputmode="decimal" min="1" step="0.1" value="2" /></label>
+      <label>{t.retailX}<input name="retailX" type="number" inputmode="decimal" min="1" step="0.1" value="2" /></label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>{t.feeSet}</legend>
+    <div class="grid">
+      <label>{t.feePct}<input name="feePct" type="number" inputmode="decimal" min="0" max="50" step="0.1" value={d.feePct} /></label>
+      <label>{t.feeFixed}<input name="feeFixed" type="number" inputmode="decimal" min="0" step="any" value={d.feeFixed} /></label>
+    </div>
+  </fieldset>
+  <p class="result">{t.labor}: <strong data-out="labor"></strong> {t.cur}</p>
+  <p class="result">{t.cost}: <strong data-out="cost"></strong> {t.cur}</p>
+  <p class="result">{t.wholesale}: <strong data-out="wholesale"></strong> {t.cur}</p>
+  <p class="result">{t.retail}: <strong data-out="retail"></strong> {t.cur}</p>
+  <p class="result">{t.fees}: <strong data-out="fees"></strong> {t.cur}</p>
+  <p class="result">{t.profit}: <strong data-out="profit"></strong> {t.cur}</p>
+  <p class="note">{t.note}</p>
+</form>
+<script>
+  import { wire } from '../form.js';
+  import { compute } from './calc.js';
+  wire('handmade-pricing', compute);
+</script>

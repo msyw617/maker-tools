@@ -1,0 +1,40 @@
+{
+  "slug": "candle-wax-for-container",
+  "category": "candle",
+  "en": {
+    "title": "Candle Wax Calculator – How Much Wax for Your Container",
+    "description": "Find out how much wax and fragrance oil you need to fill any candle jar or tin. Uses the water-weight method with wax-specific density factors.",
+    "h1": "How Much Wax Do I Need? Candle Container Calculator",
+    "intro": "Weigh the water your container holds, choose your wax type and fragrance load, and get the exact wax and fragrance oil to melt for one candle or a whole batch.",
+    "howto": [
+      "Fill one empty container with water up to the line where you want the candle surface to sit, usually 1–2 cm (about half an inch) below the rim.",
+      "Weigh the water and enter that weight. Use the same unit, grams or ounces, for everything else.",
+      "Choose your wax type. Wax is lighter than water, so the same jar holds less wax by weight than water.",
+      "Enter how many containers you are filling and your fragrance load, then melt the wax amount shown and add the fragrance oil amount shown."
+    ],
+    "formula": "Candle weight per container = water weight × wax density factor (soy 0.86, coconut blend 0.89, paraffin 0.92). Batch weight = candle weight × number of containers. Wax = batch weight ÷ (1 + fragrance load ÷ 100), and fragrance oil = batch weight − wax. Example: a jar that holds 200 g of water, filled with soy wax at 8% fragrance, takes 172 g of candle: 159.3 g of wax and 12.7 g of fragrance oil.",
+    "faq": [
+      { "q": "Why not just use the container's volume in ml or fl oz?", "a": "Wax is sold and measured by weight, and liquid wax is less dense than water. Weighing water is the most reliable way to measure the real fill volume of an oddly shaped jar, and the density factor converts it to wax weight." },
+      { "q": "Why is fragrance subtracted from the wax instead of added on top?", "a": "The jar only holds a fixed amount. Fragrance oil takes up part of that space, so adding it on top of a full wax measure would overfill the container. This calculator splits the fill weight into wax and oil so the total still fits." },
+      { "q": "Should I make extra?", "a": "Melt 5–10% more than you need when you are new to a container. Some wax stays in the pouring pitcher, and soy wax can sink around the wick as it cools, which you may want to top up with a second pour." }
+    ]
+  },
+  "ko": {
+    "title": "캔들 왁스 양 계산기 – 용기별 필요한 왁스·향료 양",
+    "description": "캔들 용기(유리컵, 틴케이스)에 필요한 왁스와 향료 양을 계산합니다. 물 무게 측정법과 왁스 종류별 밀도 계수를 사용합니다.",
+    "h1": "캔들 용기 왁스 양 계산기",
+    "intro": "용기에 들어가는 물의 무게를 재고 왁스 종류와 향료 비율을 고르면, 캔들 한 개 또는 여러 개를 만들 때 녹여야 할 왁스와 넣어야 할 향료 양을 알려줍니다.",
+    "howto": [
+      "빈 용기에 캔들 표면이 올 높이까지 물을 채웁니다. 보통 입구에서 1~2 cm 아래입니다.",
+      "물의 무게를 재서 입력합니다. 나머지 값도 같은 단위(g 또는 oz)를 씁니다.",
+      "왁스 종류를 고릅니다. 왁스는 물보다 가벼워서 같은 용기에 들어가는 왁스 무게는 물보다 적습니다.",
+      "만들 용기 수와 향료 비율을 입력하고, 표시된 양만큼 왁스를 녹여 향료를 넣습니다."
+    ],
+    "formula": "용기당 캔들 무게 = 물 무게 × 왁스 밀도 계수(소이 0.86, 코코넛 블렌드 0.89, 파라핀 0.92). 배치 무게 = 용기당 무게 × 용기 수. 왁스 = 배치 무게 ÷ (1 + 향료 비율 ÷ 100), 향료 = 배치 무게 − 왁스. 예: 물 200 g이 들어가는 용기에 소이 왁스와 향료 8%를 쓰면 캔들 172 g, 그중 왁스 159.3 g과 향료 12.7 g입니다.",
+    "faq": [
+      { "q": "용기 용량(ml)을 그대로 쓰면 안 되나요?", "a": "왁스는 무게로 계량하고, 녹은 왁스는 물보다 밀도가 낮습니다. 모양이 불규칙한 용기는 표기 용량과 실제 채우는 양이 다르기 때문에 물 무게를 재는 방법이 가장 정확하고, 밀도 계수로 왁스 무게로 바꿉니다." },
+      { "q": "향료를 왁스에 더하지 않고 빼는 이유는 무엇인가요?", "a": "용기에 들어가는 양은 정해져 있습니다. 향료도 그 공간을 차지하므로 왁스를 가득 계량한 뒤 향료를 더하면 넘칩니다. 이 계산기는 채울 무게를 왁스와 향료로 나눠서 합계가 용기에 맞도록 합니다." },
+      { "q": "여유분을 더 녹여야 하나요?", "a": "처음 쓰는 용기라면 5~10% 더 녹이세요. 붓는 용기에 왁스가 남고, 소이 왁스는 식으면서 심지 주변이 꺼질 수 있어 한 번 더 부어 채우는 경우가 많습니다." }
+    ]
+  }
+}

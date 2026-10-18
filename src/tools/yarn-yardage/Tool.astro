@@ -1,0 +1,46 @@
+---
+const { lang } = Astro.props;
+const t = {
+  en: { units: 'Units', swatch: 'Your swatch', sw: 'Swatch width', sh: 'Swatch height', sweight: 'Swatch weight (g)', label: 'Yarn label', kweight: 'Skein weight (g)', klen: 'Skein length', project: 'Project', pw: 'Finished width', pl: 'Finished length', pieces: 'Number of identical pieces', extra: 'Extra allowance (%)', length: 'Yarn needed', grams: 'Weight', skeins: 'Skeins to buy', note: 'For garments, enter each piece as a rectangle and add up the results.' },
+  ko: { units: '단위', swatch: '내 스와치', sw: '스와치 가로', sh: '스와치 세로', sweight: '스와치 무게 (g)', label: '실 라벨', kweight: '한 타래 무게 (g)', klen: '한 타래 길이', project: '작품', pw: '완성 가로', pl: '완성 세로', pieces: '같은 조각 수', extra: '여유분 (%)', length: '필요한 실 길이', grams: '무게', skeins: '구매할 타래 수', note: '옷은 조각마다 사각형으로 입력해서 결과를 더하세요.' },
+}[lang];
+---
+<form class="tool" id="yarn-yardage" onsubmit="return false">
+  <div class="grid">
+    <label>{t.units}<select name="dunit"><option value="cm">cm</option><option value="in">in</option></select></label>
+    <label>&nbsp;<select name="lunit"><option value="m">m</option><option value="yd">yd</option></select></label>
+  </div>
+  <fieldset>
+    <legend>{t.swatch}</legend>
+    <div class="grid">
+      <label>{t.sw} (<span data-out="dunit"></span>)<input name="sw" type="number" inputmode="decimal" min="0" step="any" value="10" /></label>
+      <label>{t.sh} (<span data-out="dunit"></span>)<input name="sh" type="number" inputmode="decimal" min="0" step="any" value="10" /></label>
+      <label>{t.sweight}<input name="sweight" type="number" inputmode="decimal" min="0" step="any" value="5" /></label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>{t.label}</legend>
+    <div class="grid">
+      <label>{t.kweight}<input name="kweight" type="number" inputmode="decimal" min="0" step="any" value="100" /></label>
+      <label>{t.klen} (<span data-out="lunit"></span>)<input name="klen" type="number" inputmode="decimal" min="0" step="any" value="200" /></label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>{t.project}</legend>
+    <div class="grid">
+      <label>{t.pw} (<span data-out="dunit"></span>)<input name="pw" type="number" inputmode="decimal" min="0" step="any" value="50" /></label>
+      <label>{t.pl} (<span data-out="dunit"></span>)<input name="pl" type="number" inputmode="decimal" min="0" step="any" value="150" /></label>
+      <label>{t.pieces}<input name="pieces" type="number" inputmode="numeric" min="1" step="1" value="1" /></label>
+      <label>{t.extra}<input name="extra" type="number" inputmode="decimal" min="0" max="50" step="1" value="10" /></label>
+    </div>
+  </fieldset>
+  <p class="result">{t.length}: <strong data-out="length"></strong> <span data-out="lunit"></span></p>
+  <p class="result">{t.grams}: <strong data-out="grams"></strong> g</p>
+  <p class="result">{t.skeins}: <strong data-out="skeins"></strong></p>
+  <p class="note">{t.note}</p>
+</form>
+<script>
+  import { wire } from '../form.js';
+  import { compute } from './calc.js';
+  wire('yarn-yardage', compute);
+</script>
