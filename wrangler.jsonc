@@ -1,0 +1,7 @@
+// Static-only Worker. Workers Builds runs `npm run build`, then `npx wrangler deploy` uploads ./dist.
+// "name" must stay equal to the Worker's name in the Cloudflare dashboard.
+{
+  "name": "maker-tools",
+  "compatibility_date": "2026-10-01",
+  "assets": { "directory": "./dist" }
+}

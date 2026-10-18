@@ -24,7 +24,8 @@ src/tools/<slug>/Tool.astro     도구 UI (입력·출력 마크업, en/ko 라�
 src/tools/<slug>/calc.js        순수 계산 함수 compute(values) → { 출력키: 값 } (브라우저·Node 공용)
 src/tools/form.js               공용 연결: 입력 읽기 → compute → [data-out] 표시, [data-show] 조건부 표시
 check.mjs                       도구별 손계산 예제 assert (npm test)
-public/_redirects               / → /en/ (Cloudflare Pages)
+public/_redirects               / → /en/ (Cloudflare 정적 자산 리디렉트)
+wrangler.jsonc                  Cloudflare Worker 설정: dist를 정적 자산으로 배포
 src/pages/robots.txt.js         robots.txt (site 주소로 생성)
 .node-version                   Cloudflare 빌드 Node 버전 고정
 ```
@@ -40,25 +41,28 @@ src/pages/robots.txt.js         robots.txt (site 주소로 생성)
 6. `npm run build`가 통과하고 `/en/<slug>/`, `/ko/<slug>/`가 생성되는지 확인한다.
 7. `backlog.csv` 상태를 `done`으로 바꾼다.
 
-## 배포 (Cloudflare Pages + GitHub 연동)
+## 배포 (Cloudflare Workers + GitHub 연동)
 
-`main`에 푸시하면 Cloudflare가 자동으로 빌드·배포한다. 빌드 명령이 `check.mjs`를 먼저 돌리므로 계산 검증이 실패하면 배포되지 않는다.
+Cloudflare 프로젝트는 Pages가 아니라 Workers(정적 자산 전용)로 만들어져 있다. `main`에 푸시하면 Workers Builds가 자동으로 빌드·배포한다. 빌드 명령이 `check.mjs`를 먼저 돌리므로 계산 검증이 실패하면 배포되지 않는다.
 
-| 설정 | 값 |
+| 설정 (Worker → Settings → Build) | 값 |
 |---|---|
-| Framework preset | Astro |
-| Production branch | `main` |
+| Git branch | `main` |
 | Build command | `npm run build` |
-| Build output directory | `dist` |
+| Deploy command | `npx wrangler deploy` |
 
-- Node 버전은 `.node-version`으로 고정한다. Cloudflare 기본값(22.16)은 Astro 요구사항(22.22 이상)보다 낮아 빌드가 실패한다.
+- `wrangler.jsonc`가 `dist` 폴더를 정적 자산으로 올리라고 지정한다. 이 파일이 없으면 Cloudflare가 프레임워크를 추측해 설정을 자동 생성한다.
+- `wrangler.jsonc`의 `name`은 대시보드의 Worker 이름(`maker-tools`)과 같아야 한다.
+- `public/_redirects`(/ → /en/)는 Workers 정적 자산에서도 동작한다.
+- Node 버전은 `.node-version`으로 고정한다. Cloudflare 빌드 이미지 기본값(22.16)은 Astro 요구사항(22.22 이상)보다 낮다.
 - canonical, hreflang, sitemap, robots.txt 주소는 전부 `astro.config.mjs`의 `site`(https://craftnumbers.com)에서 나온다.
-- 커스텀 도메인은 Pages 프로젝트의 Custom domains에서만 연결한다. DNS 레코드를 먼저 손으로 만들면 522 오류가 난다.
+- 커스텀 도메인은 Worker의 Domains 탭(또는 Settings → Domains & Routes)에서 연결한다. DNS 레코드는 Cloudflare가 자동으로 만든다.
 
 ## 남은 TODO
 
 - [x] 도메인 구입 (craftnumbers.com, Cloudflare Registrar)
-- [ ] Pages 프로젝트 생성 → Custom domains에 craftnumbers.com 연결
+- [x] Cloudflare Worker 프로젝트 생성 (maker-tools, GitHub 연동)
+- [ ] Worker Domains 탭에서 craftnumbers.com, www.craftnumbers.com 연결
 - [x] `src/pages/[lang]/contact.astro`의 이메일 교체
 - [ ] 도메인 연결 2~4주 뒤 AdSense 신청
 - [ ] 승인 후 `Base.astro` head에 AdSense 스크립트 추가, `.ad` 슬롯에 `<ins>` 삽입
