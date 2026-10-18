@@ -3,14 +3,14 @@ import Base from '../../layouts/Base.astro';
 export function getStaticPaths() { return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }]; }
 const { lang } = Astro.params;
 const t = {
-  en: { title: 'About Maker Tools', description: 'Who makes these calculators and how the formulas are chosen.', body: [
-    'Maker Tools is a collection of free calculators for people who make things by hand and sell them: candle and soap makers, resin artists, knitters, sewists and 3D printing hobbyists.',
+  en: { title: 'About Craft Numbers', description: 'Who makes these calculators and how the formulas are chosen.', body: [
+    'Craft Numbers is a collection of free calculators for people who make things by hand and sell them: candle and soap makers, resin artists, knitters, sewists and 3D printing hobbyists.',
     'Every tool runs entirely in your browser. Your inputs are never sent to a server or stored.',
     'Formulas follow the conventions used by major suppliers and reference books. Where suppliers disagree (for example whether fragrance load is measured against wax or the whole batch), each tool states which convention it uses.',
     'Results are estimates to help you plan. Always follow the safety data and maximum ratios published by your material supplier.',
   ] },
-  ko: { title: '메이커 계산기 소개', description: '이 계산기들을 누가 만들고 계산식은 어떻게 정했는지 설명합니다.', body: [
-    '메이커 계산기는 손으로 만들어 파는 사람들을 위한 무료 계산기 모음입니다. 캔들·비누 공방, 레진 작가, 뜨개·재봉 작가, 3D 프린팅 취미인을 위해 만들었습니다.',
+  ko: { title: 'Craft Numbers 소개', description: '이 계산기들을 누가 만들고 계산식은 어떻게 정했는지 설명합니다.', body: [
+    'Craft Numbers는 손으로 만들어 파는 사람들을 위한 무료 계산기 모음입니다. 캔들·비누 공방, 레진 작가, 뜨개·재봉 작가, 3D 프린팅 취미인을 위해 만들었습니다.',
     '모든 도구는 브라우저 안에서만 동작합니다. 입력값은 서버로 전송되거나 저장되지 않습니다.',
     '계산식은 주요 재료 판매처와 참고 서적의 관행을 따릅니다. 판매처마다 기준이 다른 경우(예: 향료 비율을 왁스 기준으로 보는지 전체 배치 기준으로 보는지)에는 각 도구에 어떤 기준을 쓰는지 밝혀 둡니다.',
     '결과는 계획을 돕기 위한 추정치입니다. 재료 제조사가 제공하는 안전 자료와 최대 비율을 항상 우선하세요.',

@@ -4,14 +4,14 @@ export function getStaticPaths() { return [{ params: { lang: 'en' } }, { params:
 const { lang } = Astro.params;
 const updated = '2026-10-18';
 const t = {
-  en: { title: 'Privacy Policy', description: 'How Maker Tools handles data, cookies and advertising.', sections: [
+  en: { title: 'Privacy Policy', description: 'How Craft Numbers handles data, cookies and advertising.', sections: [
     ['Calculator inputs', 'All calculations run in your browser. Values you type into a tool are not transmitted to us or to any third party, and are not stored after you leave the page.'],
     ['Advertising', 'This site displays ads served by Google AdSense. Google and its partners use cookies, including the DoubleClick cookie, to show ads based on your visits to this and other websites. You can opt out of personalised advertising at Google Ads Settings (adssettings.google.com) or at aboutads.info.'],
     ['Analytics', 'We may use a cookie-free analytics service (such as Cloudflare Web Analytics) to count page views. It does not track you across sites or store personal data.'],
     ['Hosting logs', 'Our hosting provider may keep standard server logs (IP address, browser type, time of request) for security and reliability. These are not combined with any other data.'],
     ['Contact', 'Questions about this policy: see the Contact page.'],
   ] },
-  ko: { title: '개인정보처리방침', description: '메이커 계산기의 데이터, 쿠키, 광고 처리 방식을 설명합니다.', sections: [
+  ko: { title: '개인정보처리방침', description: 'Craft Numbers의 데이터, 쿠키, 광고 처리 방식을 설명합니다.', sections: [
     ['계산기 입력값', '모든 계산은 브라우저 안에서 실행됩니다. 도구에 입력한 값은 당사나 제3자에게 전송되지 않으며 페이지를 떠나면 남지 않습니다.'],
     ['광고', '이 사이트는 Google AdSense 광고를 게재합니다. Google과 파트너는 DoubleClick 쿠키를 포함한 쿠키를 사용하여 이 사이트와 다른 웹사이트 방문 기록을 바탕으로 광고를 표시합니다. 맞춤 광고는 Google 광고 설정(adssettings.google.com) 또는 aboutads.info에서 해제할 수 있습니다.'],
     ['분석', '페이지 조회수 집계를 위해 쿠키를 사용하지 않는 분석 서비스(예: Cloudflare Web Analytics)를 사용할 수 있습니다. 이 서비스는 사이트 간 추적을 하지 않으며 개인정보를 저장하지 않습니다.'],

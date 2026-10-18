@@ -3,8 +3,8 @@ const { lang, title, description, path = '' } = Astro.props;
 const other = lang === 'en' ? 'ko' : 'en';
 const site = (Astro.site?.toString() ?? '').replace(/\/$/, '');
 const t = {
-  en: { home: 'Maker Tools', about: 'About', privacy: 'Privacy', contact: 'Contact', switch: '한국어' },
-  ko: { home: '메이커 계산기', about: '소개', privacy: '개인정보처리방침', contact: '문의', switch: 'English' },
+  en: { home: 'Craft Numbers', about: 'About', privacy: 'Privacy', contact: 'Contact', switch: '한국어' },
+  ko: { home: 'Craft Numbers', about: '소개', privacy: '개인정보처리방침', contact: '문의', switch: 'English' },
 }[lang];
 ---
 <!doctype html>
@@ -14,7 +14,6 @@ const t = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    {Astro.site?.hostname === 'example.com' && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={`${site}/${lang}/${path}`} />
     <link rel="alternate" hreflang="en" href={`${site}/en/${path}`} />
     <link rel="alternate" hreflang="ko" href={`${site}/ko/${path}`} />

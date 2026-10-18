@@ -4,8 +4,8 @@ export function getStaticPaths() { return [{ params: { lang: 'en' } }, { params:
 const { lang } = Astro.params;
 const email = 'msyw617@gmail.com';
 const t = {
-  en: { title: 'Contact', description: 'Get in touch about Maker Tools.', body: 'Found a wrong formula, want a calculator that does not exist yet, or have a business enquiry? Email us and we usually reply within a few days.' },
-  ko: { title: '문의', description: '메이커 계산기에 대한 문의 방법입니다.', body: '계산식 오류, 아직 없는 계산기 요청, 제휴 문의는 아래 메일로 보내 주세요. 보통 며칠 안에 답변드립니다.' },
+  en: { title: 'Contact', description: 'Get in touch about Craft Numbers.', body: 'Found a wrong formula, want a calculator that does not exist yet, or have a business enquiry? Email us and we usually reply within a few days.' },
+  ko: { title: '문의', description: 'Craft Numbers에 대한 문의 방법입니다.', body: '계산식 오류, 아직 없는 계산기 요청, 제휴 문의는 아래 메일로 보내 주세요. 보통 며칠 안에 답변드립니다.' },
 }[lang];
 ---
 <Base lang={lang} title={t.title} description={t.description} path="contact/">

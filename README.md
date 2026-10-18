@@ -50,15 +50,15 @@ src/pages/robots.txt.js         robots.txt (site 주소로 생성)
 | Production branch | `main` |
 | Build command | `npm run build` |
 | Build output directory | `dist` |
-| 환경변수 `SITE_URL` | `https://내도메인.com` (끝에 `/` 없이) |
 
 - Node 버전은 `.node-version`으로 고정한다. Cloudflare 기본값(22.16)은 Astro 요구사항(22.22 이상)보다 낮아 빌드가 실패한다.
-- `SITE_URL`이 없으면 example.com 주소로 빌드되고 모든 페이지에 noindex가 붙는다. 잘못된 주소가 검색에 색인되는 것을 막기 위한 장치다.
-- canonical, hreflang, sitemap, robots.txt 주소는 전부 `SITE_URL` 하나에서 나온다.
+- canonical, hreflang, sitemap, robots.txt 주소는 전부 `astro.config.mjs`의 `site`(https://craftnumbers.com)에서 나온다.
+- 커스텀 도메인은 Pages 프로젝트의 Custom domains에서만 연결한다. DNS 레코드를 먼저 손으로 만들면 522 오류가 난다.
 
 ## 남은 TODO
 
-- [ ] 도메인 구입 → Pages 프로젝트 Custom domains에 연결 → `SITE_URL` 설정 후 재배포
+- [x] 도메인 구입 (craftnumbers.com, Cloudflare Registrar)
+- [ ] Pages 프로젝트 생성 → Custom domains에 craftnumbers.com 연결
 - [x] `src/pages/[lang]/contact.astro`의 이메일 교체
 - [ ] 도메인 연결 2~4주 뒤 AdSense 신청
 - [ ] 승인 후 `Base.astro` head에 AdSense 스크립트 추가, `.ad` 슬롯에 `<ins>` 삽입

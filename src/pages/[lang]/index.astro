@@ -8,8 +8,8 @@ const cat = {
   ko: { candle: '캔들', soap: '비누·입욕제', resin: '레진', knitting: '뜨개', sewing: '재봉·퀼트', printing: '3D 프린팅', laser: '레이저·CNC', jewelry: '주얼리', selling: '원가·판매' },
 }[lang];
 const t = {
-  en: { title: 'Maker Tools – Free Calculators for Candle, Soap, Resin, Yarn and 3D Printing Makers', description: 'Free browser-based calculators for people who make and sell handmade goods: fragrance load, lye, resin volume, yarn yardage, 3D print cost and pricing.', h1: 'Free calculators for makers', intro: 'Recipe, material and pricing calculators for candle, soap, resin, yarn, sewing and 3D printing makers. Everything runs in your browser; nothing is uploaded.' },
-  ko: { title: '메이커 계산기 – 캔들·비누·레진·뜨개·3D프린팅 무료 계산기', description: '핸드메이드 제작·판매자를 위한 무료 계산기 모음: 향료 비율, 가성소다, 레진 부피, 실 분량, 3D 프린팅 원가와 판매가.', h1: '메이커를 위한 무료 계산기', intro: '캔들, 비누, 레진, 뜨개, 재봉, 3D 프린팅의 레시피·재료·판매가 계산기입니다. 모든 계산은 브라우저 안에서만 이루어집니다.' },
+  en: { title: 'Craft Numbers – Free Calculators for Candle, Soap, Resin, Yarn and 3D Printing Makers', description: 'Free browser-based calculators for people who make and sell handmade goods: fragrance load, lye, resin volume, yarn yardage, 3D print cost and pricing.', h1: 'Free calculators for makers', intro: 'Recipe, material and pricing calculators for candle, soap, resin, yarn, sewing and 3D printing makers. Everything runs in your browser; nothing is uploaded.' },
+  ko: { title: 'Craft Numbers – 캔들·비누·레진·뜨개·3D프린팅 무료 계산기', description: '핸드메이드 제작·판매자를 위한 무료 계산기 모음: 향료 비율, 가성소다, 레진 부피, 실 분량, 3D 프린팅 원가와 판매가.', h1: '메이커를 위한 무료 계산기', intro: '캔들, 비누, 레진, 뜨개, 재봉, 3D 프린팅의 레시피·재료·판매가 계산기입니다. 모든 계산은 브라우저 안에서만 이루어집니다.' },
 }[lang];
 const groups = Object.keys(cat).map((c) => [c, tools.filter((x) => x.category === c)]).filter(([, l]) => l.length);
 ---
