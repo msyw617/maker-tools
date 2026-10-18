@@ -59,7 +59,7 @@ src/pages/robots.txt.js         robots.txt (site 주소로 생성)
 ## 남은 TODO
 
 - [ ] 도메인 구입 → Pages 프로젝트 Custom domains에 연결 → `SITE_URL` 설정 후 재배포
-- [ ] `src/pages/[lang]/contact.astro`의 이메일 교체
+- [x] `src/pages/[lang]/contact.astro`의 이메일 교체
 - [ ] 도메인 연결 2~4주 뒤 AdSense 신청
 - [ ] 승인 후 `Base.astro` head에 AdSense 스크립트 추가, `.ad` 슬롯에 `<ins>` 삽입
 - [ ] Search Console에 도메인 속성 등록 → `sitemap-index.xml` 제출
