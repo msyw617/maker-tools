@@ -62,7 +62,7 @@ Cloudflare 프로젝트는 Pages가 아니라 Workers(정적 자산 전용)로 �
 
 - [x] 도메인 구입 (craftnumbers.com, Cloudflare Registrar)
 - [x] Cloudflare Worker 프로젝트 생성 (maker-tools, GitHub 연동)
-- [ ] Worker Domains 탭에서 craftnumbers.com, www.craftnumbers.com 연결
+- [x] Worker Domains 탭에서 craftnumbers.com, www.craftnumbers.com 연결
 - [x] `src/pages/[lang]/contact.astro`의 이메일 교체
 - [ ] 도메인 연결 2~4주 뒤 AdSense 신청
 - [ ] 승인 후 `Base.astro` head에 AdSense 스크립트 추가, `.ad` 슬롯에 `<ins>` 삽입
